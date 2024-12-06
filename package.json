@@ -10,8 +10,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "appium": "^2.13.0",
-    "selenium-webdriver": "^4.27.0"
+    "@wdio/appium-service": "^9.4.1",
+    "appium": "^2.13.1",
+    "selenium-webdriver": "^4.27.0",
+    "webdriverio": "^9.4.1"
   },
   "devDependencies": {
     "appium-uiautomator2-driver": "^3.9.1"
