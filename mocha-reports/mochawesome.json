@@ -1,0 +1,179 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-12-12T09:52:04.310Z",
+    "end": "2024-12-12T09:52:08.616Z",
+    "duration": 4306,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "4791d1f3-e082-433f-a3e5-a9b6e2ae34cc",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5b141344-6ec4-4fde-baec-01287814a670",
+          "title": "Basic Test",
+          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/testscripts/basic.test.mjs",
+          "file": "/testscripts/basic.test.mjs",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should pass a simple test",
+              "fullTitle": "Basic Test should pass a simple test",
+              "timedOut": false,
+              "duration": 1,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "expect(true).to.be.true;",
+              "err": {},
+              "uuid": "56e00e20-e600-4fbc-9be6-b5beea7931f5",
+              "parentUUID": "5b141344-6ec4-4fde-baec-01287814a670",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "56e00e20-e600-4fbc-9be6-b5beea7931f5"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "417884b4-b4f8-4169-8bed-392f7460309c",
+          "title": "Logo Validation",
+          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/testscripts/validateLogo.test.mjs",
+          "file": "/testscripts/validateLogo.test.mjs",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"Logo Validation\"",
+              "fullTitle": "Logo Validation \"before all\" hook in \"Logo Validation\"",
+              "timedOut": false,
+              "duration": 3892,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "console.log('Setting up driver...');\nthis.timeout(30000); // 30 seconds for setup\nconst capabilities = {\n    platformName: \"Android\",\n    \"appium:deviceName\": \"emulator-5554\",\n    \"appium:app\": \"./dev-release.apk\", // Path to your APK\n    \"appium:automationName\": \"UiAutomator2\",\n    \"appium:newCommandTimeout\": 300,\n    \"appium:ensureWebviewsHavePages\": true,\n    \"appium:nativeWebScreenshot\": true,\n    \"appium:noReset\": true,\n    \"appium:ignoreHiddenApiPolicyError\": true,\n};\ndriver = await remote({\n    logLevel: 'info',\n    path: '/',\n    port: 4725,\n    capabilities,\n});\n// Wait for the app to load (can be adjusted if needed)\n// await logo.waitForDisplayed({ timeout: 15000 });",
+              "err": {},
+              "uuid": "87ab90af-61ad-4f71-ace4-89c952e989bc",
+              "parentUUID": "417884b4-b4f8-4169-8bed-392f7460309c",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"Logo Validation\"",
+              "fullTitle": "Logo Validation \"after all\" hook in \"Logo Validation\"",
+              "timedOut": false,
+              "duration": 102,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "console.log('Closing driver session...');\nif (driver) {\n    await driver.deleteSession();\n} else {\n    console.log('Driver session not created. Skipping session cleanup.');\n}",
+              "err": {},
+              "uuid": "ef4ac19e-08e1-47ad-abbb-e67bb276cd1b",
+              "parentUUID": "417884b4-b4f8-4169-8bed-392f7460309c",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "should display the dashboard logo",
+              "fullTitle": "Logo Validation should display the dashboard logo",
+              "timedOut": false,
+              "duration": 307,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "console.log('Running logo validation test...');\nconst logo = await driver.$('//android.widget.ImageView[@content-desc=\"Dashboard logo\"]');\nconst isLogoDisplayed = await logo.isDisplayed();\n\nconsole.log('Logo displayed:', isLogoDisplayed);\nexpect(isLogoDisplayed, 'Dashboard logo should be visible').to.be.true;",
+              "err": {},
+              "uuid": "fbb8a9ff-0b96-4f7c-a2a2-078dda68be1a",
+              "parentUUID": "417884b4-b4f8-4169-8bed-392f7460309c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "fbb8a9ff-0b96-4f7c-a2a2-078dda68be1a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 307,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.3.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "mocha-reports"
+      },
+      "version": "5.2.0"
+    }
+  }
+}

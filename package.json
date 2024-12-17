@@ -3,19 +3,25 @@
   "version": "1.0.0",
   "main": "test.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --require @babel/register --extension mjs --timeout 30000 --reporter mochawesome --reporter-options reportDir=mocha-reports,reportFilename=report,verbose cases/masterSuite.test.mjs",
+    "generate-report": "marge mocha-reports/mochawesome.json --reportDir mocha-reports cases/*.test.mjs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "@wdio/appium-service": "^9.4.1",
     "appium": "^2.13.1",
-    "selenium-webdriver": "^4.27.0",
+    "appium-doctor": "^1.16.2",
+    "appium-uiautomator2-driver": "^3.9.1",
+    "appium-wait-plugin": "^3.0.2",
     "webdriverio": "^9.4.1"
   },
   "devDependencies": {
-    "appium-uiautomator2-driver": "^3.9.1"
+    "@babel/register": "^7.25.9",
+    "chai": "^5.1.2",
+    "glob": "^11.0.0",
+    "mocha": "^11.0.1",
+    "mochawesome": "^6.3.1",
+    "mochawesome-merge": "^4.0.0",
+    "mochawesome-report-generator": "^5.2.0",
+    "webdriverio": "^9.4.1"
   }
 }
