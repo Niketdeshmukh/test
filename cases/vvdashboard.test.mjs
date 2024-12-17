@@ -128,6 +128,20 @@ describe('Validate Ride Statistics and Date Logic', function () {
 
         const backButton = await driver.$('//android.widget.ScrollView/android.view.View[1]/android.view.View/android.widget.Button');
         await backButton.click();
+        await driver.performActions([
+            {
+                type: "pointer",
+                id: "finger1",
+                parameters: { pointerType: "touch" },
+                actions: [
+                    { type: "pointerMove", duration: 0, x: width / 2, y: height * 0.2 },
+                    { type: "pointerDown", button: 0 },
+                    { type: "pointerMove", duration: 500, x: width / 2, y: height * 0.8 },
+                    { type: "pointerUp", button: 0 },
+                ],
+            },
+        ]);
+        await driver.releaseActions();
     });
 
     after(async function () {

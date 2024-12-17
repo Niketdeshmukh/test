@@ -98,10 +98,9 @@ describe('Edit Details Test', function () {
         await saveButton.click();
 
         console.log("Changes saved successfully!");
-
-        const screenshot = await driver.takeScreenshot();
-        fs.writeFileSync("save_changes_screenshot.png", screenshot, "base64");
-        console.log("Screenshot taken and saved as save_changes_screenshot.png");
+        const homeButton = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]');
+        await homeButton.click();
+        console.log("Home button clicked");
     });
 
     after(async function () {

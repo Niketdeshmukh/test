@@ -33,7 +33,7 @@ describe("Manage Address Test", function () {
 
         // Step 1: Click on the Profile button
         const profileButton = await driver.$(
-            '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[2]'
+            '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]'
         );
         await profileButton.click();
         console.log("Profile button clicked.");
