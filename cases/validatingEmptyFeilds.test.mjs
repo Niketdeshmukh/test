@@ -32,7 +32,8 @@ describe('Edit Details Empty Test', function () {
 
     it('should clear the Name and Email fields and attempt to save changes', async function () {
         console.log("Waiting for the 'Edit Details' button to appear...");
-
+        const profileButton = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[2]');
+        await profileButton.click();
         await driver.waitUntil(
             async () => {
                 const editButton = await driver.$(
@@ -97,6 +98,8 @@ describe('Edit Details Empty Test', function () {
         await saveButton.click();
 
         console.log("Changes can't be saved because of empty fields!");
+        const backButton = await driver.$('//android.widget.ScrollView/android.view.View[1]/android.widget.Button');
+        await backButton.click();
     });
 
     after(async function () {

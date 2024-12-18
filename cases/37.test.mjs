@@ -34,14 +34,14 @@ describe('Verify Field Length Test', function () {
         console.log("Navigating to the profile section...");
 
         const profileButton = await driver.$(
-            '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View[2]/android.view.View/android.widget.Button'
+            '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[2]'
         );
         await profileButton.click();
         await driver.pause(2000);
 
         console.log("Clicking on the 'Edit Profile' button...");
         const editProfileButton = await driver.$(
-            'android=new UiSelector().className("android.widget.EditText")'
+            '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View[2]/android.view.View/android.widget.Button'
         );
         await editProfileButton.click();
         await driver.pause(2000);
@@ -74,7 +74,8 @@ describe('Verify Field Length Test', function () {
             '//android.widget.ScrollView/android.view.View[4]/android.widget.Button'
         );
         await saveButton.click();
-
+        const backButton = await driver.$('//android.widget.ScrollView/android.view.View[1]/android.widget.Button');
+        await backButton.click();
         console.log("Changes saved successfully!");
         const homeButton = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]');
         await homeButton.click();

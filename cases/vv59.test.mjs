@@ -63,8 +63,9 @@ describe('Email Validation Test', function () {
       }
 
       await driver.pause(500);
-      
     }
+    const backButton = await driver.$('//android.widget.ScrollView/android.view.View[1]/android.widget.Button');
+    await backButton.click()
   });
 
   after(async function () {

@@ -35,6 +35,7 @@ describe('Orientation Test', function () {
     let currentOrientation = await driver.getOrientation();
     console.log(`Initial Orientation: ${currentOrientation}`);
 
+    // Ensure initial orientation is portrait
     if (currentOrientation !== 'PORTRAIT') {
       console.log('Switching to portrait mode...');
       await driver.setOrientation('PORTRAIT');
@@ -56,15 +57,27 @@ describe('Orientation Test', function () {
     currentOrientation = await driver.getOrientation();
     console.log(`Orientation after switching to landscape: ${currentOrientation}`);
 
-    if (currentOrientation === 'PORTRAIT') {
-      console.log('Test Passed: App remains in portrait mode as expected.');
-    } else {
-      console.error('Test Failed: App switched to landscape mode unexpectedly.');
-    }
+    expect(currentOrientation).to.equal('LANDSCAPE', 'Failed to switch to landscape mode.');
+
+    console.log('Switching back to portrait mode...');
+    await driver.setOrientation('PORTRAIT');
+
+    currentOrientation = await driver.getOrientation();
+    console.log(`Orientation after switching back to portrait: ${currentOrientation}`);
+
+    expect(currentOrientation).to.equal('PORTRAIT', 'Failed to switch back to portrait mode.');
   });
 
   after(async function () {
     console.log('Ending the orientation test session...');
+
+    // Ensure the orientation is set back to portrait before ending the session
+    const currentOrientation = await driver.getOrientation();
+    if (currentOrientation !== 'PORTRAIT') {
+      console.log('Resetting orientation to portrait...');
+      await driver.setOrientation('PORTRAIT');
+    }
+
     if (driver) {
       await driver.deleteSession();
       console.log('Driver session closed.');

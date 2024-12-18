@@ -1,15 +1,15 @@
 {
   "stats": {
-    "suites": 3,
-    "tests": 3,
+    "suites": 2,
+    "tests": 2,
     "passes": 2,
     "pending": 0,
-    "failures": 1,
-    "start": "2024-12-17T12:32:49.720Z",
-    "end": "2024-12-17T12:33:23.218Z",
-    "duration": 33498,
-    "testsRegistered": 3,
-    "passPercent": 66.66666666666666,
+    "failures": 0,
+    "start": "2024-12-17T12:57:21.866Z",
+    "end": "2024-12-17T12:57:31.784Z",
+    "duration": 9918,
+    "testsRegistered": 2,
+    "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "51dcae80-f87a-4c40-b445-ccde98aa8ba6",
+      "uuid": "d6accf4b-665a-4744-81cc-b84573343f89",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,165 +27,84 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "da42f2a7-ba50-46d9-8791-b3a6860c6224",
-          "title": "Manage Address Test",
+          "uuid": "bef079e1-bc74-496d-860d-a664cc3e581f",
+          "title": "Orientation Test",
           "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
           "file": "/cases/masterSuite.test.mjs",
           "beforeHooks": [
             {
-              "title": "\"before all\" hook in \"Manage Address Test\"",
-              "fullTitle": "Manage Address Test \"before all\" hook in \"Manage Address Test\"",
+              "title": "\"before all\" hook in \"Orientation Test\"",
+              "fullTitle": "Orientation Test \"before all\" hook in \"Orientation Test\"",
               "timedOut": false,
-              "duration": 4560,
+              "duration": 4864,
               "state": null,
               "speed": null,
               "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "console.log(\"Setting up the driver...\");\nthis.timeout(30000); // Allowing enough time for driver setup\nconst capabilities = {\n    platformName: \"Android\",\n    \"appium:deviceName\": \"emulator-5554\",\n    \"appium:app\": \"./dev-release.apk\",\n    \"appium:automationName\": \"UiAutomator2\",\n    \"appium:newCommandTimeout\": 300,\n    \"appium:ensureWebviewsHavePages\": true,\n    \"appium:nativeWebScreenshot\": true,\n    \"appium:noReset\": true,\n    \"appium:ignoreHiddenApiPolicyError\": true,\n};\ndriver = await remote({\n    logLevel: \"info\",\n    path: \"/\",\n    port: 4725,\n    capabilities,\n});\nconsole.log(\"Driver setup complete.\");",
+              "code": "this.timeout(30000); // Set timeout for the setup\nconst capabilities = {\n  platformName: 'Android',\n  'appium:deviceName': 'emulator-5554',\n  'appium:app': './dev-release.apk',\n  'appium:automationName': 'UiAutomator2',\n  'appium:newCommandTimeout': 300,\n  'appium:noReset': true,\n  'appium:ignoreHiddenApiPolicyError': true,\n};\ndriver = await remote({\n  logLevel: 'info',\n  path: '/',\n  port: 4725,\n  capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\nawait driver.pause(2000);",
               "err": {},
-              "uuid": "2d15a49e-c1e3-4ad7-be32-3f3c14f64d67",
-              "parentUUID": "da42f2a7-ba50-46d9-8791-b3a6860c6224",
+              "uuid": "2b502933-2832-4bda-8d7c-d316ad739230",
+              "parentUUID": "bef079e1-bc74-496d-860d-a664cc3e581f",
               "isHook": true,
               "skipped": false
             }
           ],
           "afterHooks": [
             {
-              "title": "\"after all\" hook in \"Manage Address Test\"",
-              "fullTitle": "Manage Address Test \"after all\" hook in \"Manage Address Test\"",
+              "title": "\"after all\" hook in \"Orientation Test\"",
+              "fullTitle": "Orientation Test \"after all\" hook in \"Orientation Test\"",
               "timedOut": false,
-              "duration": 220,
+              "duration": 1165,
               "state": null,
               "speed": null,
               "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "console.log(\"Ending the test session...\");\nif (driver) {\n    await driver.deleteSession();\n    console.log(\"Driver session ended.\");\n}",
+              "code": "console.log('Ending the orientation test session...');\n// Ensure the orientation is set back to portrait before ending the session\nconst currentOrientation = await driver.getOrientation();\nif (currentOrientation !== 'PORTRAIT') {\n  console.log('Resetting orientation to portrait...');\n  await driver.setOrientation('PORTRAIT');\n}\nif (driver) {\n  await driver.deleteSession();\n  console.log('Driver session closed.');\n} else {\n  console.log('Driver session not created. Skipping session cleanup.');\n}",
               "err": {},
-              "uuid": "19666209-8635-4864-b677-cc21c584464e",
-              "parentUUID": "da42f2a7-ba50-46d9-8791-b3a6860c6224",
+              "uuid": "05f7349f-0dab-444b-be3a-167507499cda",
+              "parentUUID": "bef079e1-bc74-496d-860d-a664cc3e581f",
               "isHook": true,
               "skipped": false
             }
           ],
           "tests": [
             {
-              "title": "should update the Home address",
-              "fullTitle": "Manage Address Test should update the Home address",
+              "title": "should verify orientation and switch between portrait and landscape",
+              "fullTitle": "Orientation Test should verify orientation and switch between portrait and landscape",
               "timedOut": false,
-              "duration": 14508,
+              "duration": 3883,
               "state": "passed",
               "speed": "slow",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "this.timeout(30000); // Allowing enough time for the test steps\n// Step 1: Click on the Profile button\nconst profileButton = await driver.$(\n    '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[2]'\n);\nawait profileButton.click();\nconsole.log(\"Profile button clicked.\");\nawait driver.pause(2000);\n// Step 2: Click on the Address button\nconst addressButton = await driver.$(\n    '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.widget.ScrollView/android.view.View/android.view.View[1]/android.widget.Button'\n);\nawait addressButton.click();\nconsole.log(\"Address button clicked.\");\nawait driver.pause(2000);\n// Step 3: Click on the Edit button for the Home address\nconst editHomeButton = await driver.$(\n    '//android.widget.ScrollView/android.view.View[1]/android.view.View[3]/android.widget.Button'\n);\nawait editHomeButton.click();\nconsole.log(\"Edit Home button clicked.\");\nawait driver.pause(2000);\n// Step 4: Set the fixed address into the EditText field for Home address\nconst fixedAddress = \"252, Sucasa Golden Park, 4th Main Road, Rams Lake View Meadows, Vinayak Nagar, Kattigenahalli, Bengaluru, Karnataka. 33 m from OYO Hotel, Pin-560063 (India)\";\nconst homeAddressEditText = await driver.$('//android.widget.EditText');\nawait homeAddressEditText.setValue(fixedAddress); // Setting the fixed address\nconsole.log(\"Home address updated with the fixed address:\", fixedAddress);\n// Step 5: Check if the Confirm button is enabled\nconst confirmButton = await driver.$(\n    '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[2]/android.widget.Button'\n);\nconst isEnabled = await confirmButton.isEnabled();\nconsole.log(\"Checking if Confirm button is enabled...\");\nexpect(isEnabled).to.be.true; // Assert that the Confirm button is enabled\nconsole.log(\"Confirm button is enabled. Clicking it.\");\nawait confirmButton.click();\nawait driver.pause(2000); // Wait for 2 seconds after clicking\nconsole.log(\"Address update confirmed!\");\n// Step 6: Click the Back button\nconst backButton = await driver.$(\n    '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[1]/android.widget.Button'\n);\nawait backButton.click();\nconsole.log(\"Back button clicked.\");\nconst backButton1 = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.widget.Button');\nawait backButton1.click();",
+              "code": "console.log('Launching the app...');\nlet currentOrientation = await driver.getOrientation();\nconsole.log(`Initial Orientation: ${currentOrientation}`);\n// Ensure initial orientation is portrait\nif (currentOrientation !== 'PORTRAIT') {\n  console.log('Switching to portrait mode...');\n  await driver.setOrientation('PORTRAIT');\n}\nconsole.log('Enabling auto-rotate feature...');\ntry {\n  await driver.execute('mobile: shell', {\n    command: 'settings put system accelerometer_rotation 1',\n  });\n} catch (err) {\n  console.warn('Could not enable auto-rotate programmatically.');\n}\nconsole.log('Attempting to switch to landscape mode...');\nawait delay(1000); // Adding delay before orientation change\nawait driver.setOrientation('LANDSCAPE');\ncurrentOrientation = await driver.getOrientation();\nconsole.log(`Orientation after switching to landscape: ${currentOrientation}`);\nexpect(currentOrientation).to.equal('LANDSCAPE', 'Failed to switch to landscape mode.');\nconsole.log('Switching back to portrait mode...');\nawait driver.setOrientation('PORTRAIT');\ncurrentOrientation = await driver.getOrientation();\nconsole.log(`Orientation after switching back to portrait: ${currentOrientation}`);\nexpect(currentOrientation).to.equal('PORTRAIT', 'Failed to switch back to portrait mode.');",
               "err": {},
-              "uuid": "1b60aa87-a8e5-4a3b-bdd4-1555b4b422c9",
-              "parentUUID": "da42f2a7-ba50-46d9-8791-b3a6860c6224",
+              "uuid": "ea2196f4-2319-42c6-9122-84c10a403c51",
+              "parentUUID": "bef079e1-bc74-496d-860d-a664cc3e581f",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "1b60aa87-a8e5-4a3b-bdd4-1555b4b422c9"
+            "ea2196f4-2319-42c6-9122-84c10a403c51"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 14508,
+          "duration": 3883,
           "root": false,
           "rootEmpty": false,
           "_timeout": 30000
         },
         {
-          "uuid": "06cd37f6-64f0-4d4f-9ba0-7028c1ec870a",
-          "title": "Logout Test",
-          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
-          "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [
-            {
-              "title": "\"before all\" hook in \"Logout Test\"",
-              "fullTitle": "Logout Test \"before all\" hook in \"Logout Test\"",
-              "timedOut": false,
-              "duration": 6511,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "this.timeout(30000); // 30 seconds for setup\nconst capabilities = {\n  platformName: 'Android',\n  'appium:deviceName': 'emulator-5554',\n  'appium:app': './dev-release.apk',\n  'appium:automationName': 'UiAutomator2',\n  'appium:newCommandTimeout': 300,\n  'appium:ensureWebviewsHavePages': true,\n  'appium:nativeWebScreenshot': true,\n  'appium:noReset': true,\n  'appium:ignoreHiddenApiPolicyError': true,\n};\ndriver = await remote({\n  logLevel: 'info',\n  path: '/',\n  port: 4725,\n  capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\nawait driver.pause(2000);",
-              "err": {},
-              "uuid": "d12272dd-022b-4ab5-8517-1f52a559eb99",
-              "parentUUID": "06cd37f6-64f0-4d4f-9ba0-7028c1ec870a",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [
-            {
-              "title": "\"after all\" hook in \"Logout Test\"",
-              "fullTitle": "Logout Test \"after all\" hook in \"Logout Test\"",
-              "timedOut": false,
-              "duration": 124,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Ending the logout test session...');\nif (driver) {\n  await driver.deleteSession();\n  console.log('Driver session closed.');\n} else {\n  console.log('Driver session not created. Skipping session cleanup.');\n}",
-              "err": {},
-              "uuid": "7b14124b-19e8-4e60-8fa0-5d65fe7cae73",
-              "parentUUID": "06cd37f6-64f0-4d4f-9ba0-7028c1ec870a",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "tests": [
-            {
-              "title": "should perform the logout operation",
-              "fullTitle": "Logout Test should perform the logout operation",
-              "timedOut": false,
-              "duration": 7561,
-              "state": "failed",
-              "speed": null,
-              "pass": false,
-              "fail": true,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Navigating to the profile section...');\nconst profileButton = await driver.$(\n  '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'\n);\nawait profileButton.click();\nawait driver.pause(2000);\nconsole.log('Navigating to the addresses section...');\nconst addressesButton = await driver.$(\n  '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.widget.ScrollView/android.view.View/android.view.View[1]/android.widget.Button'\n);\nawait addressesButton.click();\nawait driver.pause(2000);\nconsole.log('Attempting to clear address...');\nconst clearButton = await driver.$(\n  '//android.widget.ScrollView/android.view.View[1]/android.view.View[1]/android.widget.Button'\n);\nawait clearButton.click();\nawait driver.pause(1000);\nconsole.log('Cancelling address clearing...');\nconst noButton = await driver.$(\n  '//android.widget.TextView[@resource-id=\"com.simpleenergy.app:id/clear_dialog_no_btn\"]'\n);\nawait noButton.click();\nconst backButton = await driver.$(\n  '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[1]/android.widget.Button'\n  );\n  await backButton.click();\n  console.log(\"Back button clicked.\");\n  const backButton1 = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.widget.Button');\n  await backButton1.click();",
-              "err": {
-                "message": "Error: Can't call click on element with selector \"//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.widget.ScrollView/android.view.View/android.view.View[1]/android.widget.Button\" because element wasn't found",
-                "estack": "Error: Can't call click on element with selector \"//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.widget.ScrollView/android.view.View/android.view.View[1]/android.widget.Button\" because element wasn't found\n    at implicitWait (file:///home/niketdeshmukh/Desktop/TEST/tests/node_modules/webdriverio/build/index.js:52:13)\n    at async Element.elementErrorHandlerCallbackFn (file:///home/niketdeshmukh/Desktop/TEST/tests/node_modules/webdriverio/build/index.js:7334:23)\n    at async Element.wrapCommandFn (file:///home/niketdeshmukh/Desktop/TEST/tests/node_modules/@wdio/utils/build/index.js:884:23)\n    at async Context.<anonymous> (file:///home/niketdeshmukh/Desktop/TEST/tests/cases/50.test.mjs:44:5)",
-                "diff": null
-              },
-              "uuid": "da5ce9fe-35f6-4bd2-a1a1-51df14df15cc",
-              "parentUUID": "06cd37f6-64f0-4d4f-9ba0-7028c1ec870a",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [],
-          "failures": [
-            "da5ce9fe-35f6-4bd2-a1a1-51df14df15cc"
-          ],
-          "pending": [],
-          "skipped": [],
-          "duration": 7561,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 30000
-        },
-        {
-          "uuid": "be168797-01b4-47b4-8318-2955b1eb64f7",
+          "uuid": "f73b2193-f498-4bb6-afa9-35e12d0a777a",
           "title": "Complete Test Suite",
           "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
           "file": "/cases/masterSuite.test.mjs",
@@ -205,15 +124,15 @@
               "context": null,
               "code": "console.log('All tests are imported and will run sequentially.');",
               "err": {},
-              "uuid": "d1e5ea57-a81b-4147-8094-f9e53dd68f36",
-              "parentUUID": "be168797-01b4-47b4-8318-2955b1eb64f7",
+              "uuid": "c18896ec-ba3c-4db3-bf61-20fd9e28deed",
+              "parentUUID": "f73b2193-f498-4bb6-afa9-35e12d0a777a",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "d1e5ea57-a81b-4147-8094-f9e53dd68f36"
+            "c18896ec-ba3c-4db3-bf61-20fd9e28deed"
           ],
           "failures": [],
           "pending": [],
