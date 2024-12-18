@@ -33,11 +33,11 @@ describe('Verify Field Length Test', function () {
     it('should validate the max length of the Name and Email fields', async function () {
         console.log("Navigating to the profile section...");
 
-        const profileButton = await driver.$(
-            '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[2]'
-        );
-        await profileButton.click();
-        await driver.pause(2000);
+        // const profileButton = await driver.$(
+        //     '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[2]'
+        // );
+        // await profileButton.click();
+        // await driver.pause(2000);
 
         console.log("Clicking on the 'Edit Profile' button...");
         const editProfileButton = await driver.$(
@@ -74,8 +74,13 @@ describe('Verify Field Length Test', function () {
             '//android.widget.ScrollView/android.view.View[4]/android.widget.Button'
         );
         await saveButton.click();
-        const backButton = await driver.$('//android.widget.ScrollView/android.view.View[1]/android.widget.Button');
-        await backButton.click();
+        console.log("Saved button clicked !!!!!!!!!!!!!!!!!!!!!!!!");
+        
+        await driver.pause(1000)
+        // const back = await driver.$('//android.widget.ScrollView/android.view.View[1]/android.widget.Button');
+        // await back.click();
+        // console.log("Back button clicked !!!!!!!!!!!!!!!!!!!!!!!");
+        
         console.log("Changes saved successfully!");
         const homeButton = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]');
         await homeButton.click();

@@ -1,24 +1,24 @@
 {
   "stats": {
     "suites": 2,
-    "tests": 2,
-    "passes": 2,
+    "tests": 1,
+    "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2024-12-17T12:57:21.866Z",
-    "end": "2024-12-17T12:57:31.784Z",
-    "duration": 9918,
+    "start": "2024-12-18T10:56:00.502Z",
+    "end": "2024-12-18T10:56:30.511Z",
+    "duration": 30009,
     "testsRegistered": 2,
-    "passPercent": 100,
+    "passPercent": 50,
     "pendingPercent": 0,
-    "other": 0,
-    "hasOther": false,
-    "skipped": 0,
-    "hasSkipped": false
+    "other": 1,
+    "hasOther": true,
+    "skipped": 1,
+    "hasSkipped": true
   },
   "results": [
     {
-      "uuid": "d6accf4b-665a-4744-81cc-b84573343f89",
+      "uuid": "8dff2136-dc89-407c-9ca2-879df4179319",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,84 +27,88 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "bef079e1-bc74-496d-860d-a664cc3e581f",
-          "title": "Orientation Test",
+          "uuid": "410ad2a7-768c-479f-a91d-79c6f558c556",
+          "title": "Unistall and install simple connect",
           "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
           "file": "/cases/masterSuite.test.mjs",
           "beforeHooks": [
             {
-              "title": "\"before all\" hook in \"Orientation Test\"",
-              "fullTitle": "Orientation Test \"before all\" hook in \"Orientation Test\"",
-              "timedOut": false,
-              "duration": 4864,
-              "state": null,
+              "title": "\"before all\" hook for \"should uninstall and install the app\"",
+              "fullTitle": "Unistall and install simple connect \"before all\" hook for \"should uninstall and install the app\"",
+              "timedOut": true,
+              "duration": 30001,
+              "state": "failed",
               "speed": null,
               "pass": false,
-              "fail": false,
+              "fail": true,
               "pending": false,
               "context": null,
-              "code": "this.timeout(30000); // Set timeout for the setup\nconst capabilities = {\n  platformName: 'Android',\n  'appium:deviceName': 'emulator-5554',\n  'appium:app': './dev-release.apk',\n  'appium:automationName': 'UiAutomator2',\n  'appium:newCommandTimeout': 300,\n  'appium:noReset': true,\n  'appium:ignoreHiddenApiPolicyError': true,\n};\ndriver = await remote({\n  logLevel: 'info',\n  path: '/',\n  port: 4725,\n  capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\nawait driver.pause(2000);",
-              "err": {},
-              "uuid": "2b502933-2832-4bda-8d7c-d316ad739230",
-              "parentUUID": "bef079e1-bc74-496d-860d-a664cc3e581f",
+              "code": "console.log(\"setting up driver...\");\nthis.timeout(30000);\nconst capabilities = {\n    platformName: \"Android\",\n    \"appium:deviceName\": \"adb-f60f2c3-TaghK0._adb-tls-connect._tcp\",\n    \"appium:app\": \"./dev-release.apk\", // Path to your APK\n    \"appium:automationName\": \"UiAutomator2\",\n    \"appium:newCommandTimeout\": 300,\n    \"appium:ensureWebviewsHavePages\": true,\n    \"appium:nativeWebScreenshot\": true,\n    \"appium:noReset\": true,\n    \"appium:ignoreHiddenApiPolicyError\": true,\n};\n driver = await remote({\n    logLevel: \"info\",\n    path: \"/\",\n    port: 4725,\n    capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\n        await driver.pause(2000);  // Adjust pause time if necessary",
+              "err": {
+                "message": "Error: Timeout of 30000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs)",
+                "estack": "Error: Timeout of 30000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs)\n    at listOnTimeout (node:internal/timers:594:17)\n    at process.processTimers (node:internal/timers:529:7)",
+                "diff": null
+              },
+              "uuid": "8afdeb17-444f-433a-a9d7-57e81d459cd3",
+              "parentUUID": "410ad2a7-768c-479f-a91d-79c6f558c556",
               "isHook": true,
               "skipped": false
             }
           ],
           "afterHooks": [
             {
-              "title": "\"after all\" hook in \"Orientation Test\"",
-              "fullTitle": "Orientation Test \"after all\" hook in \"Orientation Test\"",
+              "title": "\"after all\" hook in \"Unistall and install simple connect\"",
+              "fullTitle": "Unistall and install simple connect \"after all\" hook in \"Unistall and install simple connect\"",
               "timedOut": false,
-              "duration": 1165,
+              "duration": 1,
               "state": null,
               "speed": null,
               "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "console.log('Ending the orientation test session...');\n// Ensure the orientation is set back to portrait before ending the session\nconst currentOrientation = await driver.getOrientation();\nif (currentOrientation !== 'PORTRAIT') {\n  console.log('Resetting orientation to portrait...');\n  await driver.setOrientation('PORTRAIT');\n}\nif (driver) {\n  await driver.deleteSession();\n  console.log('Driver session closed.');\n} else {\n  console.log('Driver session not created. Skipping session cleanup.');\n}",
+              "code": "console.log('Closing driver session');\nif(driver){\n    await driver.deleteSession();\n    console.log('Driver session closed');\n}else{\n    console.log('Driver session not created. Skipping session cleanup');\n    \n}",
               "err": {},
-              "uuid": "05f7349f-0dab-444b-be3a-167507499cda",
-              "parentUUID": "bef079e1-bc74-496d-860d-a664cc3e581f",
+              "uuid": "751a515a-e610-4e42-8c1d-cfefe7a1122d",
+              "parentUUID": "410ad2a7-768c-479f-a91d-79c6f558c556",
               "isHook": true,
               "skipped": false
             }
           ],
           "tests": [
             {
-              "title": "should verify orientation and switch between portrait and landscape",
-              "fullTitle": "Orientation Test should verify orientation and switch between portrait and landscape",
+              "title": "should uninstall and install the app",
+              "fullTitle": "Unistall and install simple connect should uninstall and install the app",
               "timedOut": false,
-              "duration": 3883,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "console.log('Launching the app...');\nlet currentOrientation = await driver.getOrientation();\nconsole.log(`Initial Orientation: ${currentOrientation}`);\n// Ensure initial orientation is portrait\nif (currentOrientation !== 'PORTRAIT') {\n  console.log('Switching to portrait mode...');\n  await driver.setOrientation('PORTRAIT');\n}\nconsole.log('Enabling auto-rotate feature...');\ntry {\n  await driver.execute('mobile: shell', {\n    command: 'settings put system accelerometer_rotation 1',\n  });\n} catch (err) {\n  console.warn('Could not enable auto-rotate programmatically.');\n}\nconsole.log('Attempting to switch to landscape mode...');\nawait delay(1000); // Adding delay before orientation change\nawait driver.setOrientation('LANDSCAPE');\ncurrentOrientation = await driver.getOrientation();\nconsole.log(`Orientation after switching to landscape: ${currentOrientation}`);\nexpect(currentOrientation).to.equal('LANDSCAPE', 'Failed to switch to landscape mode.');\nconsole.log('Switching back to portrait mode...');\nawait driver.setOrientation('PORTRAIT');\ncurrentOrientation = await driver.getOrientation();\nconsole.log(`Orientation after switching back to portrait: ${currentOrientation}`);\nexpect(currentOrientation).to.equal('PORTRAIT', 'Failed to switch back to portrait mode.');",
+              "code": "console.log('Running log');\n        //     await driver.removeApp('com.simpleenergy.app');\n        // console.log('App uninstalled successfully!');\n\n        // Reinstall the app\n        await driver.installApp(\"./dev-release.apk\");\n        console.log('App reinstalled successfully!');",
               "err": {},
-              "uuid": "ea2196f4-2319-42c6-9122-84c10a403c51",
-              "parentUUID": "bef079e1-bc74-496d-860d-a664cc3e581f",
+              "uuid": "7c396d4d-6f8b-4083-a7a7-e66da4cea8ea",
+              "parentUUID": "410ad2a7-768c-479f-a91d-79c6f558c556",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             }
           ],
           "suites": [],
-          "passes": [
-            "ea2196f4-2319-42c6-9122-84c10a403c51"
-          ],
+          "passes": [],
           "failures": [],
           "pending": [],
-          "skipped": [],
-          "duration": 3883,
+          "skipped": [
+            "7c396d4d-6f8b-4083-a7a7-e66da4cea8ea"
+          ],
+          "duration": 0,
           "root": false,
           "rootEmpty": false,
           "_timeout": 30000
         },
         {
-          "uuid": "f73b2193-f498-4bb6-afa9-35e12d0a777a",
+          "uuid": "f101edf1-a5a2-45ef-accf-fc396cb04def",
           "title": "Complete Test Suite",
           "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
           "file": "/cases/masterSuite.test.mjs",
@@ -124,15 +128,15 @@
               "context": null,
               "code": "console.log('All tests are imported and will run sequentially.');",
               "err": {},
-              "uuid": "c18896ec-ba3c-4db3-bf61-20fd9e28deed",
-              "parentUUID": "f73b2193-f498-4bb6-afa9-35e12d0a777a",
+              "uuid": "d9ccbaa0-a84a-47ba-9610-4581971aea13",
+              "parentUUID": "f101edf1-a5a2-45ef-accf-fc396cb04def",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "c18896ec-ba3c-4db3-bf61-20fd9e28deed"
+            "d9ccbaa0-a84a-47ba-9610-4581971aea13"
           ],
           "failures": [],
           "pending": [],

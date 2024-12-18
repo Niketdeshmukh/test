@@ -37,7 +37,7 @@ describe('Email Validation Test', function () {
   it('should validate email addresses and set valid ones', async function () {
     console.log('Navigating to the profile section...');
     const profileButton = await driver.$(
-      "//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[2]"
+      "//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]"
     );await profileButton.waitForDisplayed({ timeout: 20000 });
     await driver.pause(1000);
     await profileButton.click();
@@ -69,8 +69,6 @@ describe('Email Validation Test', function () {
   });
 
   after(async function () {
-    const backButton = driver.$('//android.widget.ScrollView/android.view.View[1]/android.widget.Button');
-      await backButton.click();
     console.log('Ending the email validation test session...');
     if (driver) {
       await driver.deleteSession();

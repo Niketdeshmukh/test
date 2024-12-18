@@ -37,7 +37,7 @@ describe("Profile Button Functionality", function () {
 
         // Wait for the profile button to appear
         const profileButtonSelector =
-            "//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[2]";
+            "//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]";
 
         const isProfileButtonPresent = await driver.waitUntil(
             async () => {

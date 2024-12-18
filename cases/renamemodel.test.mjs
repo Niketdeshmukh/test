@@ -30,8 +30,8 @@ describe('Edit and Update Test', function () {
 
   it('should click Edit, focus on input, write testing and click Update', async function () {
     try {
-      console.log("Launching the app...");
-      await driver.executeScript("mobile: activateApp", [{ appId: "com.simpleenergy.app" }]);
+      // console.log("Launching the app...");
+      // await driver.executeScript("mobile: activateApp", [{ appId: "com.simpleenergy.app" }]);
 
       console.log("Clicking on Edit button...");
       const editButton = await driver.$('//android.widget.ScrollView/android.view.View[2]/android.view.View/android.view.View[4]/android.view.View');

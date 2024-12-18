@@ -31,11 +31,11 @@ describe('Logout Test', function () {
 
   it('should perform the logout operation', async function () {
     console.log('Navigating to the profile section...');
-    const profileButton = await driver.$(
-      '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'
-    );
-    await profileButton.click();
-    await driver.pause(2000);
+    // const profileButton = await driver.$(
+    //   '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'
+    // );
+    // await profileButton.click();
+    // await driver.pause(2000);
 
     console.log('Navigating to the addresses section...');
     const addressesButton = await driver.$(
@@ -61,8 +61,8 @@ describe('Logout Test', function () {
   );
   await backButton.click();
   console.log("Back button clicked.");
-  const backButton1 = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.widget.Button');
-  await backButton1.click();
+  // const backButton1 = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.widget.Button');
+  // await backButton1.click();
   });
 
   after(async function () {
