@@ -54,8 +54,8 @@ describe('Login Test', function () {
       await driver.pause(1000);  // Allow the field to be focused
 
       // Enter the phone number
-      await numberField.setValue('9008337447');
-      console.log('Entered phone number: 9008337447');
+      await numberField.setValue('9480356496');
+      console.log('Entered phone number: 9480356496');
 
       // Submit the phone number
       const submitButton = await driver.$('//android.widget.Button');

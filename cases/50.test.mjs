@@ -61,8 +61,8 @@ describe('Logout Test', function () {
   );
   await backButton.click();
   console.log("Back button clicked.");
-  // const backButton1 = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.widget.Button');
-  // await backButton1.click();
+  const Homebutton = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]');
+  await Homebutton.click();
   });
 
   after(async function () {

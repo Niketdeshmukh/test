@@ -1,24 +1,24 @@
 {
   "stats": {
-    "suites": 30,
-    "tests": 20,
-    "passes": 20,
+    "suites": 3,
+    "tests": 1,
+    "passes": 1,
     "pending": 0,
-    "failures": 10,
-    "start": "2024-12-18T12:19:35.544Z",
-    "end": "2024-12-18T12:23:52.618Z",
-    "duration": 257074,
-    "testsRegistered": 20,
-    "passPercent": 100,
+    "failures": 0,
+    "start": "2024-12-20T11:56:39.339Z",
+    "end": "2024-12-20T11:57:49.390Z",
+    "duration": 70051,
+    "testsRegistered": 3,
+    "passPercent": 33.33333333333333,
     "pendingPercent": 0,
-    "other": 0,
-    "hasOther": false,
-    "skipped": 0,
-    "hasSkipped": false
+    "other": 2,
+    "hasOther": true,
+    "skipped": 2,
+    "hasSkipped": true
   },
   "results": [
     {
-      "uuid": "d1f86014-9980-45e7-942b-688ad14b7452",
+      "uuid": "c51e6187-007d-4e16-9e4b-7ff3f9b72933",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,835 +27,30 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "b8449ce3-aafe-4f80-a56d-c72dfd805dbd",
-          "title": "Basic Test",
-          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
-          "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [],
-          "afterHooks": [],
-          "tests": [
-            {
-              "title": "should pass a simple test",
-              "fullTitle": "Basic Test should pass a simple test",
-              "timedOut": false,
-              "duration": 0,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "expect(true).to.be.true;",
-              "err": {},
-              "uuid": "eba630d8-b202-44cc-afb4-cb5e5312293c",
-              "parentUUID": "b8449ce3-aafe-4f80-a56d-c72dfd805dbd",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "eba630d8-b202-44cc-afb4-cb5e5312293c"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 0,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 30000
-        },
-        {
-          "uuid": "5147d7de-ce2f-460e-9a1d-23cff31c7f50",
-          "title": "Logo Validation",
-          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
-          "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [
-            {
-              "title": "\"before all\" hook in \"Logo Validation\"",
-              "fullTitle": "Logo Validation \"before all\" hook in \"Logo Validation\"",
-              "timedOut": false,
-              "duration": 16959,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Setting up driver...');\nthis.timeout(30000); // 30 seconds for setup\nconst capabilities = {\n    platformName: \"Android\",\n    \"appium:deviceName\": \"emulator-5554\",\n    \"appium:app\": \"./dev-release.apk\", // Path to your APK\n    \"appium:automationName\": \"UiAutomator2\",\n    \"appium:newCommandTimeout\": 300,\n    \"appium:ensureWebviewsHavePages\": true,\n    \"appium:nativeWebScreenshot\": true,\n    \"appium:noReset\": true,\n    \"appium:ignoreHiddenApiPolicyError\": true,\n};\ndriver = await remote({\n    logLevel: 'info',\n    path: '/',\n    port: 4725,\n    capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\nawait driver.pause(12000);  // Adjust pause time if necessary",
-              "err": {},
-              "uuid": "0caa322b-b252-4d12-a439-ed6394960444",
-              "parentUUID": "5147d7de-ce2f-460e-9a1d-23cff31c7f50",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [
-            {
-              "title": "\"after all\" hook in \"Logo Validation\"",
-              "fullTitle": "Logo Validation \"after all\" hook in \"Logo Validation\"",
-              "timedOut": false,
-              "duration": 123,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Closing driver session...');\nif (driver) {\n    await driver.deleteSession();\n    console.log('Driver session closed.');\n} else {\n    console.log('Driver session not created. Skipping session cleanup.');\n}",
-              "err": {},
-              "uuid": "75af80b3-dbd7-4c9d-8e32-bcbe86372759",
-              "parentUUID": "5147d7de-ce2f-460e-9a1d-23cff31c7f50",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "tests": [
-            {
-              "title": "should display the dashboard logo",
-              "fullTitle": "Logo Validation should display the dashboard logo",
-              "timedOut": false,
-              "duration": 916,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Running logo validation test...');\n\nconst logo = await driver.$('//android.widget.ImageView[@content-desc=\"Dashboard logo\"]');\nconsole.log('Found logo element. Waiting for logo to be displayed...');\n\nawait logo.waitForDisplayed({ timeout: 15000 });  // Wait for the logo to be displayed\nconsole.log('Logo is displayed, verifying visibility...');\n\nconst isLogoDisplayed = await logo.isDisplayed();\n\nconsole.log('Logo displayed:', isLogoDisplayed);\nexpect(isLogoDisplayed, 'Dashboard logo should be visible').to.be.true;",
-              "err": {},
-              "uuid": "0b60f475-ff26-44d3-956e-08607ea32573",
-              "parentUUID": "5147d7de-ce2f-460e-9a1d-23cff31c7f50",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "0b60f475-ff26-44d3-956e-08607ea32573"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 916,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 30000
-        },
-        {
-          "uuid": "6df89352-32f7-4f55-a56f-a93075e1c1b2",
-          "title": "User Logout Functionality",
-          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
-          "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [
-            {
-              "title": "\"before all\" hook in \"User Logout Functionality\"",
-              "fullTitle": "User Logout Functionality \"before all\" hook in \"User Logout Functionality\"",
-              "timedOut": false,
-              "duration": 3947,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "// Start WebDriverIO session\ndriver = await remote({\n    logLevel: \"info\",\n    path: \"/\",\n    port: 4725,\n    capabilities,\n});",
-              "err": {},
-              "uuid": "a20ca3f1-649f-42d6-ad88-a75953ea0192",
-              "parentUUID": "6df89352-32f7-4f55-a56f-a93075e1c1b2",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [
-            {
-              "title": "\"after all\" hook in \"User Logout Functionality\"",
-              "fullTitle": "User Logout Functionality \"after all\" hook in \"User Logout Functionality\"",
-              "timedOut": false,
-              "duration": 220,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "// End WebDriverIO session\nif (driver) {\n    await driver.deleteSession();\n    console.log(\"Driver session ended.\");\n}",
-              "err": {},
-              "uuid": "7cd91c09-c8c4-4503-a489-efecf603f772",
-              "parentUUID": "6df89352-32f7-4f55-a56f-a93075e1c1b2",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "tests": [
-            {
-              "title": "should successfully log out the user",
-              "fullTitle": "User Logout Functionality should successfully log out the user",
-              "timedOut": false,
-              "duration": 6875,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "// Click on the Profile button\nconst profileButton = await driver.$(\n    '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]'\n);\nawait profileButton.click();\nawait driver.pause(2000);\nconst { width, height } = await driver.getWindowRect();\nawait driver.performActions([\n    {\n        type: \"pointer\",\n        id: \"finger1\",\n        parameters: { pointerType: \"touch\" },\n        actions: [\n            { type: \"pointerMove\", duration: 0, x: width / 2, y: height * 0.8 },\n            { type: \"pointerDown\", button: 0 },\n            { type: \"pointerMove\", duration: 500, x: width / 2, y: height * 0.1 },\n            { type: \"pointerUp\", button: 0 },\n        ],\n    },\n]);\nawait driver.pause(2000);\n// Click on the Logout button\nconst logoutButton = await driver.$(\n    '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.widget.ScrollView/android.view.View/android.view.View[4]/android.widget.Button'\n);\nawait logoutButton.click();\nawait driver.pause(1000);\n    \n// Confirm the logout action\nconst confirmButton = await driver.$(\n    '//android.widget.TextView[@resource-id=\"com.simpleenergy.app:id/clear_dialog_yes_btn\"]'\n);\n    \n// Wait explicitly for the confirm button to appear\nawait confirmButton.waitForDisplayed({ timeout: 5000 });\n    \nconst isDisplayed = await confirmButton.isDisplayed();\nexpect(isDisplayed).to.be.true; // Validate that confirm button is displayed\n    \nawait confirmButton.click();\nconsole.log(\"Logout successfully!\");",
-              "err": {},
-              "uuid": "406be71a-87ce-4a38-8ed5-e238e5538c58",
-              "parentUUID": "6df89352-32f7-4f55-a56f-a93075e1c1b2",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "406be71a-87ce-4a38-8ed5-e238e5538c58"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 6875,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 30000
-        },
-        {
-          "uuid": "db2bcede-4f51-4bb7-ba92-53ada4b1d007",
-          "title": "Unistall and install simple connect",
-          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
-          "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [
-            {
-              "title": "\"before all\" hook in \"Unistall and install simple connect\"",
-              "fullTitle": "Unistall and install simple connect \"before all\" hook in \"Unistall and install simple connect\"",
-              "timedOut": false,
-              "duration": 6336,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log(\"setting up driver...\");\nthis.timeout(30000);\nconst capabilities = {\n    platformName: \"Android\",\n    \"appium:deviceName\": \"emulator-5554\",\n    \"appium:app\": \"./dev-release.apk\", // Path to your APK\n    \"appium:automationName\": \"UiAutomator2\",\n    \"appium:newCommandTimeout\": 300,\n    \"appium:ensureWebviewsHavePages\": true,\n    \"appium:nativeWebScreenshot\": true,\n    \"appium:noReset\": true,\n    \"appium:ignoreHiddenApiPolicyError\": true,\n};\n driver = await remote({\n    logLevel: \"info\",\n    path: \"/\",\n    port: 4725,\n    capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\n        await driver.pause(2000);  // Adjust pause time if necessary",
-              "err": {},
-              "uuid": "2cdbe1cd-2d59-4808-8a2d-8cb562f79852",
-              "parentUUID": "db2bcede-4f51-4bb7-ba92-53ada4b1d007",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [
-            {
-              "title": "\"after all\" hook in \"Unistall and install simple connect\"",
-              "fullTitle": "Unistall and install simple connect \"after all\" hook in \"Unistall and install simple connect\"",
-              "timedOut": false,
-              "duration": 176,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Closing driver session');\nif(driver){\n    await driver.deleteSession();\n    console.log('Driver session closed');\n}else{\n    console.log('Driver session not created. Skipping session cleanup');\n    \n}",
-              "err": {},
-              "uuid": "2d43ef6a-48f9-48c1-8cc2-0e8c6018f2af",
-              "parentUUID": "db2bcede-4f51-4bb7-ba92-53ada4b1d007",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "tests": [
-            {
-              "title": "should uninstall and install the app",
-              "fullTitle": "Unistall and install simple connect should uninstall and install the app",
-              "timedOut": false,
-              "duration": 2873,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Running log');\nawait driver.removeApp('com.simpleenergy.app');\n        console.log('App uninstalled successfully!');\n\n        // Reinstall the app\n        await driver.installApp(\"./dev-release.apk\");\n        console.log('App reinstalled successfully!');",
-              "err": {},
-              "uuid": "ba31bc36-6e89-4be1-8683-cbc4945b1a6f",
-              "parentUUID": "db2bcede-4f51-4bb7-ba92-53ada4b1d007",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "ba31bc36-6e89-4be1-8683-cbc4945b1a6f"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 2873,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 30000
-        },
-        {
-          "uuid": "bc45c0bf-9b84-4f4c-a2e7-766fc6b43aa5",
-          "title": "Splash Screen Validation",
-          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
-          "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [
-            {
-              "title": "\"before all\" hook in \"Splash Screen Validation\"",
-              "fullTitle": "Splash Screen Validation \"before all\" hook in \"Splash Screen Validation\"",
-              "timedOut": false,
-              "duration": 4607,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Setting up driver...');\nthis.timeout(30000); // Allow 30 seconds for setup\nconst capabilities = {\n    platformName: \"Android\",\n    \"appium:deviceName\": \"emulator-5554\",\n    \"appium:app\": \"./dev-release.apk\",\n    \"appium:automationName\": \"UiAutomator2\",\n    \"appium:newCommandTimeout\": 300,\n    \"appium:noReset\": true,\n    \"appium:ignoreHiddenApiPolicyError\": true,\n};\ndriver = await remote({\n    logLevel: 'info',\n    path: '/',\n    port: 4725,\n    capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');",
-              "err": {},
-              "uuid": "46a02def-c58a-41ef-97c6-3cf604508ec8",
-              "parentUUID": "bc45c0bf-9b84-4f4c-a2e7-766fc6b43aa5",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [
-            {
-              "title": "\"after all\" hook in \"Splash Screen Validation\"",
-              "fullTitle": "Splash Screen Validation \"after all\" hook in \"Splash Screen Validation\"",
-              "timedOut": false,
-              "duration": 117,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Closing driver session...');\nif (driver) {\n    await driver.deleteSession();\n    console.log('Driver session closed.');\n} else {\n    console.log('Driver session not created. Skipping session cleanup.');\n}",
-              "err": {},
-              "uuid": "0fc5795b-558d-4cf1-bbd3-233828df2cf0",
-              "parentUUID": "bc45c0bf-9b84-4f4c-a2e7-766fc6b43aa5",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "tests": [
-            {
-              "title": "should validate the splash screen is visible",
-              "fullTitle": "Splash Screen Validation should validate the splash screen is visible",
-              "timedOut": false,
-              "duration": 3723,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Re-launching the app...');\nawait driver.execute('mobile: activateApp', { appId: 'com.simpleenergy.app' });\nconsole.log('App re-launched successfully. Validating splash screen...');\nconst splashScreen = await driver.$('//android.widget.FrameLayout[@resource-id=\"com.simpleenergy.app:id/exo_subtitles\"]/android.view.View');\nawait splashScreen.waitForDisplayed({ timeout: 10000 });\nconsole.log('Splash screen element found. Verifying visibility...');\nconst isSplashScreenDisplayed = await splashScreen.isDisplayed();\nconsole.log('Splash screen visibility:', isSplashScreenDisplayed);\nexpect(isSplashScreenDisplayed, 'Splash screen should be visible').to.be.true;\nif (isSplashScreenDisplayed) {\n    await driver.pause(2500); // Validate splash screen duration\n    console.log('Splash screen duration validated.');\n}",
-              "err": {},
-              "uuid": "9f1fe83a-4de2-44d6-9304-0a6f3f49b9da",
-              "parentUUID": "bc45c0bf-9b84-4f4c-a2e7-766fc6b43aa5",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "9f1fe83a-4de2-44d6-9304-0a6f3f49b9da"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 3723,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 30000
-        },
-        {
-          "uuid": "ad48501c-d750-4c58-96ac-a6c2325778fb",
-          "title": "Walkthrough Screens Validation",
-          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
-          "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [
-            {
-              "title": "\"before all\" hook in \"Walkthrough Screens Validation\"",
-              "fullTitle": "Walkthrough Screens Validation \"before all\" hook in \"Walkthrough Screens Validation\"",
-              "timedOut": false,
-              "duration": 2808,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Setting up driver...');\nthis.timeout(30000); // Allow 30 seconds for setup\nconst capabilities = {\n    platformName: \"Android\",\n    \"appium:deviceName\": \"emulator-5554\",\n    \"appium:app\": \"./dev-release.apk\",\n    \"appium:automationName\": \"UiAutomator2\",\n    \"appium:newCommandTimeout\": 300,\n    \"appium:noReset\": true,\n    \"appium:ignoreHiddenApiPolicyError\": true,\n};\ndriver = await remote({\n    logLevel: 'info',\n    path: '/',\n    port: 4725,\n    capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');",
-              "err": {},
-              "uuid": "904d5bab-2376-4875-a320-b22f80829b57",
-              "parentUUID": "ad48501c-d750-4c58-96ac-a6c2325778fb",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [
-            {
-              "title": "\"after all\" hook in \"Walkthrough Screens Validation\"",
-              "fullTitle": "Walkthrough Screens Validation \"after all\" hook in \"Walkthrough Screens Validation\"",
-              "timedOut": false,
-              "duration": 118,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Closing driver session...');\nif (driver) {\n    await driver.deleteSession();\n    console.log('Driver session closed.');\n} else {\n    console.log('Driver session not created. Skipping session cleanup.');\n}",
-              "err": {},
-              "uuid": "aaf7e894-7545-4f72-8f04-0d1a6670c793",
-              "parentUUID": "ad48501c-d750-4c58-96ac-a6c2325778fb",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "tests": [
-            {
-              "title": "should validate and navigate through walkthrough screens",
-              "fullTitle": "Walkthrough Screens Validation should validate and navigate through walkthrough screens",
-              "timedOut": false,
-              "duration": 15324,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "const cardXPaths = [\n    \"//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[1]/android.view.View[1]\",\n    \"//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]\",\n    \"//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]\",\n];\nconsole.log('Launching the app...');\nawait driver.execute('mobile: activateApp', { appId: 'com.simpleenergy.app' });\nconst { width, height } = await driver.getWindowRect();\nawait driver.pause(4000);\nfor (let i = 0; i < cardXPaths.length; i++) {\n    const element = await driver.$(cardXPaths[i]);\n    const isDisplayed = await element.isDisplayed();\n    expect(isDisplayed, `Card ${i + 1} should be displayed`).to.be.true;\n    if (i < cardXPaths.length - 1) {\n        console.log(`Swiping to card ${i + 2}...`);\n        await driver.performActions([\n            {\n                type: \"pointer\",\n                id: \"finger1\",\n                parameters: { pointerType: \"touch\" },\n                actions: [\n                    { type: \"pointerMove\", duration: 0, x: width * 0.8, y: height / 2 },\n                    { type: \"pointerDown\", button: 0 },\n                    { type: \"pointerMove\", duration: 500, x: width * 0.4, y: height / 2 },\n                    { type: \"pointerUp\", button: 0 },\n                ],\n            },\n        ]);\n        await driver.pause(2000);\n    }\n}\nconsole.log('Navigating backward through cards...');\nfor (let i = cardXPaths.length - 1; i > 0; i--) {\n    await driver.performActions([\n        {\n            type: \"pointer\",\n            id: \"finger1\",\n            parameters: { pointerType: \"touch\" },\n            actions: [\n                { type: \"pointerMove\", duration: 0, x: width * 0.4, y: height / 2 },\n                { type: \"pointerDown\", button: 0 },\n                { type: \"pointerMove\", duration: 500, x: width * 0.8, y: height / 2 },\n                { type: \"pointerUp\", button: 0 },\n            ],\n        },\n    ]);\n    await driver.pause(2000);\n}\n// const signinButton = await driver.$('//android.widget.Button');\n// await signinButton.click();\n// const enterNumberScreen = await driver.$(\n//     '//android.widget.FrameLayout[@resource-id=\"com.google.android.gms:id/design_bottom_sheet\"]/android.widget.LinearLayout'\n// );\n// const isScreenDisplayed = await enterNumberScreen.isDisplayed();\n// expect(isScreenDisplayed, 'Enter Mobile Number screen should be visible').to.be.true;\nconsole.log('Successfully validated walkthrough screens and navigation.');",
-              "err": {},
-              "uuid": "d8af38fa-b440-4bd9-9de6-e8c1e75046e4",
-              "parentUUID": "ad48501c-d750-4c58-96ac-a6c2325778fb",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "d8af38fa-b440-4bd9-9de6-e8c1e75046e4"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 15324,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 30000
-        },
-        {
-          "uuid": "6f8bc233-9751-4a62-aac0-b1db546d6850",
-          "title": "Login Test",
-          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
-          "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [
-            {
-              "title": "\"before all\" hook in \"Login Test\"",
-              "fullTitle": "Login Test \"before all\" hook in \"Login Test\"",
-              "timedOut": false,
-              "duration": 4770,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log(\"setting up driver...\");\n        this.timeout(30000);\nconst capabilities = {\n  platformName: 'Android',\n  'appium:deviceName': 'emulator-5554',\n  'appium:app': './dev-release.apk',\n  'appium:automationName': 'UiAutomator2',\n  'appium:newCommandTimeout': 300,\n  'appium:noReset': true,\n  'appium:ignoreHiddenApiPolicyError': true,\n};\ndriver = await remote({\n  logLevel: 'info',\n  path: '/',\n  port: 4725,\n  capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\nawait driver.pause(2000);",
-              "err": {},
-              "uuid": "27c6fff5-d31d-4dbc-8eee-61ed1d3c808a",
-              "parentUUID": "6f8bc233-9751-4a62-aac0-b1db546d6850",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [
-            {
-              "title": "\"after all\" hook in \"Login Test\"",
-              "fullTitle": "Login Test \"after all\" hook in \"Login Test\"",
-              "timedOut": false,
-              "duration": 126,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Ending the login test session...');\nif (driver) {\n  await driver.deleteSession();\n  console.log('Driver session closed.');\n} else {\n  console.log('Driver session not created. Skipping session cleanup.');\n}",
-              "err": {},
-              "uuid": "93746952-a51a-4e80-a927-d6230202bf17",
-              "parentUUID": "6f8bc233-9751-4a62-aac0-b1db546d6850",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "tests": [
-            {
-              "title": "should log in successfully with OTP",
-              "fullTitle": "Login Test should log in successfully with OTP",
-              "timedOut": false,
-              "duration": 21026,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "try {\n  console.log(\"Launching the app...\");\n    await driver.execute('mobile: activateApp', { appId: 'com.simpleenergy.app' });\n    console.log(\"App launched successfully.\");\n    await driver.pause(2000);\nconst signinButton = await driver.$('//android.widget.Button');\nawait signinButton.click();\nawait driver.pause(1000);\n  // Wait for and click on the \"Cancel\" button (cross) in the popup\n  console.log('Waiting for popup to appear...');\n  const cancelButton = await driver.$('//android.widget.ImageView[@content-desc=\"Cancel\"]');\n  await cancelButton.click();\n  console.log('Popup canceled, proceeding to login screen...');\n  // Wait for the number field to be displayed and interactable\n  const numberField = await driver.$('//android.widget.EditText');\n  await numberField.waitForDisplayed({ timeout: 5000 });\n  await numberField.click();\n  console.log('Focused on number field');\n  // Add a small delay before entering the number\n  await driver.pause(1000);  // Allow the field to be focused\n  // Enter the phone number\n  await numberField.setValue('9008337447');\n  console.log('Entered phone number: 9008337447');\n  // Submit the phone number\n  const submitButton = await driver.$('//android.widget.Button');\n  await submitButton.click();\n  console.log('Submitted phone number and waiting for OTP...');\n  await driver.pause(3000);\n  // Enter the OTP digits\n  // Mapping of OTP fields to their respective OTP values\nconst otpFieldMappings = [\n  {\nxpath: \"//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[1]/android.widget.EditText\",\notp: '1'  // OTP digit for the first field\n  },\n  {\nxpath: \"//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText\",\notp: '2'  // OTP digit for the second field\n  },\n  {\nxpath: \"//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[3]/android.widget.EditText\",\notp: '3'  // OTP digit for the third field\n  },\n  {\nxpath: \"//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[4]/android.widget.EditText\",\notp: '4'  // OTP digit for the fourth field\n  }\n];\n\n// Iterate over each OTP field and enter the corresponding OTP value\nfor (const { xpath, otp } of otpFieldMappings) {\nconst otpField = await driver.$(xpath);  // Get the OTP field element\nawait otpField.waitForDisplayed({ timeout: 7000 });  // Wait for the individual OTP field to be displayed\nawait otpField.setValue(otp);  // Enter the specific OTP value\nconsole.log(`Entered OTP digit '${otp}' in field with XPath: ${xpath}`);\n}\n  await driver.pause(3000);\n  const allowButton = driver.$('//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_button\"]');\n  await allowButton.click();\n  await driver.pause(1000);\n  // Wait for the dashboard to load and confirm redirection\n  console.log('Waiting for dashboard...');\n  const dashboardElement = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View');\n  await dashboardElement.waitForDisplayed({ timeout: 15000 });\n  console.log('Successfully redirected to the dashboard!');console.log('Dashboard loaded, proceeding to next test.');\n} catch (err) {\n  console.error('An error occurred during the login test:', err.message);\n}",
-              "err": {},
-              "uuid": "6e11dfba-fa29-44d8-80c2-ed45284e4345",
-              "parentUUID": "6f8bc233-9751-4a62-aac0-b1db546d6850",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "6e11dfba-fa29-44d8-80c2-ed45284e4345"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 21026,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 30000
-        },
-        {
-          "uuid": "b6fab232-0803-4446-afa5-ec21a9255c9d",
-          "title": "Profile Button Functionality",
-          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
-          "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [
-            {
-              "title": "\"before all\" hook in \"Profile Button Functionality\"",
-              "fullTitle": "Profile Button Functionality \"before all\" hook in \"Profile Button Functionality\"",
-              "timedOut": false,
-              "duration": 2796,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "const capabilities = {\n    platformName: \"Android\",\n    \"appium:deviceName\": \"emulator-5554\",\n    \"appium:app\": \"./dev-release.apk\",\n    \"appium:automationName\": \"UiAutomator2\",\n    \"appium:newCommandTimeout\": 300,\n    \"appium:ensureWebviewsHavePages\": true,\n    \"appium:nativeWebScreenshot\": true,\n    \"appium:noReset\": true,\n    \"appium:ignoreHiddenApiPolicyError\": true,\n};\ndriver = await remote({\n    logLevel: \"info\",\n    path: \"/\",\n    port: 4725,\n    capabilities,\n});",
-              "err": {},
-              "uuid": "031f2581-375b-4b15-9d29-d53a3d658571",
-              "parentUUID": "b6fab232-0803-4446-afa5-ec21a9255c9d",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [
-            {
-              "title": "\"after all\" hook in \"Profile Button Functionality\"",
-              "fullTitle": "Profile Button Functionality \"after all\" hook in \"Profile Button Functionality\"",
-              "timedOut": false,
-              "duration": 181,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "if (driver) {\n    await driver.deleteSession();\n    console.log(\"Driver session ended.\");\n}",
-              "err": {},
-              "uuid": "3e0f1b93-887a-4959-950b-15e68ea637d8",
-              "parentUUID": "b6fab232-0803-4446-afa5-ec21a9255c9d",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "tests": [
-            {
-              "title": "should find and click the Profile button",
-              "fullTitle": "Profile Button Functionality should find and click the Profile button",
-              "timedOut": false,
-              "duration": 1199,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log(\"Waiting for the 'profile button' to appear...\");\n// Wait for the profile button to appear\nconst profileButtonSelector =\n    \"//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]\";\nconst isProfileButtonPresent = await driver.waitUntil(\n    async () => {\n        const profileButton = await driver.$(profileButtonSelector);\n        return await profileButton.isExisting();\n    },\n    {\n        timeout: 15000,\n        timeoutMsg: \"'Profile button' not found within 15 seconds.\",\n    }\n);\n// Assert the button exists\nexpect(isProfileButtonPresent).to.be.true;\nconsole.log(\"'Profile button' found.\");\n// Click the Profile button\nconst profileButton = await driver.$(profileButtonSelector);\nawait profileButton.click();\nconsole.log(\"Profile button clicked, navigating to the next screen!\");",
-              "err": {},
-              "uuid": "cf697a40-479d-44b9-a004-630d7ed878de",
-              "parentUUID": "b6fab232-0803-4446-afa5-ec21a9255c9d",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "cf697a40-479d-44b9-a004-630d7ed878de"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 1199,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 30000
-        },
-        {
-          "uuid": "8218d788-8b4d-46aa-bb14-60430e57d359",
-          "title": "Verify Field Length Test",
-          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
-          "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [
-            {
-              "title": "\"before all\" hook in \"Verify Field Length Test\"",
-              "fullTitle": "Verify Field Length Test \"before all\" hook in \"Verify Field Length Test\"",
-              "timedOut": false,
-              "duration": 5146,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Setting up driver...');\nthis.timeout(30000); // 30 seconds for setup\nconst capabilities = {\n    platformName: \"Android\",\n    \"appium:deviceName\": \"emulator-5554\",\n    \"appium:app\": \"./dev-release.apk\",\n    \"appium:automationName\": \"UiAutomator2\",\n    \"appium:newCommandTimeout\": 300,\n    \"appium:ensureWebviewsHavePages\": true,\n    \"appium:nativeWebScreenshot\": true,\n    \"appium:noReset\": true,\n    \"appium:ignoreHiddenApiPolicyError\": true,\n};\ndriver = await remote({\n    logLevel: 'info',\n    path: '/',\n    port: 4725,\n    capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\nawait driver.pause(2000);",
-              "err": {},
-              "uuid": "75894e97-5c0d-4860-9921-c8b590a5aa63",
-              "parentUUID": "8218d788-8b4d-46aa-bb14-60430e57d359",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [
-            {
-              "title": "\"after all\" hook in \"Verify Field Length Test\"",
-              "fullTitle": "Verify Field Length Test \"after all\" hook in \"Verify Field Length Test\"",
-              "timedOut": false,
-              "duration": 201,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log(\"Ending the verify field length test session...\");\nif (driver) {\n    await driver.deleteSession();\n    console.log('Driver session closed.');\n} else {\n    console.log('Driver session not created. Skipping session cleanup.');\n}",
-              "err": {},
-              "uuid": "1faf9a3c-5935-4f0b-9a08-f3eb5f4b7cb5",
-              "parentUUID": "8218d788-8b4d-46aa-bb14-60430e57d359",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "tests": [
-            {
-              "title": "should validate the max length of the Name and Email fields",
-              "fullTitle": "Verify Field Length Test should validate the max length of the Name and Email fields",
-              "timedOut": false,
-              "duration": 7031,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log(\"Navigating to the profile section...\");\n// const profileButton = await driver.$(\n//     '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[2]'\n// );\n// await profileButton.click();\n// await driver.pause(2000);\nconsole.log(\"Clicking on the 'Edit Profile' button...\");\nconst editProfileButton = await driver.$(\n    '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View[2]/android.view.View/android.widget.Button'\n);\nawait editProfileButton.click();\nawait driver.pause(2000);\nconsole.log(\"Verifying Name field max length...\");\nconst nameField = await driver.$('android=new UiSelector().className(\"android.widget.EditText\")');\nawait nameField.setValue(\"ghdgfghdgfghdgfghdgfghdgfghd\"); // 31 characters\nconst nameValue = await nameField.getText();\nif (nameValue.length <= 31) {\n    console.log(\"Name field max length validation passed: \" + nameValue.length);\n} else {\n    console.error(\"Name field max length validation failed: \" + nameValue.length);\n}\nconsole.log(\"Verifying Email field max length...\");\nconst emailField = await driver.$('//android.widget.ScrollView/android.widget.EditText[2]');\nconst emailInput = \"gashgdjasgjjjjaexamplelongemailtextgggggg@gmail.com\"; // 51 characters before @\nawait emailField.setValue(emailInput);\nconst emailValue = await emailField.getText();\nif (emailValue.includes(\"@\") && emailValue.length <= 51 + emailInput.split(\"@\")[1].length + 1) {\n    console.log(\"Email field max length validation passed: \" + emailValue.length);\n} else {\n    console.error(\"Email field max length validation failed: \" + emailValue.length);\n}\nconsole.log(\"Saving changes...\");\nconst saveButton = await driver.$(\n    '//android.widget.ScrollView/android.view.View[4]/android.widget.Button'\n);\nawait saveButton.click();\nconsole.log(\"Saved button clicked !!!!!!!!!!!!!!!!!!!!!!!!\");\n\nawait driver.pause(1000)\n// const back = await driver.$('//android.widget.ScrollView/android.view.View[1]/android.widget.Button');\n// await back.click();\n// console.log(\"Back button clicked !!!!!!!!!!!!!!!!!!!!!!!\");\n\nconsole.log(\"Changes saved successfully!\");\nconst homeButton = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]');\nawait homeButton.click();\nconsole.log(\"Home button clicked\");",
-              "err": {},
-              "uuid": "001f4575-97ec-4fe3-8ca0-b05590105337",
-              "parentUUID": "8218d788-8b4d-46aa-bb14-60430e57d359",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "001f4575-97ec-4fe3-8ca0-b05590105337"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 7031,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 30000
-        },
-        {
-          "uuid": "f372a051-603e-4f14-9e97-42d27a10701d",
-          "title": "Edit Details Empty Test",
-          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
-          "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [
-            {
-              "title": "\"before all\" hook in \"Edit Details Empty Test\"",
-              "fullTitle": "Edit Details Empty Test \"before all\" hook in \"Edit Details Empty Test\"",
-              "timedOut": false,
-              "duration": 4980,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Setting up driver...');\nthis.timeout(30000); // 30 seconds for setup\nconst capabilities = {\n    platformName: \"Android\",\n    \"appium:deviceName\": \"emulator-5554\",\n    \"appium:app\": \"./dev-release.apk\",\n    \"appium:automationName\": \"UiAutomator2\",\n    \"appium:newCommandTimeout\": 300,\n    \"appium:ensureWebviewsHavePages\": true,\n    \"appium:nativeWebScreenshot\": true,\n    \"appium:noReset\": true,\n    \"appium:ignoreHiddenApiPolicyError\": true,\n};\ndriver = await remote({\n    logLevel: 'info',\n    path: '/',\n    port: 4725,\n    capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\nawait driver.pause(2000);",
-              "err": {},
-              "uuid": "f9ae573c-b671-47eb-9e07-9f39ebdcf509",
-              "parentUUID": "f372a051-603e-4f14-9e97-42d27a10701d",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [
-            {
-              "title": "\"after all\" hook in \"Edit Details Empty Test\"",
-              "fullTitle": "Edit Details Empty Test \"after all\" hook in \"Edit Details Empty Test\"",
-              "timedOut": false,
-              "duration": 131,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log(\"Ending the edit details test session...\");\nif (driver) {\n    await driver.deleteSession();\n    console.log('Driver session closed.');\n} else {\n    console.log('Driver session not created. Skipping session cleanup.');\n}",
-              "err": {},
-              "uuid": "563def69-b942-4fbd-b3ed-149dfc838730",
-              "parentUUID": "f372a051-603e-4f14-9e97-42d27a10701d",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "tests": [
-            {
-              "title": "should clear the Name and Email fields and attempt to save changes",
-              "fullTitle": "Edit Details Empty Test should clear the Name and Email fields and attempt to save changes",
-              "timedOut": false,
-              "duration": 6420,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log(\"Waiting for the 'Edit Details' button to appear...\");\nconst profileButton = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]');\nawait profileButton.click();\nawait driver.waitUntil(\n    async () => {\n        const editButton = await driver.$(\n            \"//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View[2]/android.view.View/android.widget.Button\"\n        );\n        return await editButton.isExisting();\n    },\n    {\n        timeout: 15000,\n        timeoutMsg: \"'Edit Details' button not found within 15 seconds.\",\n    }\n);\nconsole.log(\"'Edit Details' button found. Clicking the button...\");\nconst editButton = await driver.$(\n    \"//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View[2]/android.view.View/android.widget.Button\"\n);\nawait editButton.click();\nconsole.log(\"Waiting for the next screen with Name and Email fields...\");\nawait driver.waitUntil(\n    async () => {\n        const nameField = await driver.$(\n            'android=new UiSelector().className(\"android.widget.EditText\")'\n        );\n        return await nameField.isDisplayed();\n    },\n    {\n        timeout: 20000,\n        timeoutMsg: \"Name field not found within 20 seconds.\",\n    }\n);\nconsole.log(\"Name field found. Clearing field...\");\nconst nameField = await driver.$(\n    'android=new UiSelector().className(\"android.widget.EditText\")'\n);\nawait nameField.setValue(\"\");\nconst emailField = await driver.$('//android.widget.ScrollView/android.widget.EditText[2]');\nawait emailField.click(); // Focus the field\nawait emailField.clearValue();\nconsole.log(\"Waiting for the 'Save Changes' button to appear...\");\nawait driver.waitUntil(\n    async () => {\n        const saveButton = await driver.$(\n            'android=new UiSelector().className(\"android.widget.Button\").instance(2)'\n        );\n        return await saveButton.isExisting();\n    },\n    {\n        timeout: 10000,\n        timeoutMsg: \"'Save Changes' button not found within 10 seconds.\",\n    }\n);\nconsole.log(\"'Save Changes' button found. Clicking the button...\");\nconst saveButton = await driver.$(\n    'android=new UiSelector().className(\"android.widget.Button\").instance(2)'\n);\nawait saveButton.click();\nconsole.log(\"Changes can't be saved because of empty fields!\");\nconst backButton = await driver.$('//android.widget.ScrollView/android.view.View[1]/android.widget.Button');\nawait backButton.click();",
-              "err": {},
-              "uuid": "f235dbcd-f3f6-4194-af10-33e6e78bf965",
-              "parentUUID": "f372a051-603e-4f14-9e97-42d27a10701d",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "f235dbcd-f3f6-4194-af10-33e6e78bf965"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 6420,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 30000
-        },
-        {
-          "uuid": "609f4efd-7dc6-43f8-b244-8bcbfcf05743",
-          "title": "Change DP Test",
-          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
-          "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [
-            {
-              "title": "\"before all\" hook in \"Change DP Test\"",
-              "fullTitle": "Change DP Test \"before all\" hook in \"Change DP Test\"",
-              "timedOut": false,
-              "duration": 4754,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Setting up driver...');\nthis.timeout(30000); // 30 seconds for setup\nconst capabilities = {\n    platformName: \"Android\",\n    \"appium:deviceName\": \"emulator-5554\",\n    \"appium:app\": \"./dev-release.apk\",\n    \"appium:automationName\": \"UiAutomator2\",\n    \"appium:newCommandTimeout\": 300,\n    \"appium:ensureWebviewsHavePages\": true,\n    \"appium:nativeWebScreenshot\": true,\n    \"appium:noReset\": true,\n    \"appium:ignoreHiddenApiPolicyError\": true,\n};\ndriver = await remote({\n    logLevel: 'info',\n    path: '/',\n    port: 4725,\n    capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\nawait driver.pause(2000);",
-              "err": {},
-              "uuid": "fcbde150-5e57-48e5-8c67-663d7dfadbd0",
-              "parentUUID": "609f4efd-7dc6-43f8-b244-8bcbfcf05743",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [
-            {
-              "title": "\"after all\" hook in \"Change DP Test\"",
-              "fullTitle": "Change DP Test \"after all\" hook in \"Change DP Test\"",
-              "timedOut": false,
-              "duration": 424,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Ending the Change DP test session...');\nif (driver) {\n    await driver.deleteSession();\n    console.log('Driver session closed.');\n} else {\n    console.log('Driver session not created. Skipping session cleanup.');\n}",
-              "err": {},
-              "uuid": "6b5058a0-f8a9-403e-a030-abf1d28e16e7",
-              "parentUUID": "609f4efd-7dc6-43f8-b244-8bcbfcf05743",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "tests": [
-            {
-              "title": "should change the profile picture",
-              "fullTitle": "Change DP Test should change the profile picture",
-              "timedOut": false,
-              "duration": 7257,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log(\"Clicking the Edit button...\");\nconst editButton = await driver.$(\n    \"//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View[2]/android.view.View/android.widget.Button\"\n);\nawait editButton.click();\nconsole.log(\"Waiting for the Change DP button...\");\nawait driver.waitUntil(\n    async () => {\n        const changeDPButton = await driver.$(\n            '//android.widget.ScrollView/android.view.View[3]/android.widget.Button'\n        );\n        return await changeDPButton.isExisting();\n    },\n    {\n        timeout: 15000,\n        timeoutMsg: \"Change DP button not found within 15 seconds.\",\n    }\n);\nconsole.log(\"Clicking the Change DP button...\");\nconst changeDPButton = await driver.$(\n    '//android.widget.ScrollView/android.view.View[3]/android.widget.Button'\n);\nawait changeDPButton.click();\nconsole.log(\"Waiting for file picker to appear...\");\nconst filePicker = await driver.$(\"//android.widget.TextView\");\nawait filePicker.waitForExist({ timeout: 10000 });\nconsole.log(\"Selecting the Downloads folder...\");\nconst downloadsFolderXPath = '//android.widget.RelativeLayout';\nawait driver.$(downloadsFolderXPath).waitForExist({ timeout: 5000 });\nawait driver.$(downloadsFolderXPath).click();\nconsole.log(\"Selecting the profile image...\");\nconst imageXPath = '//android.widget.ImageView[@content-desc=\"Photo taken on Dec 10, 2024 4:57:13 PM\"]';\nawait driver.$(imageXPath).waitForExist({ timeout: 5000 });\nawait driver.$(imageXPath).click();\nconsole.log(\"Waiting for Save Changes button...\");\nconst saveChangesButton = await driver.$(\n    \"//android.widget.ScrollView/android.view.View[3]/android.widget.Button\"\n);\nawait saveChangesButton.waitForExist({ timeout: 5000 });\nconsole.log(\"Saving the changes...\");\nawait saveChangesButton.click();",
-              "err": {},
-              "uuid": "3e012b26-fb8a-41d0-b7bb-9c2bc45fdd50",
-              "parentUUID": "609f4efd-7dc6-43f8-b244-8bcbfcf05743",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "3e012b26-fb8a-41d0-b7bb-9c2bc45fdd50"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 7257,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 30000
-        },
-        {
-          "uuid": "019195c7-cff9-477e-8d89-91977954dcec",
+          "uuid": "2ae86205-5f8a-400e-aac7-bae1febea4a5",
           "title": "Edit Details Test",
           "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
           "file": "/cases/masterSuite.test.mjs",
           "beforeHooks": [
             {
-              "title": "\"before all\" hook in \"Edit Details Test\"",
-              "fullTitle": "Edit Details Test \"before all\" hook in \"Edit Details Test\"",
-              "timedOut": false,
-              "duration": 6213,
-              "state": null,
+              "title": "\"before all\" hook for \"should edit details and save changes successfully\"",
+              "fullTitle": "Edit Details Test \"before all\" hook for \"should edit details and save changes successfully\"",
+              "timedOut": true,
+              "duration": 30002,
+              "state": "failed",
               "speed": null,
               "pass": false,
-              "fail": false,
+              "fail": true,
               "pending": false,
               "context": null,
-              "code": "this.timeout(30000); // 30 seconds for setup\nconst capabilities = {\n    platformName: \"Android\",\n    \"appium:deviceName\": \"emulator-5554\",\n    \"appium:app\": \"./dev-release.apk\",\n    \"appium:automationName\": \"UiAutomator2\",\n    \"appium:newCommandTimeout\": 300,\n    \"appium:ensureWebviewsHavePages\": true,\n    \"appium:nativeWebScreenshot\": true,\n    \"appium:noReset\": true,\n    \"appium:ignoreHiddenApiPolicyError\": true,\n};\ndriver = await remote({\n    logLevel: 'info',\n    path: '/',\n    port: 4725,\n    capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\nawait driver.pause(2000);",
-              "err": {},
-              "uuid": "7307078e-888d-4370-8dc0-fb7f01fd9145",
-              "parentUUID": "019195c7-cff9-477e-8d89-91977954dcec",
+              "code": "this.timeout(30000); // 30 seconds for setup\nconst capabilities = {\n    platformName: \"Android\",\n    \"appium:deviceName\": \"f60f2c3\",\n    \"appium:app\": \"./dev-release.apk\",\n    \"appium:automationName\": \"UiAutomator2\",\n    \"appium:newCommandTimeout\": 300,\n    \"appium:ensureWebviewsHavePages\": true,\n    \"appium:nativeWebScreenshot\": true,\n    \"appium:noReset\": true,\n    \"appium:ignoreHiddenApiPolicyError\": true,\n};\ndriver = await remote({\n    logLevel: 'info',\n    path: '/',\n    port: 4725,\n    capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\nawait driver.pause(2000);",
+              "err": {
+                "message": "Error: Timeout of 30000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs)",
+                "estack": "Error: Timeout of 30000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs)\n    at listOnTimeout (node:internal/timers:594:17)\n    at process.processTimers (node:internal/timers:529:7)",
+                "diff": null
+              },
+              "uuid": "14bab720-55ef-4158-8a19-1c051bcf8565",
+              "parentUUID": "2ae86205-5f8a-400e-aac7-bae1febea4a5",
               "isHook": true,
               "skipped": false
             }
@@ -865,7 +60,7 @@
               "title": "\"after all\" hook in \"Edit Details Test\"",
               "fullTitle": "Edit Details Test \"after all\" hook in \"Edit Details Test\"",
               "timedOut": false,
-              "duration": 179,
+              "duration": 0,
               "state": null,
               "speed": null,
               "pass": false,
@@ -874,8 +69,8 @@
               "context": null,
               "code": "console.log(\"Ending the edit details test session...\");\nif (driver) {\n    await driver.deleteSession();\n    console.log('Driver session closed.');\n} else {\n    console.log('Driver session not created. Skipping session cleanup.');\n}",
               "err": {},
-              "uuid": "6c80c34b-dbd4-47d5-a68d-1ba14a1f41ae",
-              "parentUUID": "019195c7-cff9-477e-8d89-91977954dcec",
+              "uuid": "9988333a-b03c-4f7d-b109-206be45f5348",
+              "parentUUID": "2ae86205-5f8a-400e-aac7-bae1febea4a5",
               "isHook": true,
               "skipped": false
             }
@@ -885,54 +80,58 @@
               "title": "should edit details and save changes successfully",
               "fullTitle": "Edit Details Test should edit details and save changes successfully",
               "timedOut": false,
-              "duration": 5450,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log(\"Waiting for the 'Edit Details' button to appear...\");\nawait driver.waitUntil(\n    async () => {\n        const editButton = await driver.$(\n            \"//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View[2]/android.view.View/android.widget.Button\"\n        );\n        return await editButton.isExisting();\n    },\n    {\n        timeout: 15000,\n        timeoutMsg: \"'Edit Details' button not found within 15 seconds.\",\n    }\n);\nconsole.log(\"'Edit Details' button found. Clicking the button...\");\nconst editButton = await driver.$(\n    \"//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View[2]/android.view.View/android.widget.Button\"\n);\nawait editButton.click();\nconsole.log(\"Waiting for the next screen with Name and Email fields...\");\nawait driver.waitUntil(\n    async () => {\n        const nameField = await driver.$(\n            'android=new UiSelector().className(\"android.widget.EditText\")'\n        );\n        return await nameField.isDisplayed();\n    },\n    {\n        timeout: 20000,\n        timeoutMsg: \"Name field not found within 20 seconds.\",\n    }\n);\nconsole.log(\"Filling in the Name and Email fields...\");\nconst nameField = await driver.$(\n    'android=new UiSelector().className(\"android.widget.EditText\")'\n);\nawait nameField.setValue(\"testingg\");\nconst emailField = await driver.$('//android.widget.ScrollView/android.widget.EditText[2]');\nawait emailField.click();\nawait emailField.clearValue();\nawait emailField.click();\nawait emailField.setValue('testing@gmail.com');\nconsole.log(\"Waiting for the 'Save Changes' button to appear...\");\nawait driver.waitUntil(\n    async () => {\n        const saveButton = await driver.$(\n            'android=new UiSelector().className(\"android.widget.Button\").instance(2)'\n        );\n        return await saveButton.isExisting();\n    },\n    {\n        timeout: 10000,\n        timeoutMsg: \"'Save Changes' button not found within 10 seconds.\",\n    }\n);\nconsole.log(\"'Save Changes' button found. Clicking the button...\");\nconst saveButton = await driver.$(\n    'android=new UiSelector().className(\"android.widget.Button\").instance(2)'\n);\nawait saveButton.click();\nconsole.log(\"Changes saved successfully!\");\n// const backButton = await driver.$('//android.widget.ScrollView/android.view.View[1]/android.widget.Button');\n// await backButton.click();\n// console.log(\"back button clicked\");",
-              "err": {},
-              "uuid": "068ae641-14f8-4ef5-9e31-7e455297bbed",
-              "parentUUID": "019195c7-cff9-477e-8d89-91977954dcec",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "068ae641-14f8-4ef5-9e31-7e455297bbed"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 5450,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 30000
-        },
-        {
-          "uuid": "66ed1ce3-38e9-4fa1-b686-863872f3ae6d",
-          "title": "Email Validation Test",
-          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
-          "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [
-            {
-              "title": "\"before all\" hook in \"Email Validation Test\"",
-              "fullTitle": "Email Validation Test \"before all\" hook in \"Email Validation Test\"",
-              "timedOut": false,
-              "duration": 6165,
+              "duration": 0,
               "state": null,
               "speed": null,
               "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "this.timeout(40000);\nconst capabilities = {\n  platformName: 'Android',\n  'appium:deviceName': 'emulator-5554',\n  'appium:app': './dev-release.apk',\n  'appium:automationName': 'UiAutomator2',\n  'appium:newCommandTimeout': 300,\n  'appium:noReset': true,\n  'appium:ignoreHiddenApiPolicyError': true,\n};\ndriver = await remote({\n  logLevel: 'info',\n  path: '/',\n  port: 4725,\n  capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\nawait driver.pause(2000);",
+              "code": "console.log(\"Waiting for the 'Edit Details' button to appear...\");\nawait driver.waitUntil(\n    async () => {\n        const editButton = await driver.$(\n            \"//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View[2]/android.view.View/android.widget.Button\"\n        );\n        return await editButton.isExisting();\n    },\n    {\n        timeout: 15000,\n        timeoutMsg: \"'Edit Details' button not found within 15 seconds.\",\n    }\n);\nconsole.log(\"'Edit Details' button found. Clicking the button...\");\nconst editButton = await driver.$(\n    \"//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View[2]/android.view.View/android.widget.Button\"\n);\nawait editButton.click();\nconsole.log(\"Waiting for the next screen with Name and Email fields...\");\nawait driver.waitUntil(\n    async () => {\n        const nameField = await driver.$(\n            'android=new UiSelector().className(\"android.widget.EditText\")'\n        );\n        return await nameField.isDisplayed();\n    },\n    {\n        timeout: 20000,\n        timeoutMsg: \"Name field not found within 20 seconds.\",\n    }\n);\nconsole.log(\"Filling in the Name and Email fields...\");\nconst nameField = await driver.$(\n    'android=new UiSelector().className(\"android.widget.EditText\")'\n);\nawait nameField.setValue(\"testingg\");\nconst emailField = await driver.$('//android.widget.ScrollView/android.widget.EditText[2]');\nawait emailField.click();\nawait emailField.clearValue();\nawait emailField.click();\nawait emailField.setValue('testing@gmail.com');\nconsole.log(\"Waiting for the 'Save Changes' button to appear...\");\nawait driver.waitUntil(\n    async () => {\n        const saveButton = await driver.$(\n            'android=new UiSelector().className(\"android.widget.Button\").instance(2)'\n        );\n        return await saveButton.isExisting();\n    },\n    {\n        timeout: 10000,\n        timeoutMsg: \"'Save Changes' button not found within 10 seconds.\",\n    }\n);\nconsole.log(\"'Save Changes' button found. Clicking the button...\");\nconst saveButton = await driver.$(\n    'android=new UiSelector().className(\"android.widget.Button\").instance(2)'\n);\nawait saveButton.click();\nconsole.log(\"Changes saved successfully!\");\n// const backButton = await driver.$('//android.widget.ScrollView/android.view.View[1]/android.widget.Button');\n// await backButton.click();\n// console.log(\"back button clicked\");",
               "err": {},
-              "uuid": "dfb6bb83-ed7c-4c4b-bf0f-666f4ec321e0",
-              "parentUUID": "66ed1ce3-38e9-4fa1-b686-863872f3ae6d",
+              "uuid": "2d119735-7e89-4989-be47-cfb3b1a80357",
+              "parentUUID": "2ae86205-5f8a-400e-aac7-bae1febea4a5",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [
+            "2d119735-7e89-4989-be47-cfb3b1a80357"
+          ],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        },
+        {
+          "uuid": "456f3a0f-8a95-4dc4-879c-2251fef4266b",
+          "title": "Email Validation Test",
+          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
+          "file": "/cases/masterSuite.test.mjs",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook for \"should validate email addresses and set valid ones\"",
+              "fullTitle": "Email Validation Test \"before all\" hook for \"should validate email addresses and set valid ones\"",
+              "timedOut": true,
+              "duration": 40000,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "this.timeout(40000);\nconst capabilities = {\n  platformName: 'Android',\n  'appium:deviceName': 'f60f2c3',\n  'appium:app': './dev-release.apk',\n  'appium:automationName': 'UiAutomator2',\n  'appium:newCommandTimeout': 300,\n  'appium:noReset': true,\n  'appium:ignoreHiddenApiPolicyError': true,\n};\ndriver = await remote({\n  logLevel: 'info',\n  path: '/',\n  port: 4725,\n  capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\nawait driver.pause(2000);",
+              "err": {
+                "message": "Error: Timeout of 40000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs)",
+                "estack": "Error: Timeout of 40000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs)\n    at listOnTimeout (node:internal/timers:594:17)\n    at process.processTimers (node:internal/timers:529:7)",
+                "diff": null
+              },
+              "uuid": "73c68d62-ffe8-425c-8f3b-4979d336af73",
+              "parentUUID": "456f3a0f-8a95-4dc4-879c-2251fef4266b",
               "isHook": true,
               "skipped": false
             }
@@ -942,7 +141,7 @@
               "title": "\"after all\" hook in \"Email Validation Test\"",
               "fullTitle": "Email Validation Test \"after all\" hook in \"Email Validation Test\"",
               "timedOut": false,
-              "duration": 133,
+              "duration": 1,
               "state": null,
               "speed": null,
               "pass": false,
@@ -951,8 +150,8 @@
               "context": null,
               "code": "console.log('Ending the email validation test session...');\nif (driver) {\n  await driver.deleteSession();\n  console.log('Driver session closed.');\n} else {\n  console.log('Driver session not created. Skipping session cleanup.');\n}",
               "err": {},
-              "uuid": "33d8dbc7-8d15-4177-9de3-184048dcca89",
-              "parentUUID": "66ed1ce3-38e9-4fa1-b686-863872f3ae6d",
+              "uuid": "8f4153a4-9817-487e-8b5d-7f6eebdc3ac2",
+              "parentUUID": "456f3a0f-8a95-4dc4-879c-2251fef4266b",
               "isHook": true,
               "skipped": false
             }
@@ -962,497 +161,35 @@
               "title": "should validate email addresses and set valid ones",
               "fullTitle": "Email Validation Test should validate email addresses and set valid ones",
               "timedOut": false,
-              "duration": 18990,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "console.log('Navigating to the profile section...');\nconst profileButton = await driver.$(\n  \"//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]\"\n);await profileButton.waitForDisplayed({ timeout: 20000 });\nawait driver.pause(1000);\nawait profileButton.click();\nconsole.log('Navigating to the \"Edit Details\" button...');\nconst editButton = await driver.$(\n  \"//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View[2]/android.view.View/android.widget.Button\"\n);\nawait editButton.click();\nconst emailField = await driver.$('//android.widget.ScrollView/android.widget.EditText[2]');\nawait emailField.click();\nfor (const domain of emailDomains) {\n  const email = `testing@${domain}`;\n  const isValidEmail = emailRegex.test(email);\n  console.log(`Validation for email ${email}: ${isValidEmail ? 'Valid' : 'Invalid'}`);\n  if (isValidEmail) {\n    await emailField.clearValue();\n    await emailField.setValue(email);\n    console.log(`Email ${email} set in the field.`);\n  }\n  await driver.pause(500);\n}\nconst backButton = await driver.$('//android.widget.ScrollView/android.view.View[1]/android.widget.Button');\nawait backButton.click()",
               "err": {},
-              "uuid": "e0218c3d-2a87-470f-aad6-ec96a666de75",
-              "parentUUID": "66ed1ce3-38e9-4fa1-b686-863872f3ae6d",
+              "uuid": "1bc3b9ff-c1e5-48f1-b94f-c8f766accc22",
+              "parentUUID": "456f3a0f-8a95-4dc4-879c-2251fef4266b",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             }
           ],
           "suites": [],
-          "passes": [
-            "e0218c3d-2a87-470f-aad6-ec96a666de75"
-          ],
+          "passes": [],
           "failures": [],
           "pending": [],
-          "skipped": [],
-          "duration": 18990,
+          "skipped": [
+            "1bc3b9ff-c1e5-48f1-b94f-c8f766accc22"
+          ],
+          "duration": 0,
           "root": false,
           "rootEmpty": false,
           "_timeout": 30000
         },
         {
-          "uuid": "55d8a24e-2b2c-409c-bf20-059c4aa87803",
-          "title": "Switching between vehicles models",
-          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
-          "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [
-            {
-              "title": "\"before all\" hook in \"Switching between vehicles models\"",
-              "fullTitle": "Switching between vehicles models \"before all\" hook in \"Switching between vehicles models\"",
-              "timedOut": false,
-              "duration": 2755,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log(\"Setting up the driver...\");\nthis.timeout(30000); // Allowing enough time for driver setup\nconst capabilities = {\n    platformName: \"Android\",\n    \"appium:deviceName\": \"emulator-5554\",\n    \"appium:app\": \"./dev-release.apk\",\n    \"appium:automationName\": \"UiAutomator2\",\n    \"appium:newCommandTimeout\": 300,\n    \"appium:ensureWebviewsHavePages\": true,\n    \"appium:nativeWebScreenshot\": true,\n    \"appium:noReset\": true,\n    \"appium:ignoreHiddenApiPolicyError\": true,\n};\ndriver = await remote({\n    logLevel: \"info\",\n    path: \"/\",\n    port: 4725,\n    capabilities,\n});\nconsole.log(\"Driver setup complete.\");",
-              "err": {},
-              "uuid": "9bdf19ef-1284-4983-ab58-8753965d95b4",
-              "parentUUID": "55d8a24e-2b2c-409c-bf20-059c4aa87803",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [
-            {
-              "title": "\"after all\" hook in \"Switching between vehicles models\"",
-              "fullTitle": "Switching between vehicles models \"after all\" hook in \"Switching between vehicles models\"",
-              "timedOut": false,
-              "duration": 172,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log(\"Ending the test session...\");\nif (driver) {\n    await driver.deleteSession();\n    console.log(\"Driver session ended.\");\n}",
-              "err": {},
-              "uuid": "ca67b8ba-0d1f-4431-a6e8-b8e71021be39",
-              "parentUUID": "55d8a24e-2b2c-409c-bf20-059c4aa87803",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "tests": [
-            {
-              "title": "should change the default vehicle",
-              "fullTitle": "Switching between vehicles models should change the default vehicle",
-              "timedOut": false,
-              "duration": 12745,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "this.timeout(30000); // Allowing enough time for the test steps\n// Step 1: Click on the home button\nconst homeButton = driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]');\nawait homeButton.click()\nconsole.log(\"home button clicked.\");\nawait driver.pause(2000);\nconst chooseButton = await driver.$(\n    '//android.widget.ScrollView/android.view.View[2]/android.view.View/android.view.View[2]/android.widget.Button'\n);\nawait chooseButton.click();\nconsole.log(\"choose button clicked.\");\nawait driver.pause(3000);\n// Step 3: Click on the vehicleCardButton button for the Home address\nconst vehicleCardButton = await driver.$(\n    '(//android.widget.ImageView[@content-desc=\"Vehicle Color\"])[1]'\n);\nawait vehicleCardButton.click();\nconsole.log(\"Edit Home button clicked.\");\nawait driver.pause(2000);\n// Step 6: Click the Back button\nconst setDefaultButton = await driver.$(\n    '//android.widget.Button'\n);\nawait setDefaultButton.click();\nconsole.log(\"Back button clicked.\");\nconst confirmButton= await driver.$('//android.widget.TextView[@resource-id=\"com.simpleenergy.app:id/clear_dialog_yes_btn\"]');\nawait confirmButton.click();\nconst backButton = driver.$('//android.widget.Button');\nawait backButton.click();",
-              "err": {},
-              "uuid": "c6aee76c-8015-499e-9a83-d20f56b0520c",
-              "parentUUID": "55d8a24e-2b2c-409c-bf20-059c4aa87803",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "c6aee76c-8015-499e-9a83-d20f56b0520c"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 12745,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 30000
-        },
-        {
-          "uuid": "7f63565a-9aa6-4b64-9a54-88cce400041e",
-          "title": "Validate Ride Statistics and Date Logic",
-          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
-          "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [
-            {
-              "title": "\"before all\" hook in \"Validate Ride Statistics and Date Logic\"",
-              "fullTitle": "Validate Ride Statistics and Date Logic \"before all\" hook in \"Validate Ride Statistics and Date Logic\"",
-              "timedOut": false,
-              "duration": 4964,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log(\"Setting up driver...\");\nthis.timeout(30000);\nconst capabilities = {\n    platformName: \"Android\",\n    \"appium:deviceName\": \"emulator-5554\",\n    \"appium:app\": \"./dev-release.apk\",\n    \"appium:automationName\": \"UiAutomator2\",\n    \"appium:newCommandTimeout\": 300,\n    \"appium:noReset\": true,\n    \"appium:ignoreHiddenApiPolicyError\": true,\n};\ndriver = await remote({\n    logLevel: \"info\",\n    path: \"/\",\n    port: 4725,\n    capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\nawait driver.pause(2000);",
-              "err": {},
-              "uuid": "9169d2b7-6b2e-4a56-8619-3c22fe747263",
-              "parentUUID": "7f63565a-9aa6-4b64-9a54-88cce400041e",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [
-            {
-              "title": "\"after all\" hook in \"Validate Ride Statistics and Date Logic\"",
-              "fullTitle": "Validate Ride Statistics and Date Logic \"after all\" hook in \"Validate Ride Statistics and Date Logic\"",
-              "timedOut": false,
-              "duration": 147,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Closing driver session');\nif (driver) {\n    await driver.deleteSession();\n    console.log('Driver session closed');\n} else {\n    console.log('Driver session not created. Skipping session cleanup');\n}",
-              "err": {},
-              "uuid": "f5bb27db-1977-4c00-93da-e45a86a04be7",
-              "parentUUID": "7f63565a-9aa6-4b64-9a54-88cce400041e",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "tests": [
-            {
-              "title": "should validate vertical scrolling and date logic",
-              "fullTitle": "Validate Ride Statistics and Date Logic should validate vertical scrolling and date logic",
-              "timedOut": false,
-              "duration": 16204,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log(\"Launching the app...\");\nconst homeButton = driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]');\nawait homeButton.click()\nawait driver.pause(1000)\nawait driver.executeScript(\"mobile: activateApp\", [{ appId: \"com.simpleenergy.app\" }]);\nconsole.log(\"Validating and navigating vertically...\");\nconst { width, height } = await driver.getWindowRect();\n// Scroll up vertically\nawait driver.performActions([\n    {\n        type: \"pointer\",\n        id: \"finger1\",\n        parameters: { pointerType: \"touch\" },\n        actions: [\n            { type: \"pointerMove\", duration: 0, x: width / 2, y: height * 0.8 },\n            { type: \"pointerDown\", button: 0 },\n            { type: \"pointerMove\", duration: 500, x: width / 2, y: height * 0.1 },\n            { type: \"pointerUp\", button: 0 },\n        ],\n    },\n]);\nawait driver.pause(2000);\nconsole.log(\"Vertical scrolling completed.\");\nconst targetElement = await driver.$('//android.view.View[@content-desc=\"Ride Statistic\"]');\nexpect(await targetElement.isDisplayed()).to.be.true;\nconsole.log(\"Target element is visible after vertical scroll.\");\nawait targetElement.click();\nconsole.log(\"Target element clicked.\");\nawait driver.pause(2000);\nconst currentDate = new Date();\nconst formattedDate = `${currentDate.getDate()} ${currentDate.toLocaleString('en-US', {\n    month: 'short',\n})}`;\nconst dateElements = await driver.$$('//android.widget.TextView');\nlet isDateMatched = false;\nfor (const element of dateElements) {\n    const text = await element.getText();\n    if (text === formattedDate) {\n        isDateMatched = true;\n        console.log(`Today's date matched: ${formattedDate}`);\n        break;\n    }\n}\nif (!isDateMatched) {\n    console.log(`Today's date (${formattedDate}) was not found on the screen.`);\n}\nawait driver.performActions([\n    {\n        type: \"pointer\",\n        id: \"finger2\", // for scroll down\n        parameters: { pointerType: \"touch\" },\n        actions: [\n            // Start near the top of the screen\n            { type: \"pointerMove\", duration: 0, x: width / 2, y: height * 0.8 },\n            { type: \"pointerDown\", button: 0 },\n            // Move downwards\n            { type: \"pointerMove\", duration: 500, x: width / 2, y: height * 0.2 },\n            { type: \"pointerUp\", button: 0 },\n        ],\n    },\n]);\nawait driver.pause(2000); // Allow time to observe the scroll\nawait driver.releaseActions(); // Release the pointer actions\nawait driver.pause(1000); // Add a pause to ensure smooth execution\nconst lastContainer = await driver.$('//android.widget.ScrollView/android.view.View');\nexpect(await lastContainer.isDisplayed()).to.be.true;\nconsole.log(\"Distance covered section is visible after vertical scroll.\");\nawait driver.performActions([\n    {\n        type: \"pointer\",\n        id: \"finger1\",\n        parameters: { pointerType: \"touch\" },\n        actions: [\n            { type: \"pointerMove\", duration: 0, x: width / 2, y: height * 0.2 },\n            { type: \"pointerDown\", button: 0 },\n            { type: \"pointerMove\", duration: 500, x: width / 2, y: height * 0.8 },\n            { type: \"pointerUp\", button: 0 },\n        ],\n    },\n]);\nawait driver.releaseActions();\nawait driver.pause(1000);\nconsole.log(\"Scroll down gesture performed.\");\nconst backButton = await driver.$('//android.widget.ScrollView/android.view.View[1]/android.view.View/android.widget.Button');\nawait backButton.click();\nawait driver.performActions([\n    {\n        type: \"pointer\",\n        id: \"finger1\",\n        parameters: { pointerType: \"touch\" },\n        actions: [\n            { type: \"pointerMove\", duration: 0, x: width / 2, y: height * 0.1 },\n            { type: \"pointerDown\", button: 0 },\n            { type: \"pointerMove\", duration: 500, x: width / 2, y: height * 0.8 },\n            { type: \"pointerUp\", button: 0 },\n        ],\n    },\n]);\nawait driver.releaseActions();",
-              "err": {},
-              "uuid": "b626a7ac-5536-4789-a88c-b54cfcae663d",
-              "parentUUID": "7f63565a-9aa6-4b64-9a54-88cce400041e",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "b626a7ac-5536-4789-a88c-b54cfcae663d"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 16204,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 30000
-        },
-        {
-          "uuid": "e4cbe5b4-f918-4dbc-a6af-518517de273e",
-          "title": "Edit and Update Test",
-          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
-          "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [
-            {
-              "title": "\"before all\" hook in \"Edit and Update Test\"",
-              "fullTitle": "Edit and Update Test \"before all\" hook in \"Edit and Update Test\"",
-              "timedOut": false,
-              "duration": 6167,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log(\"Setting up driver...\");\nthis.timeout(30000);\nconst capabilities = {\n  platformName: \"Android\",\n  \"appium:deviceName\": \"emulator-5554\",\n  \"appium:app\": \"./dev-release.apk\", // Path to your APK\n  \"appium:automationName\": \"UiAutomator2\",\n  \"appium:newCommandTimeout\": 300,\n  \"appium:noReset\": true,\n  \"appium:ignoreHiddenApiPolicyError\": true,\n};\ndriver = await remote({\n  logLevel: \"info\",\n  path: \"/\",\n  port: 4725,\n  capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\nawait driver.pause(2000);  // Adjust pause time if necessary",
-              "err": {},
-              "uuid": "1a8f82c1-651c-41a5-84ee-f500c03f4c25",
-              "parentUUID": "e4cbe5b4-f918-4dbc-a6af-518517de273e",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [
-            {
-              "title": "\"after all\" hook in \"Edit and Update Test\"",
-              "fullTitle": "Edit and Update Test \"after all\" hook in \"Edit and Update Test\"",
-              "timedOut": false,
-              "duration": 136,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log(\"Ending the test session...\");\nif (driver) {\n  await driver.deleteSession();\n  console.log('Driver session closed.');\n} else {\n  console.log('Driver session not created. Skipping session cleanup.');\n}",
-              "err": {},
-              "uuid": "d6dd5a1b-50cb-4a29-8d7e-980ba6b86792",
-              "parentUUID": "e4cbe5b4-f918-4dbc-a6af-518517de273e",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "tests": [
-            {
-              "title": "should click Edit, focus on input, write testing and click Update",
-              "fullTitle": "Edit and Update Test should click Edit, focus on input, write testing and click Update",
-              "timedOut": false,
-              "duration": 6212,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "try {\n  // console.log(\"Launching the app...\");\n  // await driver.executeScript(\"mobile: activateApp\", [{ appId: \"com.simpleenergy.app\" }]);\n  console.log(\"Clicking on Edit button...\");\n  const editButton = await driver.$('//android.widget.ScrollView/android.view.View[2]/android.view.View/android.view.View[4]/android.view.View');\n  await editButton.waitForDisplayed({ timeout: 5000 });\n  await editButton.click();\n  console.log(\"Clicked on Edit button.\");\n  console.log(\"Focusing on the input field...\");\n  const inputField = await driver.$('//android.widget.EditText');\n  await inputField.waitForDisplayed({ timeout: 5000 });\n  await inputField.click();\n  await inputField.setValue('testing');\n  console.log(\"Entered text 'testing' in the input field.\");\n  console.log(\"Clicking on Update button...\");\n  const updateButton = await driver.$('//android.widget.ScrollView/android.view.View/android.widget.Button');\n  await updateButton.waitForDisplayed({ timeout: 5000 });\n  await updateButton.click();\n  console.log(\"Clicked on Update button.\");\n  \n  await driver.pause(2000); // Allow time for the update action to complete\n} catch (err) {\n  console.error(\"An error occurred during the Edit and Update test:\", err.message);\n}",
-              "err": {},
-              "uuid": "e8e742e2-afcf-4823-af52-7ce5c8c7a29e",
-              "parentUUID": "e4cbe5b4-f918-4dbc-a6af-518517de273e",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "e8e742e2-afcf-4823-af52-7ce5c8c7a29e"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 6212,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 30000
-        },
-        {
-          "uuid": "db84daf2-4a07-451a-affc-6f154278cf00",
-          "title": "Manage Address Test",
-          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
-          "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [
-            {
-              "title": "\"before all\" hook in \"Manage Address Test\"",
-              "fullTitle": "Manage Address Test \"before all\" hook in \"Manage Address Test\"",
-              "timedOut": false,
-              "duration": 2742,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log(\"Setting up the driver...\");\nthis.timeout(30000); // Allowing enough time for driver setup\nconst capabilities = {\n    platformName: \"Android\",\n    \"appium:deviceName\": \"emulator-5554\",\n    \"appium:app\": \"./dev-release.apk\",\n    \"appium:automationName\": \"UiAutomator2\",\n    \"appium:newCommandTimeout\": 300,\n    \"appium:ensureWebviewsHavePages\": true,\n    \"appium:nativeWebScreenshot\": true,\n    \"appium:noReset\": true,\n    \"appium:ignoreHiddenApiPolicyError\": true,\n};\ndriver = await remote({\n    logLevel: \"info\",\n    path: \"/\",\n    port: 4725,\n    capabilities,\n});\nconsole.log(\"Driver setup complete.\");",
-              "err": {},
-              "uuid": "d615c3a7-255f-4303-8d83-f3f25d9cac98",
-              "parentUUID": "db84daf2-4a07-451a-affc-6f154278cf00",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [
-            {
-              "title": "\"after all\" hook in \"Manage Address Test\"",
-              "fullTitle": "Manage Address Test \"after all\" hook in \"Manage Address Test\"",
-              "timedOut": false,
-              "duration": 151,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log(\"Ending the test session...\");\nif (driver) {\n    await driver.deleteSession();\n    console.log(\"Driver session ended.\");\n}",
-              "err": {},
-              "uuid": "8e2d21c7-3c63-467b-81c4-69a8fcb67521",
-              "parentUUID": "db84daf2-4a07-451a-affc-6f154278cf00",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "tests": [
-            {
-              "title": "should update the Home address",
-              "fullTitle": "Manage Address Test should update the Home address",
-              "timedOut": false,
-              "duration": 14738,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "this.timeout(30000); // Allowing enough time for the test steps\n// Step 1: Click on the Profile button\nconst profileButton = await driver.$(\n    '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]'\n);\nawait profileButton.click();\nconsole.log(\"Profile button clicked.\");\nawait driver.pause(2000);\n// Step 2: Click on the Address button\nconst addressButton = await driver.$(\n    '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.widget.ScrollView/android.view.View/android.view.View[1]/android.widget.Button'\n);\nawait addressButton.click();\nconsole.log(\"Address button clicked.\");\nawait driver.pause(2000);\n// Step 3: Click on the Edit button for the Home address\nconst editHomeButton = await driver.$(\n    '//android.widget.ScrollView/android.view.View[1]/android.view.View[3]/android.widget.Button'\n);\nawait editHomeButton.click();\nconsole.log(\"Edit Home button clicked.\");\nawait driver.pause(2000);\n// Step 4: Set the fixed address into the EditText field for Home address\nconst fixedAddress = \"252, Sucasa Golden Park, 4th Main Road, Rams Lake View Meadows, Vinayak Nagar, Kattigenahalli, Bengaluru, Karnataka. 33 m from OYO Hotel, Pin-560063 (India)\";\nconst homeAddressEditText = await driver.$('//android.widget.EditText');\nawait homeAddressEditText.setValue(fixedAddress); // Setting the fixed address\nconsole.log(\"Home address updated with the fixed address:\", fixedAddress);\n// Step 5: Check if the Confirm button is enabled\nconst confirmButton = await driver.$(\n    '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[2]/android.widget.Button'\n);\nconst isEnabled = await confirmButton.isEnabled();\nconsole.log(\"Checking if Confirm button is enabled...\");\nexpect(isEnabled).to.be.true; // Assert that the Confirm button is enabled\nconsole.log(\"Confirm button is enabled. Clicking it.\");\nawait confirmButton.click();\nawait driver.pause(2000); // Wait for 2 seconds after clicking\nconsole.log(\"Address update confirmed!\");\n// Step 6: Click the Back button\nconst backButton = await driver.$(\n    '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[1]/android.widget.Button'\n);\nawait backButton.click();\nconsole.log(\"Back button clicked.\");\nconst backButton1 = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.widget.Button');\nawait backButton1.click();",
-              "err": {},
-              "uuid": "27c2130e-e22d-401c-9de0-dee9361e8190",
-              "parentUUID": "db84daf2-4a07-451a-affc-6f154278cf00",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "27c2130e-e22d-401c-9de0-dee9361e8190"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 14738,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 30000
-        },
-        {
-          "uuid": "03d5107a-96cd-4171-bd55-962a77f8a8e4",
-          "title": "Logout Test",
-          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
-          "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [
-            {
-              "title": "\"before all\" hook in \"Logout Test\"",
-              "fullTitle": "Logout Test \"before all\" hook in \"Logout Test\"",
-              "timedOut": false,
-              "duration": 5747,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "this.timeout(30000); // 30 seconds for setup\nconst capabilities = {\n  platformName: 'Android',\n  'appium:deviceName': 'emulator-5554',\n  'appium:app': './dev-release.apk',\n  'appium:automationName': 'UiAutomator2',\n  'appium:newCommandTimeout': 300,\n  'appium:ensureWebviewsHavePages': true,\n  'appium:nativeWebScreenshot': true,\n  'appium:noReset': true,\n  'appium:ignoreHiddenApiPolicyError': true,\n};\ndriver = await remote({\n  logLevel: 'info',\n  path: '/',\n  port: 4725,\n  capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\nawait driver.pause(2000);",
-              "err": {},
-              "uuid": "35277caf-a939-4da8-afd5-db8676228335",
-              "parentUUID": "03d5107a-96cd-4171-bd55-962a77f8a8e4",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [
-            {
-              "title": "\"after all\" hook in \"Logout Test\"",
-              "fullTitle": "Logout Test \"after all\" hook in \"Logout Test\"",
-              "timedOut": false,
-              "duration": 141,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Ending the logout test session...');\nif (driver) {\n  await driver.deleteSession();\n  console.log('Driver session closed.');\n} else {\n  console.log('Driver session not created. Skipping session cleanup.');\n}",
-              "err": {},
-              "uuid": "689091d1-91c8-43a3-bbd7-a344eb4c9241",
-              "parentUUID": "03d5107a-96cd-4171-bd55-962a77f8a8e4",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "tests": [
-            {
-              "title": "should perform the logout operation",
-              "fullTitle": "Logout Test should perform the logout operation",
-              "timedOut": false,
-              "duration": 5935,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Navigating to the profile section...');\n// const profileButton = await driver.$(\n//   '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]'\n// );\n// await profileButton.click();\n// await driver.pause(2000);\nconsole.log('Navigating to the addresses section...');\nconst addressesButton = await driver.$(\n  '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.widget.ScrollView/android.view.View/android.view.View[1]/android.widget.Button'\n);\nawait addressesButton.click();\nawait driver.pause(2000);\nconsole.log('Attempting to clear address...');\nconst clearButton = await driver.$(\n  '//android.widget.ScrollView/android.view.View[1]/android.view.View[1]/android.widget.Button'\n);\nawait clearButton.click();\nawait driver.pause(1000);\nconsole.log('Cancelling address clearing...');\nconst noButton = await driver.$(\n  '//android.widget.TextView[@resource-id=\"com.simpleenergy.app:id/clear_dialog_no_btn\"]'\n);\nawait noButton.click();\nconst backButton = await driver.$(\n  '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[1]/android.widget.Button'\n  );\n  await backButton.click();\n  console.log(\"Back button clicked.\");\n  // const backButton1 = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.widget.Button');\n  // await backButton1.click();",
-              "err": {},
-              "uuid": "c6a07179-5a9a-4d58-a5bd-8a95f497518b",
-              "parentUUID": "03d5107a-96cd-4171-bd55-962a77f8a8e4",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "c6a07179-5a9a-4d58-a5bd-8a95f497518b"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 5935,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 30000
-        },
-        {
-          "uuid": "9f424857-6516-4d68-acd5-4bc64fbcc45e",
-          "title": "Orientation Test",
-          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
-          "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [
-            {
-              "title": "\"before all\" hook in \"Orientation Test\"",
-              "fullTitle": "Orientation Test \"before all\" hook in \"Orientation Test\"",
-              "timedOut": false,
-              "duration": 4700,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "this.timeout(30000); // Set timeout for the setup\nconst capabilities = {\n  platformName: 'Android',\n  'appium:deviceName': 'emulator-5554',\n  'appium:app': './dev-release.apk',\n  'appium:automationName': 'UiAutomator2',\n  'appium:newCommandTimeout': 300,\n  'appium:noReset': true,\n  'appium:ignoreHiddenApiPolicyError': true,\n};\ndriver = await remote({\n  logLevel: 'info',\n  path: '/',\n  port: 4725,\n  capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\nawait driver.pause(2000);",
-              "err": {},
-              "uuid": "bc18c5e5-1dcb-45a3-a988-04dd72b23f8f",
-              "parentUUID": "9f424857-6516-4d68-acd5-4bc64fbcc45e",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [
-            {
-              "title": "\"after all\" hook in \"Orientation Test\"",
-              "fullTitle": "Orientation Test \"after all\" hook in \"Orientation Test\"",
-              "timedOut": false,
-              "duration": 200,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Ending the orientation test session...');\n// Ensure the orientation is set back to portrait before ending the session\nconst currentOrientation = await driver.getOrientation();\nif (currentOrientation !== 'PORTRAIT') {\n  console.log('Resetting orientation to portrait...');\n  await driver.setOrientation('PORTRAIT');\n}\nif (driver) {\n  await driver.deleteSession();\n  console.log('Driver session closed.');\n} else {\n  console.log('Driver session not created. Skipping session cleanup.');\n}",
-              "err": {},
-              "uuid": "feac225f-4f38-476d-9cad-0dd1e8007d0d",
-              "parentUUID": "9f424857-6516-4d68-acd5-4bc64fbcc45e",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "tests": [
-            {
-              "title": "should verify orientation and switch between portrait and landscape",
-              "fullTitle": "Orientation Test should verify orientation and switch between portrait and landscape",
-              "timedOut": false,
-              "duration": 4496,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Launching the app...');\nlet currentOrientation = await driver.getOrientation();\nconsole.log(`Initial Orientation: ${currentOrientation}`);\n// Ensure initial orientation is portrait\nif (currentOrientation !== 'PORTRAIT') {\n  console.log('Switching to portrait mode...');\n  await driver.setOrientation('PORTRAIT');\n}\nconsole.log('Enabling auto-rotate feature...');\ntry {\n  await driver.execute('mobile: shell', {\n    command: 'settings put system accelerometer_rotation 1',\n  });\n} catch (err) {\n  console.warn('Could not enable auto-rotate programmatically.');\n}\nconsole.log('Attempting to switch to landscape mode...');\nawait delay(1000); // Adding delay before orientation change\nawait driver.setOrientation('LANDSCAPE');\ncurrentOrientation = await driver.getOrientation();\nconsole.log(`Orientation after switching to landscape: ${currentOrientation}`);\nexpect(currentOrientation).to.equal('LANDSCAPE', 'Failed to switch to landscape mode.');\nconsole.log('Switching back to portrait mode...');\nawait driver.setOrientation('PORTRAIT');\ncurrentOrientation = await driver.getOrientation();\nconsole.log(`Orientation after switching back to portrait: ${currentOrientation}`);\nexpect(currentOrientation).to.equal('PORTRAIT', 'Failed to switch back to portrait mode.');",
-              "err": {},
-              "uuid": "421c0840-6f7d-4846-8283-abf769c85fe5",
-              "parentUUID": "9f424857-6516-4d68-acd5-4bc64fbcc45e",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "421c0840-6f7d-4846-8283-abf769c85fe5"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 4496,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 30000
-        },
-        {
-          "uuid": "72cef6a9-3ff6-4a1d-ac89-bc5b73f1bc0a",
+          "uuid": "4851ea46-3ccd-468f-97bd-89cea85579b1",
           "title": "Complete Test Suite",
           "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
           "file": "/cases/masterSuite.test.mjs",
@@ -1472,15 +209,15 @@
               "context": null,
               "code": "console.log('All tests are imported and will run sequentially.');",
               "err": {},
-              "uuid": "499864a4-abf8-4424-a1da-76534cab4c69",
-              "parentUUID": "72cef6a9-3ff6-4a1d-ac89-bc5b73f1bc0a",
+              "uuid": "2288d8cc-d5a4-4b6f-a10e-a99af20ff08e",
+              "parentUUID": "4851ea46-3ccd-468f-97bd-89cea85579b1",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "499864a4-abf8-4424-a1da-76534cab4c69"
+            "2288d8cc-d5a4-4b6f-a10e-a99af20ff08e"
           ],
           "failures": [],
           "pending": [],

@@ -18,6 +18,9 @@ import './renamemodel.test.mjs'
 import './vvveditaddress.test.mjs'
 import './50.test.mjs'
 import './62.test.mjs'
+import './DLuploading.test.mjs'
+import './RCuploading.test.mjs'
+import './ICuploading.test.mjs'
 
 describe('Complete Test Suite', function () {
   it('should run all test files in sequence', function () {
