@@ -1,28 +1,13 @@
 import { expect } from 'chai';
 import { remote } from 'webdriverio';
-
+import { initializeDriver } from './driverSetup.mjs';
 describe('Walkthrough Screens Validation', function () {
     let driver;
 
     before(async function () {
         console.log('Setting up driver...');
         this.timeout(30000); // Allow 30 seconds for setup
-        const capabilities = {
-            platformName: "Android",
-            "appium:deviceName": "emulator-5554",
-            "appium:app": "./dev-release.apk",
-            "appium:automationName": "UiAutomator2",
-            "appium:newCommandTimeout": 300,
-            "appium:noReset": true,
-            "appium:ignoreHiddenApiPolicyError": true,
-        };
-
-        driver = await remote({
-            logLevel: 'info',
-            path: '/',
-            port: 4725,
-            capabilities,
-        });
+        driver = await initializeDriver();
 
         console.log('Driver setup complete, waiting for the app to load...');
     });

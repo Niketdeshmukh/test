@@ -1,30 +1,12 @@
 import { remote } from "webdriverio";
 import { expect } from "chai";
+import { initializeDriver } from './driverSetup.mjs';
 
 describe("User Logout Functionality", function () {
     let driver;
 
-    // Define driver capabilities
-    const capabilities = {
-        platformName: "Android",
-        "appium:deviceName": "emulator-5554",
-        "appium:app": "./dev-release.apk",
-        "appium:automationName": "UiAutomator2",
-        "appium:newCommandTimeout": 300,
-        "appium:ensureWebviewsHavePages": true,
-        "appium:nativeWebScreenshot": true,
-        "appium:noReset": true,
-        "appium:ignoreHiddenApiPolicyError": true,
-    };
-
     before(async function () {
-        // Start WebDriverIO session
-        driver = await remote({
-            logLevel: "info",
-            path: "/",
-            port: 4725,
-            capabilities,
-        });
+        driver = await initializeDriver();
     });
 
     after(async function () {

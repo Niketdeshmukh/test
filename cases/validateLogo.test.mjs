@@ -1,35 +1,13 @@
 import { expect } from 'chai';
 import { remote } from 'webdriverio';
-
-// beforeEach(function () {
-//     console.log('Running test: ' + this.currentTest.fullTitle());
-// });
-
+import { initializeDriver } from './driverSetup.mjs';
 describe('Logo Validation', function () {
     let driver;
 
     before(async function () {
         console.log('Setting up driver...');
-        this.timeout(30000); // 30 seconds for setup
-        const capabilities = {
-            platformName: "Android",
-            "appium:deviceName": "emulator-5554",
-            "appium:app": "./dev-release.apk", // Path to your APK
-            "appium:automationName": "UiAutomator2",
-            "appium:newCommandTimeout": 300,
-            "appium:ensureWebviewsHavePages": true,
-            "appium:nativeWebScreenshot": true,
-            "appium:noReset": true,
-            "appium:ignoreHiddenApiPolicyError": true,
-        };
-
-        driver = await remote({
-            logLevel: 'info',
-            path: '/',
-            port: 4725,
-            capabilities,
-        });
-
+        this.timeout(30000); 
+        driver = await initializeDriver();
         console.log('Driver setup complete, waiting for the app to load...');
         await driver.pause(12000);  // Adjust pause time if necessary
     });

@@ -1,16 +1,6 @@
 import { remote } from 'webdriverio';
-import { expect } from 'chai';
+import { initializeDriver } from './driverSetup.mjs';
 
-// Constants
-const APP_CAPABILITIES = {
-  platformName: 'Android',
-  'appium:deviceName': 'emulator-5554',
-  'appium:app': './supershare.apk',
-  'appium:automationName': 'UiAutomator2',
-  'appium:newCommandTimeout': 300,
-  'appium:noReset': true,
-  'appium:ignoreHiddenApiPolicyError': true,
-};
 const OTP_DIGITS = ['1', '2', '3', '4'];
 const OTP_FIELDS_XPATHS = [
   "//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[1]/android.widget.EditText",
@@ -26,14 +16,7 @@ describe('Login Test', function () {
   before(async function () {
     console.log("Setting up driver...");
     this.timeout(30000);
-
-    driver = await remote({
-      logLevel: 'info',
-      path: '/',
-      port: 4725,
-      capabilities: APP_CAPABILITIES,
-    });
-
+    driver = await initializeDriver();
     console.log('Driver setup complete, waiting for the app to load...');
     await driver.pause(2000);
   });

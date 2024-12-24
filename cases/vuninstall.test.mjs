@@ -1,4 +1,5 @@
 import { remote } from "webdriverio";
+import { initializeDriver } from './driverSetup.mjs';
 (async function uninstallAndReinstall() {
 
     describe('Unistall and install simple connect', function () {
@@ -6,24 +7,7 @@ import { remote } from "webdriverio";
         before(async function () {
             console.log("setting up driver...");
             this.timeout(30000);
-            const capabilities = {
-                platformName: "Android",
-                "appium:deviceName": "emulator-5554",
-                "appium:app": "./supershare.apk", // Path to your APK
-                "appium:automationName": "UiAutomator2",
-                "appium:newCommandTimeout": 300,
-                "appium:ensureWebviewsHavePages": true,
-                "appium:nativeWebScreenshot": true,
-                "appium:noReset": true,
-                "appium:ignoreHiddenApiPolicyError": true,
-            };
-
-             driver = await remote({
-                logLevel: "info",
-                path: "/",
-                port: 4725,
-                capabilities,
-            });
+            driver = await initializeDriver();
             console.log('Driver setup complete, waiting for the app to load...');
         await driver.pause(2000);  // Adjust pause time if necessary
         })

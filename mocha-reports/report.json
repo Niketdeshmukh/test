@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2024-12-24T10:21:32.239Z",
-    "end": "2024-12-24T10:22:21.406Z",
-    "duration": 49167,
+    "start": "2024-12-24T10:30:40.795Z",
+    "end": "2024-12-24T10:31:31.730Z",
+    "duration": 50935,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "12e117be-b96c-4721-93d2-2da9dbcf730b",
+      "uuid": "e1d2978c-d68e-44ac-9090-f0058c6dfc2a",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "373d14f8-502d-4c14-bf8e-f8cffe05aa21",
+          "uuid": "a269803a-0f0d-4dd3-91f6-fc2215c7cabe",
           "title": "Unistall and install simple connect",
           "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
           "file": "/cases/masterSuite.test.mjs",
@@ -36,17 +36,17 @@
               "title": "\"before all\" hook in \"Unistall and install simple connect\"",
               "fullTitle": "Unistall and install simple connect \"before all\" hook in \"Unistall and install simple connect\"",
               "timedOut": false,
-              "duration": 7481,
+              "duration": 8054,
               "state": null,
               "speed": null,
               "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "console.log(\"setting up driver...\");\nthis.timeout(30000);\nconst capabilities = {\n    platformName: \"Android\",\n    \"appium:deviceName\": \"emulator-5554\",\n    \"appium:app\": \"./supershare.apk\", // Path to your APK\n    \"appium:automationName\": \"UiAutomator2\",\n    \"appium:newCommandTimeout\": 300,\n    \"appium:ensureWebviewsHavePages\": true,\n    \"appium:nativeWebScreenshot\": true,\n    \"appium:noReset\": true,\n    \"appium:ignoreHiddenApiPolicyError\": true,\n};\n driver = await remote({\n    logLevel: \"info\",\n    path: \"/\",\n    port: 4725,\n    capabilities,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\n        await driver.pause(2000);  // Adjust pause time if necessary",
+              "code": "console.log(\"setting up driver...\");\nthis.timeout(30000);\ndriver = await initializeDriver();\nconsole.log('Driver setup complete, waiting for the app to load...');\n        await driver.pause(2000);  // Adjust pause time if necessary",
               "err": {},
-              "uuid": "064c9062-ef90-4295-aa6e-71084b3f46cf",
-              "parentUUID": "373d14f8-502d-4c14-bf8e-f8cffe05aa21",
+              "uuid": "3840e5ee-b72c-41ad-89d9-0de30bc34bd8",
+              "parentUUID": "a269803a-0f0d-4dd3-91f6-fc2215c7cabe",
               "isHook": true,
               "skipped": false
             }
@@ -56,7 +56,7 @@
               "title": "\"after all\" hook in \"Unistall and install simple connect\"",
               "fullTitle": "Unistall and install simple connect \"after all\" hook in \"Unistall and install simple connect\"",
               "timedOut": false,
-              "duration": 282,
+              "duration": 296,
               "state": null,
               "speed": null,
               "pass": false,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "console.log('Closing driver session');\nif(driver){\n    await driver.deleteSession();\n    console.log('Driver session closed');\n}else{\n    console.log('Driver session not created. Skipping session cleanup');\n    \n}",
               "err": {},
-              "uuid": "235b4655-df5d-4252-b5b1-1bddf6379e1d",
-              "parentUUID": "373d14f8-502d-4c14-bf8e-f8cffe05aa21",
+              "uuid": "abc97f08-2095-486e-9345-f99dbcc5ab83",
+              "parentUUID": "a269803a-0f0d-4dd3-91f6-fc2215c7cabe",
               "isHook": true,
               "skipped": false
             }
@@ -76,7 +76,7 @@
               "title": "should uninstall and install the app",
               "fullTitle": "Unistall and install simple connect should uninstall and install the app",
               "timedOut": false,
-              "duration": 5062,
+              "duration": 5238,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -85,26 +85,26 @@
               "context": null,
               "code": "console.log('Running log');\nawait driver.removeApp('com.simpleenergy.app');\n        console.log('App uninstalled successfully!');\n\n        // Reinstall the app\n        await driver.installApp(\"./supershare.apk\");\n        console.log('App reinstalled successfully!');",
               "err": {},
-              "uuid": "7530973b-4227-48f8-b384-c8b6bdd083ac",
-              "parentUUID": "373d14f8-502d-4c14-bf8e-f8cffe05aa21",
+              "uuid": "f575a9e9-9124-4f5b-8f31-0aa1e9e0e625",
+              "parentUUID": "a269803a-0f0d-4dd3-91f6-fc2215c7cabe",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "7530973b-4227-48f8-b384-c8b6bdd083ac"
+            "f575a9e9-9124-4f5b-8f31-0aa1e9e0e625"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 5062,
+          "duration": 5238,
           "root": false,
           "rootEmpty": false,
           "_timeout": 30000
         },
         {
-          "uuid": "ea717b50-10c4-484b-9b86-a665f5462319",
+          "uuid": "01474e76-06fb-4e96-8169-9a5d1ee9534a",
           "title": "Login Test",
           "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
           "file": "/cases/masterSuite.test.mjs",
@@ -113,17 +113,17 @@
               "title": "\"before all\" hook in \"Login Test\"",
               "fullTitle": "Login Test \"before all\" hook in \"Login Test\"",
               "timedOut": false,
-              "duration": 8595,
+              "duration": 9600,
               "state": null,
               "speed": null,
               "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "console.log(\"Setting up driver...\");\nthis.timeout(30000);\ndriver = await remote({\n  logLevel: 'info',\n  path: '/',\n  port: 4725,\n  capabilities: APP_CAPABILITIES,\n});\nconsole.log('Driver setup complete, waiting for the app to load...');\nawait driver.pause(2000);",
+              "code": "console.log(\"Setting up driver...\");\nthis.timeout(30000);\ndriver = await initializeDriver();\nconsole.log('Driver setup complete, waiting for the app to load...');\nawait driver.pause(2000);",
               "err": {},
-              "uuid": "8a9e9af3-dfa5-41b6-8161-02b0fa2d41f6",
-              "parentUUID": "ea717b50-10c4-484b-9b86-a665f5462319",
+              "uuid": "eec0c208-beca-4f3d-8757-63ecc74b1218",
+              "parentUUID": "01474e76-06fb-4e96-8169-9a5d1ee9534a",
               "isHook": true,
               "skipped": false
             }
@@ -133,7 +133,7 @@
               "title": "\"after all\" hook in \"Login Test\"",
               "fullTitle": "Login Test \"after all\" hook in \"Login Test\"",
               "timedOut": false,
-              "duration": 130,
+              "duration": 213,
               "state": null,
               "speed": null,
               "pass": false,
@@ -142,8 +142,8 @@
               "context": null,
               "code": "console.log('Ending the login test session...');\nif (driver) {\n  await driver.deleteSession();\n  console.log('Driver session closed.');\n} else {\n  console.log('Driver session not created. Skipping session cleanup.');\n}",
               "err": {},
-              "uuid": "cfc2ba93-2a60-4993-a741-fab1e3792e61",
-              "parentUUID": "ea717b50-10c4-484b-9b86-a665f5462319",
+              "uuid": "d1a8efbf-01b9-447a-9612-194b5cde83ec",
+              "parentUUID": "01474e76-06fb-4e96-8169-9a5d1ee9534a",
               "isHook": true,
               "skipped": false
             }
@@ -153,7 +153,7 @@
               "title": "should log in successfully with OTP",
               "fullTitle": "Login Test should log in successfully with OTP",
               "timedOut": false,
-              "duration": 27610,
+              "duration": 27524,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -162,26 +162,26 @@
               "context": null,
               "code": "try {\n  console.log(\"Launching the app...\");\n  await driver.execute('mobile: activateApp', { appId: 'com.simpleenergy.app' });\n  console.log(\"App launched successfully.\");\n  await driver.pause(2000);\n  // Sign-in button\n  const signinButton = await driver.$('//android.widget.Button');\n  await signinButton.click();\n  await driver.pause(1000);\n  // Cancel popup\n  console.log('Waiting for popup to appear...');\n  const cancelButton = await driver.$('//android.widget.ImageView[@content-desc=\"Cancel\"]');\n  await cancelButton.click();\n  console.log('Popup canceled, proceeding to login screen...');\n  // Phone number input\n  const numberField = await driver.$('//android.widget.EditText');\n  await numberField.waitForDisplayed({ timeout: 5000 });\n  await numberField.click();\n  console.log('Focused on number field');\n  await driver.pause(1000); // Allow the field to be focused\n  const PHONE_NUMBER = '9480356496';\n  await numberField.setValue(PHONE_NUMBER);\n  console.log(`Entered phone number: ${PHONE_NUMBER}`);\n  // Submit button\n  const submitButton = await driver.$('//android.widget.Button');\n  await submitButton.click();\n  console.log('Submitted phone number and waiting for OTP...');\n  await driver.pause(3000);\n  // Enter OTP digits\n  for (let i = 0; i < OTP_DIGITS.length; i++) {\n    const otpField = await driver.$(OTP_FIELDS_XPATHS[i]);\n    await otpField.waitForDisplayed({ timeout: 7000 });\n    await otpField.setValue(OTP_DIGITS[i]);\n    console.log(`Entered OTP digit '${OTP_DIGITS[i]}' in field ${i + 1}`);\n  }\n  await driver.pause(3000);\n  // Allow permissions\n  const allowButton = await driver.$('//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_button\"]');\n  await allowButton.click();\n  await driver.pause(1000);\n  // Verify dashboard\n  console.log('Waiting for dashboard...');\n  const dashboardElement = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View');\n  await dashboardElement.waitForDisplayed({ timeout: 15000 });\n  console.log('Successfully redirected to the dashboard!');\n} catch (err) {\n  console.error('An error occurred during the login test:', err.message);\n}",
               "err": {},
-              "uuid": "9bab4952-6d36-4b57-b95c-ac1586bc4736",
-              "parentUUID": "ea717b50-10c4-484b-9b86-a665f5462319",
+              "uuid": "67ebdaa7-09d6-4ed5-ac80-56c6c3f34918",
+              "parentUUID": "01474e76-06fb-4e96-8169-9a5d1ee9534a",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "9bab4952-6d36-4b57-b95c-ac1586bc4736"
+            "67ebdaa7-09d6-4ed5-ac80-56c6c3f34918"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 27610,
+          "duration": 27524,
           "root": false,
           "rootEmpty": false,
           "_timeout": 30000
         },
         {
-          "uuid": "e4d6875e-de1a-42e0-8608-adf222d8a4cb",
+          "uuid": "e209f233-ee84-4aed-be9d-a168ae26282b",
           "title": "Complete Test Suite",
           "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
           "file": "/cases/masterSuite.test.mjs",
@@ -192,7 +192,7 @@
               "title": "should run all test files in sequence",
               "fullTitle": "Complete Test Suite should run all test files in sequence",
               "timedOut": false,
-              "duration": 1,
+              "duration": 0,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -201,20 +201,20 @@
               "context": null,
               "code": "console.log('All tests are imported and will run sequentially.');",
               "err": {},
-              "uuid": "335a2191-6b17-48e5-983e-10470642e311",
-              "parentUUID": "e4d6875e-de1a-42e0-8608-adf222d8a4cb",
+              "uuid": "af6e692e-ef7f-4bc9-8c98-e2056058eb9b",
+              "parentUUID": "e209f233-ee84-4aed-be9d-a168ae26282b",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "335a2191-6b17-48e5-983e-10470642e311"
+            "af6e692e-ef7f-4bc9-8c98-e2056058eb9b"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 1,
+          "duration": 0,
           "root": false,
           "rootEmpty": false,
           "_timeout": 30000

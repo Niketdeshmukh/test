@@ -1,30 +1,13 @@
 import { expect } from "chai";
 import { remote } from "webdriverio";
-
+import { initializeDriver } from './driverSetup.mjs';
 describe("Manage Address Test", function () {
     let driver;
 
     before(async function () {
         console.log("Setting up the driver...");
         this.timeout(30000); // Allowing enough time for driver setup
-        const capabilities = {
-            platformName: "Android",
-            "appium:deviceName": "emulator-5554",
-            "appium:app": "./dev-release.apk",
-            "appium:automationName": "UiAutomator2",
-            "appium:newCommandTimeout": 300,
-            "appium:ensureWebviewsHavePages": true,
-            "appium:nativeWebScreenshot": true,
-            "appium:noReset": true,
-            "appium:ignoreHiddenApiPolicyError": true,
-        };
-
-        driver = await remote({
-            logLevel: "info",
-            path: "/",
-            port: 4725,
-            capabilities,
-        });
+        driver = await initializeDriver();
         console.log("Driver setup complete.");
     });
 

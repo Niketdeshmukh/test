@@ -1,6 +1,6 @@
 import { remote } from 'webdriverio';
 import { expect } from 'chai';
-
+import { initializeDriver } from './driverSetup.mjs';
 describe('Email Validation Test', function () {
   let driver;
   const emailDomains = [
@@ -13,23 +13,7 @@ describe('Email Validation Test', function () {
 
   before(async function () {
     this.timeout(40000);
-    const capabilities = {
-      platformName: 'Android',
-      'appium:deviceName': 'emulator-5554',
-      'appium:app': './dev-release.apk',
-      'appium:automationName': 'UiAutomator2',
-      'appium:newCommandTimeout': 300,
-      'appium:noReset': true,
-      'appium:ignoreHiddenApiPolicyError': true,
-    };
-
-    driver = await remote({
-      logLevel: 'info',
-      path: '/',
-      port: 4725,
-      capabilities,
-    });
-
+    driver = await initializeDriver();
     console.log('Driver setup complete, waiting for the app to load...');
     await driver.pause(2000);
   });
