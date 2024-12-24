@@ -67,7 +67,7 @@ describe('Change DP Test', function () {
         await driver.$(downloadsFolderXPath).click();
 
         console.log("Selecting the profile image...");
-        const imageXPath = '//android.widget.ImageView[@content-desc="Photo taken on Dec 10, 2024 4:57:13 PM"]';
+        const imageXPath = '//android.widget.ImageView[@content-desc="Photo taken on Dec 10, 2024 4:57 PM"]';
         await driver.$(imageXPath).waitForExist({ timeout: 5000 });
         await driver.$(imageXPath).click();
 

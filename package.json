@@ -4,13 +4,13 @@
   "main": "test.js",
   "scripts": {
     "test": "mocha --require @babel/register --extension mjs --timeout 30000 --reporter mochawesome --reporter-options reportDir=mocha-reports,reportFilename=report,verbose cases/masterSuite.test.mjs",
-    "generate-report": "marge mocha-reports/mochawesome.json --reportDir mocha-reports cases/*.test.mjs"
+    "generate-report": "marge mocha-reports/mochawesome.json --reportDir mocha-reports cases/*.test.mjs",
+    "wdio": "wdio run ./wdio.conf.js"
   },
   "dependencies": {
     "@wdio/appium-service": "^9.4.1",
     "appium": "^2.13.1",
     "appium-doctor": "^1.16.2",
-    "appium-uiautomator2-driver": "^3.9.1",
     "appium-wait-plugin": "^3.0.2",
     "html-pdf": "^3.0.1",
     "pdfkit": "^0.15.2",
@@ -20,6 +20,10 @@
   "devDependencies": {
     "@babel/register": "^7.25.9",
     "@wdio/cli": "^9.4.5",
+    "@wdio/local-runner": "^9.4.5",
+    "@wdio/mocha-framework": "^9.4.4",
+    "@wdio/spec-reporter": "^9.4.4",
+    "appium-uiautomator2-driver": "^3.9.5",
     "chai": "^5.1.2",
     "glob": "^11.0.0",
     "mocha": "^11.0.1",

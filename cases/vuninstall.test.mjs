@@ -9,7 +9,7 @@ import { remote } from "webdriverio";
             const capabilities = {
                 platformName: "Android",
                 "appium:deviceName": "emulator-5554",
-                "appium:app": "./dev-release.apk", // Path to your APK
+                "appium:app": "./supershare.apk", // Path to your APK
                 "appium:automationName": "UiAutomator2",
                 "appium:newCommandTimeout": 300,
                 "appium:ensureWebviewsHavePages": true,
@@ -33,7 +33,7 @@ import { remote } from "webdriverio";
         console.log('App uninstalled successfully!');
 
         // Reinstall the app
-        await driver.installApp("./dev-release.apk");
+        await driver.installApp("./supershare.apk");
         console.log('App reinstalled successfully!');
             
         })

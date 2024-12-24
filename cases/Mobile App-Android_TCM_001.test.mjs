@@ -10,7 +10,7 @@ describe('Splash Screen Validation', function () {
         const capabilities = {
             platformName: "Android",
             "appium:deviceName": "emulator-5554",
-            "appium:app": "./dev-release.apk",
+            "appium:app": "./prod-release.apk",
             "appium:automationName": "UiAutomator2",
             "appium:newCommandTimeout": 300,
             "appium:noReset": true,
