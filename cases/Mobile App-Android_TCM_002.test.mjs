@@ -38,11 +38,11 @@ describe('Walkthrough Screens Validation', function () {
                         id: "finger1",
                         parameters: { pointerType: "touch" },
                         actions: [
-                            { type: "pointerMove", duration: 0, x: width * 0.8, y: height / 2 },
+                            { type: "pointerMove", duration: 0, x: width * 0.9, y: height / 2 }, // Start near the right edge
                             { type: "pointerDown", button: 0 },
-                            { type: "pointerMove", duration: 500, x: width * 0.4, y: height / 2 },
+                            { type: "pointerMove", duration: 500, x: width * 0.1, y: height / 2 }, // End near the left edge
                             { type: "pointerUp", button: 0 },
-                        ],
+                        ],                        
                     },
                 ]);
                 await driver.pause(2000);
@@ -57,24 +57,15 @@ describe('Walkthrough Screens Validation', function () {
                     id: "finger1",
                     parameters: { pointerType: "touch" },
                     actions: [
-                        { type: "pointerMove", duration: 0, x: width * 0.4, y: height / 2 },
+                        { type: "pointerMove", duration: 0, x: width * 0.1, y: height / 2 },
                         { type: "pointerDown", button: 0 },
-                        { type: "pointerMove", duration: 500, x: width * 0.8, y: height / 2 },
+                        { type: "pointerMove", duration: 500, x: width * 0.9, y: height / 2 },
                         { type: "pointerUp", button: 0 },
                     ],
                 },
             ]);
             await driver.pause(2000);
         }
-        // const signinButton = await driver.$('//android.widget.Button');
-        // await signinButton.click();
-
-        // const enterNumberScreen = await driver.$(
-        //     '//android.widget.FrameLayout[@resource-id="com.google.android.gms:id/design_bottom_sheet"]/android.widget.LinearLayout'
-        // );
-
-        // const isScreenDisplayed = await enterNumberScreen.isDisplayed();
-        // expect(isScreenDisplayed, 'Enter Mobile Number screen should be visible').to.be.true;
         console.log('Successfully validated walkthrough screens and navigation.');
     });
 

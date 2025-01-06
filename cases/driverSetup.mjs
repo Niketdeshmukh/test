@@ -5,13 +5,16 @@ export async function initializeDriver() {
   const capabilities = {
     platformName: 'Android',
     'appium:deviceName': 'emulator-5554',
-    'appium:app': './supershare.apk', // Path to your APK
+    'appium:app': './supershare.apk',
+    'appium:platformVersion': '15.0', // Path to your APK
     'appium:automationName': 'UiAutomator2',
-    'appium:newCommandTimeout': 300,
+    'appium:newCommandTimeout': 120000,
     'appium:ensureWebviewsHavePages': true,
     'appium:nativeWebScreenshot': true,
     'appium:noReset': true,
     'appium:ignoreHiddenApiPolicyError': true,
+    'appium:uiautomator2ServerLaunchTimeout': 120000, 
+
   };
 
   const driver = await remote({
