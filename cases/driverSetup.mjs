@@ -43,11 +43,13 @@ export async function initializeDriver() {
     'appium:platformVersion': platformVersion,
     'appium:app': './supershare.apk', // Path to your APK
     'appium:automationName': 'UiAutomator2',
-    'appium:newCommandTimeout': 300,
+    'appium:newCommandTimeout': 120000,
     'appium:ensureWebviewsHavePages': true,
     'appium:nativeWebScreenshot': true,
     'appium:noReset': true,
     'appium:ignoreHiddenApiPolicyError': true,
+    'appium:uiautomator2ServerLaunchTimeout': 120000, 
+
   };
 
   const driver = await remote({

@@ -1,27 +1,17 @@
 import { expect } from 'chai';
-import { remote } from 'webdriverio';
-import { initializeDriver } from './driverSetup.mjs';
+import { getDriver } from './driverManager.mjs'; // Use the shared driver utility
+
 describe('Verify Field Length Test', function () {
     let driver;
 
-    before(async function () {
+    before(function () {
         console.log('Setting up driver...');
-        this.timeout(30000); // 30 seconds for setup
-        driver = await initializeDriver();
+        driver = getDriver(); // Access the shared driver
         console.log('Driver setup complete, waiting for the app to load...');
-        await driver.pause(2000);
     });
 
     it('should validate the max length of the Name and Email fields', async function () {
         console.log("Navigating to the profile section...");
-
-        // const profileButton = await driver.$(
-        //     '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[2]'
-        // );
-        // await profileButton.click();
-        // await driver.pause(2000);
-
-        console.log("Clicking on the 'Edit Profile' button...");
         const editProfileButton = await driver.$(
             '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View[2]/android.view.View/android.widget.Button'
         );
@@ -56,27 +46,14 @@ describe('Verify Field Length Test', function () {
             '//android.widget.ScrollView/android.view.View[4]/android.widget.Button'
         );
         await saveButton.click();
-        console.log("Saved button clicked !!!!!!!!!!!!!!!!!!!!!!!!");
-        
-        await driver.pause(1000)
-        // const back = await driver.$('//android.widget.ScrollView/android.view.View[1]/android.widget.Button');
-        // await back.click();
-        // console.log("Back button clicked !!!!!!!!!!!!!!!!!!!!!!!");
-        
         console.log("Changes saved successfully!");
+
         const homeButton = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]');
         await homeButton.click();
         console.log("Home button clicked");
-        
     });
 
-    after(async function () {
-        console.log("Ending the verify field length test session...");
-        if (driver) {
-            await driver.deleteSession();
-            console.log('Driver session closed.');
-        } else {
-            console.log('Driver session not created. Skipping session cleanup.');
-        }
+    after(function () {
+        console.log("No cleanup needed as driver session is managed centrally.");
     });
 });
