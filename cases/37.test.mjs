@@ -1,12 +1,12 @@
 import { expect } from 'chai';
-import { getDriver } from './driverManager.mjs'; // Use the shared driver utility
+import { initializeDriver } from './driverSetup.mjs'; // Use the shared driver utility
 
 describe('Verify Field Length Test', function () {
     let driver;
 
     before(function () {
         console.log('Setting up driver...');
-        driver = getDriver(); // Access the shared driver
+        driver = initializeDriver(); // Access the shared driver
         console.log('Driver setup complete, waiting for the app to load...');
     });
 
