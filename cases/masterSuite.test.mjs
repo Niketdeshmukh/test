@@ -1,10 +1,17 @@
+<<<<<<< HEAD
 // Import all test files sequentially
+=======
+import { setupEnvironment } from './setup.mjs';
+import { expect } from 'chai';
+import { initializeDriver, getDriver } from './driverManager.mjs';
+import { generateCapabilities, getConnectedDevices } from './deviceCapabilities.mjs'; // Import the required functions
+import './testingdevice.test.mjs'; // Import other test cases
+>>>>>>> 063940ec1d5b1e104311b54f47cf0fa630b490b9
 import './basic.test.mjs';
 import './validateLogo.test.mjs';
 import './logout.test.mjs'
 import './vuninstall.test.mjs';
-import './Mobile App-Android_TCM_001.test.mjs'
-import './Mobile App-Android_TCM_002.test.mjs'
+import './testingdevice.test.mjs'
 import './vv16.test.mjs';
 import './32.test.mjs'
 import './37.test.mjs'
