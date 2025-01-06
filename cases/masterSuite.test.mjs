@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 import { initializeDriver } from './driverSetup.mjs';
-import './testingdevice.test.mjs'; // Import other test cases
 import './basic.test.mjs';
 import './validateLogo.test.mjs';
 import './logout.test.mjs'
