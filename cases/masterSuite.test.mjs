@@ -1,9 +1,10 @@
-import { expect } from 'chai';
-import { initializeDriver } from './driverSetup.mjs';
+// Import all test files sequentially
 import './basic.test.mjs';
 import './validateLogo.test.mjs';
 import './logout.test.mjs'
 import './vuninstall.test.mjs';
+import './Mobile App-Android_TCM_001.test.mjs'
+import './Mobile App-Android_TCM_002.test.mjs'
 import './vv16.test.mjs';
 import './32.test.mjs'
 import './37.test.mjs'
@@ -21,11 +22,8 @@ import './DLuploading.test.mjs'
 import './RCuploading.test.mjs'
 import './ICuploading.test.mjs'
 
-
-
 describe('Complete Test Suite', function () {
-    it('should run all test files in sequence', function () {
-      console.log('All tests are imported and will run sequentially.');
-    });
+  it('should run all test files in sequence', function () {
+    console.log('All tests are imported and will run sequentially.');
   });
-  
+});
