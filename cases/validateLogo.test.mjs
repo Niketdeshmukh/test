@@ -3,7 +3,7 @@ import { initializeDriver } from './driverSetup.mjs';
 
 describe('Logo Validation', function () {
     let driver;
-    // this.timeout(30000);
+    this.timeout(50000);
     before(async function () {
         driver = await initializeDriver();
         await driver.pause(30000); // Adjust pause time if necessary
