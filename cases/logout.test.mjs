@@ -41,7 +41,7 @@ describe("User Logout Functionality", function () {
         await driver.pause(2000);
         // Click on the Logout button
         const logoutButton = await driver.$(
-            '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.widget.ScrollView/android.view.View/android.view.View[5]/android.widget.Button'
+            '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.widget.ScrollView/android.view.View/android.view.View[6]/android.widget.Button'
         );
         await logoutButton.click();
         await driver.pause(1000);
