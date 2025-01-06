@@ -1,17 +1,10 @@
-<<<<<<< HEAD
-// Import all test files sequentially
-=======
-import { setupEnvironment } from './setup.mjs';
 import { expect } from 'chai';
-import { initializeDriver, getDriver } from './driverManager.mjs';
-import { generateCapabilities, getConnectedDevices } from './deviceCapabilities.mjs'; // Import the required functions
+import { initializeDriver } from './driverSetup.mjs';
 import './testingdevice.test.mjs'; // Import other test cases
->>>>>>> 063940ec1d5b1e104311b54f47cf0fa630b490b9
 import './basic.test.mjs';
 import './validateLogo.test.mjs';
 import './logout.test.mjs'
 import './vuninstall.test.mjs';
-import './testingdevice.test.mjs'
 import './vv16.test.mjs';
 import './32.test.mjs'
 import './37.test.mjs'
@@ -50,7 +43,7 @@ describe('Master Test Suite', function () {
     });
 
     it('should initialize the shared driver', async function () {
-        const currentDriver = await getDriver(); // This should return the initialized driver
+        const currentDriver = await initializeDriver(); // This should return the initialized driver
         expect(currentDriver).to.not.be.null;
     });
 
