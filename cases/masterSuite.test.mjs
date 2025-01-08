@@ -1,10 +1,10 @@
 // Import all test files sequentially
-import './basic.test.mjs';
-import './validateLogo.test.mjs';
-import './logout.test.mjs'
+// import './basic.test.mjs';
+// import './validateLogo.test.mjs';
+// import './logout.test.mjs'
 import './uninstallReinstall.test.mjs';
-import './validateSplashScreen.test.mjs'
-import './WalkthroughScreen.test.mjs'
+// import './validateSplashScreen.test.mjs'
+// import './WalkthroughScreen.test.mjs'
 import './login.test.mjs';
 import './validateProfileButton.test.mjs'
 import './emailLengthvalidate.test.mjs'

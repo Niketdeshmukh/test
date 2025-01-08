@@ -14,7 +14,7 @@ describe('Splash Screen Validation', function () {
 
     it('should validate the splash screen is visible', async function () {
         console.log('Re-launching the app...');
-
+        await driver.pause(2000)
         await driver.execute('mobile: activateApp', { appId: 'com.simpleenergy.app' });
         console.log('App re-launched successfully. Validating splash screen...');
 

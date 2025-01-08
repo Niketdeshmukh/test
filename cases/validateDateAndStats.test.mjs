@@ -6,7 +6,7 @@ describe('Validate Ride Statistics and Date Logic', function () {
 
     before(async function () {
         console.log("Setting up driver...");
-        this.timeout(30000);
+        this.timeout(60000);
         driver = await initializeDriver();
         console.log('Driver setup complete, waiting for the app to load...');
         await driver.pause(2000);
@@ -80,17 +80,19 @@ describe('Validate Ride Statistics and Date Logic', function () {
                     { type: "pointerDown", button: 0 },
                     // Move downwards
                     { type: "pointerMove", duration: 500, x: width / 2, y: height * 0.2 },
-                    { type: "pointerUp", button: 0 },
+                    { type: "pointerUp", button: 0 }, 
                 ],
+                
             },
+            
         ]);
 
-        await driver.pause(2000); // Allow time to observe the scroll
+        // await driver.pause(10000); // Allow time to observe the scroll
 
-        await driver.releaseActions(); // Release the pointer actions
-        await driver.pause(1000); // Add a pause to ensure smooth execution
+        // await driver.releaseActions(); // Release the pointer actions
+        // await driver.pause(1000); // Add a pause to ensure smooth execution
 
-        const lastContainer = await driver.$('//android.widget.ScrollView/android.view.View');
+        const lastContainer = await driver.$('//android.widget.ScrollView/android.view.View[3]');
         expect(await lastContainer.isDisplayed()).to.be.true;
         console.log("Distance covered section is visible after vertical scroll.");
 

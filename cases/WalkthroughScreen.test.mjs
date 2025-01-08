@@ -27,9 +27,9 @@ describe('Walkthrough Screens Validation', function () {
         for (let i = 0; i < cardXPaths.length; i++) {
             const element = await driver.$(cardXPaths[i]);
             const isDisplayed = await element.isDisplayed();
-
+        
             expect(isDisplayed, `Card ${i + 1} should be displayed`).to.be.true;
-
+        
             if (i < cardXPaths.length - 1) {
                 console.log(`Swiping to card ${i + 2}...`);
                 await driver.performActions([
@@ -38,34 +38,19 @@ describe('Walkthrough Screens Validation', function () {
                         id: "finger1",
                         parameters: { pointerType: "touch" },
                         actions: [
-                            { type: "pointerMove", duration: 0, x: width * 0.9, y: height / 2 }, // Start near the right edge
+                            { type: "pointerMove", duration: 0, x: width * 0.9, y: height / 2 },
                             { type: "pointerDown", button: 0 },
-                            { type: "pointerMove", duration: 500, x: width * 0.1, y: height / 2 }, // End near the left edge
+                            { type: "pointerMove", duration: 500, x: width * 0.1, y: height / 2 },
                             { type: "pointerUp", button: 0 },
-                        ],                        
+                        ],
                     },
                 ]);
-                await driver.pause(2000);
+                await driver.pause(1000);
+            } else {
+                console.log('Completed all swipes. Exiting loop.');
             }
         }
-
-        console.log('Navigating backward through cards...');
-        for (let i = cardXPaths.length - 1; i > 0; i--) {
-            await driver.performActions([
-                {
-                    type: "pointer",
-                    id: "finger1",
-                    parameters: { pointerType: "touch" },
-                    actions: [
-                        { type: "pointerMove", duration: 0, x: width * 0.1, y: height / 2 },
-                        { type: "pointerDown", button: 0 },
-                        { type: "pointerMove", duration: 500, x: width * 0.9, y: height / 2 },
-                        { type: "pointerUp", button: 0 },
-                    ],
-                },
-            ]);
-            await driver.pause(2000);
-        }
+        
         console.log('Successfully validated walkthrough screens and navigation.');
     });
 

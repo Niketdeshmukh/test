@@ -41,9 +41,9 @@ export async function initializeDriver() {
     platformName: 'Android',
     'appium:deviceName': deviceName,
     'appium:platformVersion': platformVersion,
-    'appium:app': './supershare.apk', // Path to your APK
+    'appium:app': 'tests/supershare.apk', // Path to your APK
     'appium:automationName': 'UiAutomator2',
-    'appium:newCommandTimeout': 120000,
+    'appium:newCommandTimeout':0,
     'appium:ensureWebviewsHavePages': true,
     'appium:nativeWebScreenshot': true,
     'appium:noReset': true,

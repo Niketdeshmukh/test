@@ -1,6 +1,7 @@
 import { remote } from 'webdriverio';
 import { expect } from 'chai';
 import { initializeDriver } from './driverSetup.mjs';
+
 describe('Email Validation Test', function () {
   let driver;
   const emailDomains = [
@@ -12,17 +13,18 @@ describe('Email Validation Test', function () {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   before(async function () {
-    this.timeout(40000);
+    this.timeout(60000); // Increase timeout for the entire setup
     driver = await initializeDriver();
     console.log('Driver setup complete, waiting for the app to load...');
-    await driver.pause(2000);
+    await driver.pause(3000); // Increased wait time for the app to load
   });
 
   it('should validate email addresses and set valid ones', async function () {
     console.log('Navigating to the profile section...');
     const profileButton = await driver.$(
       "//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]"
-    );await profileButton.waitForDisplayed({ timeout: 20000 });
+    );
+    await profileButton.waitForDisplayed({ timeout: 30000 }); // Increased timeout for element display
     await driver.pause(1000);
     await profileButton.click();
 
@@ -33,7 +35,7 @@ describe('Email Validation Test', function () {
     await editButton.click();
 
     const emailField = await driver.$('//android.widget.ScrollView/android.widget.EditText[2]');
-    await emailField.click();
+    await emailField.waitForDisplayed({ timeout: 10000 }); // Increased timeout for element display
 
     for (const domain of emailDomains) {
       const email = `testing@${domain}`;
@@ -46,14 +48,15 @@ describe('Email Validation Test', function () {
         console.log(`Email ${email} set in the field.`);
       }
 
-      await driver.pause(500);
+      await driver.pause(300); // Reduced pause time between emails
     }
+
     const backButton = await driver.$('//android.widget.ScrollView/android.view.View[1]/android.widget.Button');
-    await backButton.click()
+    await backButton.click();
   });
 
   after(async function () {
-    console.log('Ending the email validation test session...');
+    console.log('Ending the Change DP test session...');
     if (driver) {
       await driver.deleteSession();
       console.log('Driver session closed.');

@@ -4,9 +4,9 @@ import { initializeDriver } from './driverSetup.mjs'; // Use the shared driver u
 describe('Verify Field Length Test', function () {
     let driver;
 
-    before(function () {
+    before(async function () {
         console.log('Setting up driver...');
-        driver = initializeDriver(); // Access the shared driver
+        driver =await initializeDriver(); // Access the shared driver
         console.log('Driver setup complete, waiting for the app to load...');
     });
 
@@ -15,6 +15,7 @@ describe('Verify Field Length Test', function () {
         const editProfileButton = await driver.$(
             '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View[2]/android.view.View/android.widget.Button'
         );
+        await editProfileButton.waitForDisplayed({ timeout: 5000 });
         await editProfileButton.click();
         await driver.pause(2000);
 
