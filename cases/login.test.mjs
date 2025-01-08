@@ -50,14 +50,15 @@ describe('Login Test', function () {
       console.log(`Entered phone number: ${PHONE_NUMBER}`);
 
       // Submit button
-      const submitButton = await waitForElement(driver, '//android.widget.Button', 10000);
+      const submitButton = await waitForElement(driver, '//android.widget.Button', 5000);
       await submitButton.click();
       console.log('Submitted phone number and waiting for OTP...');
       await driver.pause(3000);
 
       // Enter OTP digits
+      
       for (let i = 0; i < OTP_DIGITS.length; i++) {
-        const otpField = await driver.$(driver, OTP_FIELDS_XPATHS[i]);
+        const otpField = await driver.$( OTP_FIELDS_XPATHS[i]);
         await otpField.waitForDisplayed({ timeout: 15000 });
         await otpField.setValue(OTP_DIGITS[i]);
         console.log(`Entered OTP digit '${OTP_DIGITS[i]}' in field ${i + 1}`);
