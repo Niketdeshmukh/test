@@ -4,10 +4,10 @@ import { initializeDriver } from './driverSetup.mjs';
 
 describe('Email Validation Test', function () {
   let driver;
-  const emailDomains = [
+  const emailDomains = ['free.fr',
     'gmail.com', 'yahoo.com', 'hotmail.com', 'aol.com', 'hotmail.co.uk', 'hotmail.fr',
     'msn.com', 'yahoo.fr', 'wanadoo.f', 'orange.fr', 'comcast.n', 'yahoo.co.uk',
-    'y.com.br', 'yahoo.co.in', 'live.com', 'rediffmail.com', 'free.fr', 'gmx.de',
+    'y.com.br', 'yahoo.co.in', 'live.com', 'rediffmail.com',  'gmx.de',
     'web.d', 'yandex.ru'
   ];
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -48,7 +48,7 @@ describe('Email Validation Test', function () {
         console.log(`Email ${email} set in the field.`);
       }
 
-      await driver.pause(300); // Reduced pause time between emails
+      await driver.pause(100); // Reduced pause time between emails
     }
 
     const backButton = await driver.$('//android.widget.ScrollView/android.view.View[1]/android.widget.Button');
