@@ -65,14 +65,14 @@ describe('Change DP Test', function () {
             throw new Error('No image files found in the Downloads folder.');
         }sd
 
-        // console.log("Waiting for Save Changes button...");
-        // const saveChangesButton = await driver.$(
-        //     "//android.widget.ScrollView/android.view.View[3]/android.widget.Button"
-        // );
-        // await saveChangesButton.waitForExist({ timeout: 5000 });
+        console.log("Waiting for Save Changes button...");
+        const saveChangesButton = await driver.$(
+            "//android.widget.ScrollView/android.view.View[3]/android.widget.Button"
+        );
+        await saveChangesButton.waitForExist({ timeout: 5000 });
 
-        // console.log("Saving the changes...");
-        // await saveChangesButton.click();
+        console.log("Saving the changes...");
+        await saveChangesButton.click();
     });
 
     after(async function () {
