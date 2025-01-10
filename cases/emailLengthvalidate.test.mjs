@@ -49,7 +49,7 @@ describe('Verify Field Length Test', function () {
         await saveButton.click();
         console.log("Changes saved successfully!");
 
-        const homeButton = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]');
+        const homeButton = await driver.$('//android.widget.ScrollView/android.view.View[1]/android.widget.Button');
         await homeButton.click();
         console.log("Home button clicked");
     });
