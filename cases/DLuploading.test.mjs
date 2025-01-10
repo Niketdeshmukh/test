@@ -1,24 +1,30 @@
 import { remote } from "webdriverio";
 import { expect } from "chai";
 import { initializeDriver } from './driverSetup.mjs';
-
+import { execSync } from 'child_process'; 
 (async function documentUploadTest() {
 
     describe('Document Upload Flow', function () {
         let driver;
         before(async function () {
-            console.log("Setting up driver...");
-            this.timeout(30000);
-            driver = await initializeDriver();
-            console.log('Driver setup complete, waiting for the app to load...');
-            await driver.pause(2000);  // Adjust pause time if necessary
+            this.timeout(60000);
+        driver = await initializeDriver();
+        
+        try {
+            execSync('adb -s emulator-5554 push ./images.pdf /storage/emulated/0/Download/');
+        } catch (error) {
+            console.error('Error pushing profile picture:', error);
+            throw new Error('Failed to push profile picture to emulator Downloads folder');
+        }
+        // await driver.pause(2000);
         });
 
         it('should complete the document upload process', async function () {
+            this.timeout(40000); 
             console.log("Step 1: Clicking on the initial button.");
             const initialButton = await driver.$('//android.widget.ScrollView/android.view.View[2]/android.view.View/android.view.View[1]/android.widget.Button');
             await initialButton.click();
-            await driver.pause(1000);
+            // await driver.pause(1000);
 
             console.log("Step 2: Clicking on the Document button.");
             const documentButton = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.widget.Button');
@@ -40,16 +46,22 @@ import { initializeDriver } from './driverSetup.mjs';
             if (isUploadEnabled) {
                 console.log("Step 6: Clicking on the enabled Upload button.");
                 await uploadButton.click();
-
+                const directoryOption = await driver.$(`//android.widget.ImageButton[@content-desc="Show roots"]`);
+                await driver.pause(1000);
+                await directoryOption.click();
+                const downloadsFolder = await driver.$('//android.widget.TextView[@resource-id="android:id/title" and @text="Downloads"]');
+                // await downloadsFolder.waitForDisplayed({ timeout: 2000 });
+                await downloadsFolder.click();
                 console.log("Step 7: Navigating to the SD card and selecting the first PDF.");
-                const file = await driver.$('(//android.widget.LinearLayout[@resource-id="com.google.android.documentsui:id/nameplate"])[1]/android.widget.RelativeLayout');
-                await file.waitForDisplayed({ timeout: 5000 });
+                const file = await driver.$('//android.widget.TextView[@resource-id="android:id/title" and @text="images.pdf"]');
+                await file.waitForDisplayed({ timeout: 2000 });
                 console.log("PDF file found.");
                 await file.click();
-                await driver.pause(3000);
-
-                console.log("Step 8: Focusing on the File Name field and entering 'Driving Licence'.");
+                await driver.pause(2000);
+                  
                 const fileNameField = await driver.$('//android.widget.EditText[@resource-id="com.simpleenergy.app:id/document_title2_edittext"]');
+                await fileNameField.waitForDisplayed({timeout:10000})
+                await fileNameField.click();
                 await fileNameField.setValue("Driving Licence");
 
                 console.log("Step 9: Checking if the Submit button is enabled.");
