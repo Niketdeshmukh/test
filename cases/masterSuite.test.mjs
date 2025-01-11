@@ -1,26 +1,30 @@
-// Import all test files sequentially
-import './basic.test.mjs';
-import './validateLogo.test.mjs';
-import './logout.test.mjs'
-import './uninstallReinstall.test.mjs';
-import './validateSplashScreen.test.mjs'
-import './WalkthroughScreen.test.mjs'
-import './login.test.mjs';
-import './validateProfileButton.test.mjs'
-import './emailLengthvalidate.test.mjs'
-import './validatingEmptyFeilds.test.mjs'
-import './changeProfile.test.mjs'
-import './editNameEmail.test.mjs'
-import './testSampleEmails.test.mjs';
-import './choseDefaultVehicle.test.mjs'
-import './validateDateAndStats.test.mjs'
-import './renameModel.test.mjs'
-import './editAddress.test.mjs'
-import './clearAddress.test.mjs'
-import './screenOrientation.test.mjs'
-import './DLuploading.test.mjs'
-import './RCuploading.test.mjs'
-import './ICuploading.test.mjs'
+import './others/basic.test.mjs';
+import './validate/validateLogo.test.mjs';
+import './loginLogout/logout.test.mjs'
+import './others/uninstallReinstall.test.mjs';
+import './validate/WalkthroughScreen.test.mjs'
+import './loginLogout/login.test.mjs'
+import './loginLogout/otp.test.mjs'
+import './validate/validateWidgets.test.mjs'
+import './validate/validateProfileButton.test.mjs'
+import './validate/emailLengthvalidate.test.mjs'
+import './validate/validatingEmptyFeilds.test.mjs'
+import './editDetails/changeProfile.test.mjs'
+import './editDetails/editNameEmail.test.mjs'
+import './validate/testSampleEmails.test.mjs';
+import './others/choseDefaultVehicle.test.mjs'
+import './validate/validateDateAndStats.test.mjs'
+import './editDetails/renameModel.test.mjs'
+import './editDetails/editAddress.test.mjs'
+import './editDetails/clearAddress.test.mjs'
+import './others/screenOrientation.test.mjs'
+import './documentUpload/DLuploading.test.mjs'
+import './documentUpload/RCuploading.test.mjs'
+import './documentUpload/ICuploading.test.mjs'
+import "./externalWidgets/termsAndContitions.test.mjs";
+import "./externalWidgets/ownersManual.test.mjs"
+import "./validate/validateRsa.test.mjs";
+import './externalWidgets/bookService.test.mjs'
 
 describe('Complete Test Suite', function () {
   it('should run all test files in sequence', function () {
