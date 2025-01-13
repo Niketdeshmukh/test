@@ -18,12 +18,15 @@ describe('Login Test', function () {
       const signinButton = await waitForElement(driver, '//android.widget.Button', 10000);
       await signinButton.click();
       await driver.pause(1000);
-
-      const cancelButton = await waitForElement(driver, '//android.widget.ImageView[@content-desc="Cancel"]', 10000);
-      if(await allowButton.isDisplayed()){
-        await allowButton.click();
-      }
-
+        const cancelButton = await waitForElement(driver, '//android.widget.ImageView[@content-desc="Cancel"]', 10000);
+        
+        if (await cancelButton.isDisplayed()) {
+          console.log('Cancel button is visible. Clicking the button...');
+          await cancelButton.waitForDisplayed({ timeout: 15000 });
+          await cancelButton.click();
+        } else {
+          console.log('Cancel button is not visible. Ending the test with a success message.');
+        }
       const numberField = await waitForElement(driver, '//android.widget.EditText', 1000);
       await numberField.click();
 
