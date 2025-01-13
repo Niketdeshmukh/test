@@ -1,8 +1,6 @@
 pipeline {
     agent any
-    // tools {
-        // nodejs 'NodeJS' // Ensure you have configured NodeJS in Jenkins
-    // }
+
     stages {
         stage('Install Dependencies') {
             steps {
@@ -12,6 +10,12 @@ pipeline {
         stage('Run Tests') {
             steps {
                 sh 'npm test'
+            }
+        }
+        stage('Generate Reports') {
+            steps {
+                sh 'node pdfgenerator.js'
+                sh 'npm run generate-report'
             }
         }
     }
