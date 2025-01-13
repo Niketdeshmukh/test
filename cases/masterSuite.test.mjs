@@ -1,4 +1,4 @@
-import './others/basic.test.mjs';
+import './basic.test.mjs';
 import './validate/validateLogo.test.mjs';
 import './loginLogout/logout.test.mjs'
 import './others/uninstallReinstall.test.mjs';
