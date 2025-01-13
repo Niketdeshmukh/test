@@ -16,7 +16,7 @@ describe('Otp Test', function () {
     
     driver = await initializeDriver();
     console.log('Driver setup complete, waiting for the app to load...');
-    // await driver.pause(2000);
+    await driver.pause(2000);
   });
 
   it('should log in successfully with OTP', async function () {
