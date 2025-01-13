@@ -11,6 +11,10 @@ describe('Verify Field Length Test', function () {
     });
 
     it('should validate the max length of the Name and Email fields', async function () {
+        this.timeout(40000);
+        const profileButtonSelector =
+            "//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]";
+        await profileButtonSelector.click();
         console.log("Navigating to the profile section...");
         const editProfileButton = await driver.$(
             '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View[2]/android.view.View/android.widget.Button'
