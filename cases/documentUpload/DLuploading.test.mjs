@@ -23,6 +23,25 @@ import { execSync } from 'child_process';
             this.timeout(40000); 
             console.log("Step 1: Clicking on the initial button.");
             const initialButton = await driver.$('//android.widget.ScrollView/android.view.View[2]/android.view.View/android.view.View[1]/android.widget.Button');
+            if (!(await initialButton.isDisplayed())) {
+                console.log("Back button not visible. Performing scroll action...");
+                const { width, height } = await driver.getWindowRect();
+                await driver.performActions([
+                    {
+                        type: "pointer",
+                        id: "finger1",
+                        parameters: { pointerType: "touch" },
+                        actions: [
+                            { type: "pointerMove", duration: 0, x: width / 2, y: height * 0.2 },
+                            { type: "pointerDown", button: 0 },
+                            { type: "pointerMove", duration: 500, x: width / 2, y: height * 0.8 },
+                            { type: "pointerUp", button: 0 },
+                        ],
+                    },
+                ]);
+                await driver.releaseActions();
+            }
+    
             await initialButton.click();
             // await driver.pause(1000);
 
