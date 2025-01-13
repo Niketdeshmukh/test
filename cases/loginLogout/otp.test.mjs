@@ -22,7 +22,6 @@ describe('Otp Test', function () {
   it('should log in successfully with OTP', async function () {
     this.timeout(30000);
     try {
-      await driver.pause(2000);
 
       for (let i = 0; i < OTP_DIGITS.length; i++) {
         const otpField = await driver.$( OTP_FIELDS_XPATHS[i]);
