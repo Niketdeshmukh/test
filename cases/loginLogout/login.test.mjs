@@ -20,7 +20,9 @@ describe('Login Test', function () {
       await driver.pause(1000);
 
       const cancelButton = await waitForElement(driver, '//android.widget.ImageView[@content-desc="Cancel"]', 10000);
-      await cancelButton.click();
+      if(await allowButton.isDisplayed()){
+        await allowButton.click();
+      }
 
       const numberField = await waitForElement(driver, '//android.widget.EditText', 1000);
       await numberField.click();
