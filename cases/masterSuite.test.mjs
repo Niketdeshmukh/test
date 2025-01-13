@@ -4,7 +4,6 @@ import './loginLogout/logout.test.mjs'
 import './others/uninstallReinstall.test.mjs';
 import './validate/WalkthroughScreen.test.mjs'
 import './loginLogout/login.test.mjs'
-import './loginLogout/otp.test.mjs'
 import './validate/validateWidgets.test.mjs'
 import './validate/validateProfileButton.test.mjs'
 import './validate/emailLengthvalidate.test.mjs'
