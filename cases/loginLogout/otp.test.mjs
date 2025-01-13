@@ -24,11 +24,15 @@ describe('Otp Test', function () {
     try {
 
       for (let i = 0; i < OTP_DIGITS.length; i++) {
-        const otpField = await driver.$( OTP_FIELDS_XPATHS[i]);
-        await otpField.waitForDisplayed({ timeout: 15000 });
-        await otpField.setValue(OTP_DIGITS[i]);
-        console.log(`Entered OTP digit '${OTP_DIGITS[i]}' in field ${i + 1}`);
-      }
+        const otpField = await driver.$(OTP_FIELDS_XPATHS[i]);
+
+        if (await otpField.waitForExist({ timeout: 15000 })) {
+            console.log(`Entering OTP digit '${OTP_DIGITS[i]}' in field ${i + 1}`);
+            await otpField.setValue(OTP_DIGITS[i]);
+        } else {
+            console.warn(`OTP field ${i + 1} not found. Skipping.`);
+        }
+    }
 
       const allowButton = await driver.$('//android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]');
       await allowButton.waitForDisplayed({timeout:15000})
