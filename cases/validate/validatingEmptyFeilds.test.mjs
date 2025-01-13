@@ -99,9 +99,6 @@ describe('Edit Details Empty Test', function () {
             console.log("Back button found. Clicking the back button...");
             await backButton.click();
         }
-
-        const backButton1 = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]');
-        await backButton1.click();
     });
 
     after(async function () {
