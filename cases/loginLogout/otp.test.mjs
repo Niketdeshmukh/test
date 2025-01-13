@@ -24,18 +24,18 @@ describe('Otp Test', function () {
     try {
       await driver.pause(2000);
 
-      // for (let i = 0; i < OTP_DIGITS.length; i++) {
-      //   const otpField = await driver.$( OTP_FIELDS_XPATHS[i]);
-      //   await otpField.waitForDisplayed({ timeout: 15000 });
-      //   await otpField.setValue(OTP_DIGITS[i]);
-      //   console.log(`Entered OTP digit '${OTP_DIGITS[i]}' in field ${i + 1}`);
-      // }
+      for (let i = 0; i < OTP_DIGITS.length; i++) {
+        const otpField = await driver.$( OTP_FIELDS_XPATHS[i]);
+        await otpField.waitForDisplayed({ timeout: 15000 });
+        await otpField.setValue(OTP_DIGITS[i]);
+        console.log(`Entered OTP digit '${OTP_DIGITS[i]}' in field ${i + 1}`);
+      }
 
       const allowButton = await driver.$('//android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]');
-
+      await allowButton.waitForDisplayed({timeout:15000})
       if (await allowButton.isDisplayed()) {
         console.log('Allow button is visible. Clicking the button...');
-        await allowButton.waitForDisplayed({timeout:10000})
+        await allowButton.waitForDisplayed({timeout:15000})
         await allowButton.click();
       } else {
         console.log('Allow button is not visible. Ending the test with success message.');
