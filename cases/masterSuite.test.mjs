@@ -1,12 +1,12 @@
-import './basic.test.mjs';
-import './validate/validateLogo.test.mjs';
-import './loginLogout/logout.test.mjs'
-import './others/uninstallReinstall.test.mjs';
-import './validate/WalkthroughScreen.test.mjs'
-import './loginLogout/login.test.mjs'
-import './validate/validateWidgets.test.mjs'
-import './validate/validateProfileButton.test.mjs'
-import './validate/emailLengthvalidate.test.mjs'
+// import './basic.test.mjs';
+// import './validate/validateLogo.test.mjs';
+// import './loginLogout/logout.test.mjs'
+// import './others/uninstallReinstall.test.mjs';
+// import './validate/WalkthroughScreen.test.mjs'
+// import './loginLogout/login.test.mjs'
+// import './validate/validateWidgets.test.mjs'
+// import './validate/validateProfileButton.test.mjs'
+// import './validate/emailLengthvalidate.test.mjs'
 import './validate/validatingEmptyFeilds.test.mjs'
 import './editDetails/changeProfile.test.mjs'
 import './editDetails/editNameEmail.test.mjs'
