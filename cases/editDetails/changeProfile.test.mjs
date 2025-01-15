@@ -7,6 +7,7 @@ describe('Change DP Test', function () {
     let driver;
 
     before(async function () {
+        this.timeout(40000);
         driver = await initializeDriver();
         
         try {
