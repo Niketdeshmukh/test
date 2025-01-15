@@ -1,0 +1,181 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-01-15T13:19:53.490Z",
+    "end": "2025-01-15T13:20:09.565Z",
+    "duration": 16075,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d18c108c-0b09-4f18-a4cc-cdd85253948a",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "98b17ae5-cefe-445b-82bd-986c36bbe2b0",
+          "title": "Change DP Test",
+          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
+          "file": "/cases/masterSuite.test.mjs",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"Change DP Test\"",
+              "fullTitle": "Change DP Test \"before all\" hook in \"Change DP Test\"",
+              "timedOut": false,
+              "duration": 7761,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "this.timeout(40000);\ndriver = await initializeDriver();\nconsole.log(driver)\n\ntry {\n    execSync('adb -s emulator-5554 push ./assests/images.jpeg /storage/emulated/0/Download/');\n    await driver.pause(2000);\n    console.log(\"picture uploaded\")\n} catch (error) {\n    console.error('Error pushing profile picture:', error);\n    throw new Error('Failed to push profile picture to emulator Downloads folder');\n}",
+              "err": {},
+              "uuid": "23ae008c-20b3-4a9d-81ae-91f5c989c6a0",
+              "parentUUID": "98b17ae5-cefe-445b-82bd-986c36bbe2b0",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"Change DP Test\"",
+              "fullTitle": "Change DP Test \"after all\" hook in \"Change DP Test\"",
+              "timedOut": false,
+              "duration": 123,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "console.log('Ending the Change DP test session...');\nif (driver) {\n    await driver.deleteSession();\n    console.log('Driver session closed.');\n} else {\n    console.log('Driver session not created. Skipping session cleanup.');\n}",
+              "err": {},
+              "uuid": "fc448370-3b92-49fe-8df5-33b8023c64c2",
+              "parentUUID": "98b17ae5-cefe-445b-82bd-986c36bbe2b0",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "should change the profile picture",
+              "fullTitle": "Change DP Test should change the profile picture",
+              "timedOut": false,
+              "duration": 8184,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "this.timeout(40000);\nconst profileButton = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]');\nawait profileButton.click();\nconst editButton = await driver.$(\n    `//android.widget.TextView[@text=\"edit details\"]`\n);\nawait editButton.click();\nawait driver.waitUntil(\n    async () => {\n        const changeDPButton = await driver.$(\n            '//android.widget.ScrollView/android.view.View[3]/android.widget.Button'\n        );\n        return await changeDPButton.isExisting();\n    },\n    {\n        timeout: 15000,\n        timeoutMsg: \"Change DP button not found within 15 seconds.\",\n    }\n);\nconsole.log(\"Clicking the Change DP button...\");\nconst changeDPButton = await driver.$(\n    '//android.widget.ScrollView/android.view.View[3]/android.widget.Button'\n);\nawait changeDPButton.click();\nconst allowButton = await driver.$('//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_button\"]');\nif(await allowButton.isDisplayed()){\n    await allowButton.click();\n}\nconst filePicker = await driver.$(\"//android.widget.TextView\");\nawait filePicker.waitForExist({ timeout: 10000 });\nconst downloadsFolderXPath = '//android.widget.RelativeLayout';\nawait driver.$(downloadsFolderXPath).waitForExist({ timeout: 5000 });\nawait driver.$(downloadsFolderXPath).click();\nconst imageFileXPath = '//android.widget.ImageView[@content-desc=\"Photo taken on Dec 26, 2024 2:57 PM\"]';\nawait driver.pause(2000);\nconst imageFiles = await driver.$$(imageFileXPath);// Select all matching image elements\nconsole.log({imageFiles});\n\nif (imageFiles.length > 0) {\n    console.log(\"Selecting the first available image...\");\n    await imageFiles[0].click();\n} else {\n    throw new Error('No image files found in the Downloads folder.');\n}\nconsole.log(\"Waiting for Save Changes button...\");\nconst saveChangesButton = await driver.$(\n    \"//android.widget.ScrollView/android.view.View[3]/android.widget.Button\"\n);\nawait saveChangesButton.waitForExist({ timeout: 5000 });\nconsole.log(\"Saving the changes...\");\nawait saveChangesButton.click();",
+              "err": {},
+              "uuid": "28e3fe06-d3d0-4333-8abb-054ee26c9d49",
+              "parentUUID": "98b17ae5-cefe-445b-82bd-986c36bbe2b0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "28e3fe06-d3d0-4333-8abb-054ee26c9d49"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8184,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 10000
+        },
+        {
+          "uuid": "f5654ea0-d060-4104-955e-d0a816d018d0",
+          "title": "Complete Test Suite",
+          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
+          "file": "/cases/masterSuite.test.mjs",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should run all test files in sequence",
+              "fullTitle": "Complete Test Suite should run all test files in sequence",
+              "timedOut": false,
+              "duration": 1,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "console.log('All tests are imported and will run sequentially.');",
+              "err": {},
+              "uuid": "748f19e6-53fc-4bb7-9f32-f682aafe22e4",
+              "parentUUID": "f5654ea0-d060-4104-955e-d0a816d018d0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "748f19e6-53fc-4bb7-9f32-f682aafe22e4"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 10000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 10000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.3.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "mocha-reports",
+        "reportFilename": "report",
+        "verbose": true
+      },
+      "version": "5.2.0"
+    }
+  }
+}
