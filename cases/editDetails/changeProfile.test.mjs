@@ -9,14 +9,16 @@ describe('Change DP Test', function () {
     before(async function () {
         this.timeout(40000);
         driver = await initializeDriver();
+        console.log(driver)
         
         try {
             execSync('adb -s emulator-5554 push ./images.jpeg /storage/emulated/0/Download/');
+            await driver.pause(2000);
+            console.log("picture uploaded")
         } catch (error) {
             console.error('Error pushing profile picture:', error);
             throw new Error('Failed to push profile picture to emulator Downloads folder');
         }
-        await driver.pause(2000);
     });
 
     it('should change the profile picture', async function () {
