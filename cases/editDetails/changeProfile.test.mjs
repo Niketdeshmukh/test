@@ -24,7 +24,7 @@ describe('Change DP Test', function () {
         const profileButton = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]');
         await profileButton.click();
         const editButton = await driver.$(
-            "//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View[2]/android.view.View/android.widget.Button"
+            `//android.widget.TextView[@text="edit details"]`
         );
         await editButton.click();
 
