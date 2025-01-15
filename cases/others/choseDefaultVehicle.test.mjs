@@ -67,8 +67,8 @@ describe("Switching between vehicles models", function () {
         if(await confirmButton.isDisplayed()){
             await confirmButton.click();
         }
-        // const backButton = driver.$('//android.widget.Button');
-        // await backButton.click();
+        const backButton = driver.$('//android.widget.Button');
+        await backButton.click();
     });
 
     after(async function () {
