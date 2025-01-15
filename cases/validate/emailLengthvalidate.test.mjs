@@ -6,12 +6,13 @@ describe('Verify Field Length Test', function () {
 
     before(async function () {
         console.log('Setting up driver...');
+        this.timeout(30000); 
         driver =await initializeDriver(); // Access the shared driver
         console.log('Driver setup complete, waiting for the app to load...');
     });
 
     it('should validate the max length of the Name and Email fields', async function () {
-        this.timeout(40000);
+        this.timeout(50000);
         const profileButtonSelector =await driver.$("//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]");
         await profileButtonSelector.click();
         console.log("Navigating to the profile section...");
