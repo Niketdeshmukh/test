@@ -1,5 +1,15 @@
 pipeline {
     agent any
+    stages {
+        stage('Verify Environment') {
+            steps {
+                sh '''
+                echo "ANDROID_HOME=$ANDROID_HOME"
+                echo "PATH=$PATH"
+                '''
+            }
+        }
+    }
 
     stages {
         stage('Verify Node Version') {
