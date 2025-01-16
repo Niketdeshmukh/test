@@ -9,16 +9,12 @@ pipeline {
                 '''
             }
         }
-    }
-
-    stages {
         stage('Verify Node Version') {
-    steps {
-        sh 'node -v'
-        sh 'npm -v'
-    }
-}
-
+            steps {
+                sh 'node -v'
+                sh 'npm -v'
+            }
+        }
         stage('Install Dependencies') {
             steps {
                 sh 'npm install'
@@ -31,8 +27,10 @@ pipeline {
         }
         stage('Generate Reports') {
             steps {
-                sh 'node pdfgenerator.js'
-                sh 'npm run generate-report'
+                sh '''
+                node pdfgenerator.js
+                npm run generate-report
+                '''
             }
         }
     }
