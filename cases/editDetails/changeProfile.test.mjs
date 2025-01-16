@@ -12,7 +12,7 @@ describe('Change DP Test', function () {
         console.log(driver)
         
         try {
-            execSync('adb -s emulator-5554 push ./assests/images.jpeg /storage/emulated/0/Download/');
+            execSync('adb -s emulator-5554 push ./assets/images.jpeg /storage/emulated/0/Download/');
             await driver.pause(2000);
             console.log("picture uploaded")
         } catch (error) {
