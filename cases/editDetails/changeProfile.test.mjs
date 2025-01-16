@@ -12,13 +12,24 @@ describe('Change DP Test', function () {
         console.log(driver)
         
         try {
-            execSync('adb -s emulator-5554 push ./assets/images.jpeg /storage/emulated/0/Download/');
-            await driver.pause(2000);
-            console.log("picture uploaded")
-        } catch (error) {
-            console.error('Error pushing profile picture:', error);
-            throw new Error('Failed to push profile picture to emulator Downloads folder');
-        }
+    // Push file to emulator
+    const adbCommand = `adb -s emulator-5554 push ./assets/images.jpeg /storage/emulated/0/Download/`;
+    execSync(adbCommand);
+    console.log("Picture uploaded successfully");
+
+    // Wait for the app to be ready
+    await driver.pause(5000);
+
+    // Locate the element (use a more reliable locator if available)
+    const profilePicture = await driver.$("android=new UiSelector().resourceId('com.simpleenergy.app:id/profilePicture')");
+    await profilePicture.click();
+    console.log("Profile picture updated");
+
+} catch (error) {
+    console.error("Error occurred:", error.message);
+    throw new Error("Failed to change the profile picture.");
+}
+
     });
 
     it('should change the profile picture', async function () {
