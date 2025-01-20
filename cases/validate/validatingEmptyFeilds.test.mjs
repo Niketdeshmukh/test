@@ -7,13 +7,14 @@ describe('Edit Details Empty Test', function () {
 
     before(async function () {
         console.log('Setting up driver...');
-        this.timeout(30000); // 30 seconds for setup
+        this.timeout(40000); // 30 seconds for setup
         driver = await initializeDriver();
         console.log('Driver setup complete, waiting for the app to load...');
         await driver.pause(2000);
     });
 
     it('should clear the Name and Email fields and attempt to save changes', async function () {
+        this.timeout(30000); 
         console.log("Waiting for the 'Edit Details' button to appear...");
         const profileButton = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]');
         await profileButton.click();

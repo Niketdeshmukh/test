@@ -5,9 +5,9 @@
     "passes": 2,
     "pending": 0,
     "failures": 0,
-    "start": "2025-01-15T13:19:53.490Z",
-    "end": "2025-01-15T13:20:09.565Z",
-    "duration": 16075,
+    "start": "2025-01-17T09:19:45.971Z",
+    "end": "2025-01-17T09:20:10.999Z",
+    "duration": 25028,
     "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "d18c108c-0b09-4f18-a4cc-cdd85253948a",
+      "uuid": "4dfcc9a1-e279-4708-83bc-7f49dc60e5ee",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "98b17ae5-cefe-445b-82bd-986c36bbe2b0",
+          "uuid": "417895db-9dd5-4e8a-bb3f-0c7f04a0f6c0",
           "title": "Change DP Test",
           "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
           "file": "/cases/masterSuite.test.mjs",
@@ -36,17 +36,17 @@
               "title": "\"before all\" hook in \"Change DP Test\"",
               "fullTitle": "Change DP Test \"before all\" hook in \"Change DP Test\"",
               "timedOut": false,
-              "duration": 7761,
+              "duration": 13085,
               "state": null,
               "speed": null,
               "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "this.timeout(40000);\ndriver = await initializeDriver();\nconsole.log(driver)\n\ntry {\n    execSync('adb -s emulator-5554 push ./assests/images.jpeg /storage/emulated/0/Download/');\n    await driver.pause(2000);\n    console.log(\"picture uploaded\")\n} catch (error) {\n    console.error('Error pushing profile picture:', error);\n    throw new Error('Failed to push profile picture to emulator Downloads folder');\n}",
+              "code": "this.timeout(40000);\ndriver = await initializeDriver();\nconsole.log(driver)\n\ntry {\n    const adbCommand = `adb -s emulator-5554 push ./assets/images.jpeg /storage/emulated/0/Download/`;\n    execSync(adbCommand);\n    console.log(\"Picture uploaded successfully\");\n    await driver.pause(5000);\n\n} catch (error) {\n    console.error(\"Error occurred:\", error.message);\n    throw new Error(\"Failed to change the profile picture.\");\n}",
               "err": {},
-              "uuid": "23ae008c-20b3-4a9d-81ae-91f5c989c6a0",
-              "parentUUID": "98b17ae5-cefe-445b-82bd-986c36bbe2b0",
+              "uuid": "3e4600d0-aa38-4fbc-8675-73d783929cb3",
+              "parentUUID": "417895db-9dd5-4e8a-bb3f-0c7f04a0f6c0",
               "isHook": true,
               "skipped": false
             }
@@ -56,7 +56,7 @@
               "title": "\"after all\" hook in \"Change DP Test\"",
               "fullTitle": "Change DP Test \"after all\" hook in \"Change DP Test\"",
               "timedOut": false,
-              "duration": 123,
+              "duration": 163,
               "state": null,
               "speed": null,
               "pass": false,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "console.log('Ending the Change DP test session...');\nif (driver) {\n    await driver.deleteSession();\n    console.log('Driver session closed.');\n} else {\n    console.log('Driver session not created. Skipping session cleanup.');\n}",
               "err": {},
-              "uuid": "fc448370-3b92-49fe-8df5-33b8023c64c2",
-              "parentUUID": "98b17ae5-cefe-445b-82bd-986c36bbe2b0",
+              "uuid": "d87522ea-a451-42ee-bd8d-4dd5fd45b533",
+              "parentUUID": "417895db-9dd5-4e8a-bb3f-0c7f04a0f6c0",
               "isHook": true,
               "skipped": false
             }
@@ -76,7 +76,7 @@
               "title": "should change the profile picture",
               "fullTitle": "Change DP Test should change the profile picture",
               "timedOut": false,
-              "duration": 8184,
+              "duration": 11775,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -85,26 +85,26 @@
               "context": null,
               "code": "this.timeout(40000);\nconst profileButton = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]');\nawait profileButton.click();\nconst editButton = await driver.$(\n    `//android.widget.TextView[@text=\"edit details\"]`\n);\nawait editButton.click();\nawait driver.waitUntil(\n    async () => {\n        const changeDPButton = await driver.$(\n            '//android.widget.ScrollView/android.view.View[3]/android.widget.Button'\n        );\n        return await changeDPButton.isExisting();\n    },\n    {\n        timeout: 15000,\n        timeoutMsg: \"Change DP button not found within 15 seconds.\",\n    }\n);\nconsole.log(\"Clicking the Change DP button...\");\nconst changeDPButton = await driver.$(\n    '//android.widget.ScrollView/android.view.View[3]/android.widget.Button'\n);\nawait changeDPButton.click();\nconst allowButton = await driver.$('//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_button\"]');\nif(await allowButton.isDisplayed()){\n    await allowButton.click();\n}\nconst filePicker = await driver.$(\"//android.widget.TextView\");\nawait filePicker.waitForExist({ timeout: 10000 });\nconst downloadsFolderXPath = '//android.widget.RelativeLayout';\nawait driver.$(downloadsFolderXPath).waitForExist({ timeout: 5000 });\nawait driver.$(downloadsFolderXPath).click();\nconst imageFileXPath = '//android.widget.ImageView[@content-desc=\"Photo taken on Dec 26, 2024 2:57 PM\"]';\nawait driver.pause(2000);\nconst imageFiles = await driver.$$(imageFileXPath);// Select all matching image elements\nconsole.log({imageFiles});\n\nif (imageFiles.length > 0) {\n    console.log(\"Selecting the first available image...\");\n    await imageFiles[0].click();\n} else {\n    throw new Error('No image files found in the Downloads folder.');\n}\nconsole.log(\"Waiting for Save Changes button...\");\nconst saveChangesButton = await driver.$(\n    \"//android.widget.ScrollView/android.view.View[3]/android.widget.Button\"\n);\nawait saveChangesButton.waitForExist({ timeout: 5000 });\nconsole.log(\"Saving the changes...\");\nawait saveChangesButton.click();",
               "err": {},
-              "uuid": "28e3fe06-d3d0-4333-8abb-054ee26c9d49",
-              "parentUUID": "98b17ae5-cefe-445b-82bd-986c36bbe2b0",
+              "uuid": "d0bf204e-268e-42a2-bfe8-cd05387b11ea",
+              "parentUUID": "417895db-9dd5-4e8a-bb3f-0c7f04a0f6c0",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "28e3fe06-d3d0-4333-8abb-054ee26c9d49"
+            "d0bf204e-268e-42a2-bfe8-cd05387b11ea"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 8184,
+          "duration": 11775,
           "root": false,
           "rootEmpty": false,
           "_timeout": 10000
         },
         {
-          "uuid": "f5654ea0-d060-4104-955e-d0a816d018d0",
+          "uuid": "099bdad6-ec48-4bf9-8d75-73e8fdb4868d",
           "title": "Complete Test Suite",
           "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
           "file": "/cases/masterSuite.test.mjs",
@@ -115,7 +115,7 @@
               "title": "should run all test files in sequence",
               "fullTitle": "Complete Test Suite should run all test files in sequence",
               "timedOut": false,
-              "duration": 1,
+              "duration": 0,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -124,20 +124,20 @@
               "context": null,
               "code": "console.log('All tests are imported and will run sequentially.');",
               "err": {},
-              "uuid": "748f19e6-53fc-4bb7-9f32-f682aafe22e4",
-              "parentUUID": "f5654ea0-d060-4104-955e-d0a816d018d0",
+              "uuid": "a2d4d952-bd97-456d-8a67-aba5b8d0cf81",
+              "parentUUID": "099bdad6-ec48-4bf9-8d75-73e8fdb4868d",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "748f19e6-53fc-4bb7-9f32-f682aafe22e4"
+            "a2d4d952-bd97-456d-8a67-aba5b8d0cf81"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 1,
+          "duration": 0,
           "root": false,
           "rootEmpty": false,
           "_timeout": 10000

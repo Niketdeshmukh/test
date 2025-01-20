@@ -2,4 +2,7 @@ node_modules
 node_modules
 tests/styled-summary-report-with-chart.pdf
 ./tests/styled-summary-report-with-chart.pdf
-tests/cases/mocha-reports
+tests/cases/mocha-reports/report.html
+tests/cases/mocha-reports/report.json
+.tests/cases/mocha-reports/report.html
+.tests/cases/mocha-reports/report.json

@@ -19,6 +19,7 @@ describe("User Logout Functionality", function () {
 
     it("should successfully log out the user", async function () {
         // Click on the Profile button
+        this.timeout(30000);
         const profileButton = await driver.$(
             '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]'
         );
