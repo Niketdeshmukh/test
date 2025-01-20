@@ -37,8 +37,14 @@ describe('Edit and Update Test', function () {
       await updateButton.click();
       console.log("Clicked on Update button.");
       
-      await driver.pause(2000); // Allow time for the update action to complete
-
+      const backButton = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[1]/android.widget.Button')
+      if (await backButton.isDisplayed()) {
+        console.log('Allow button is visible. Clicking the button...');
+        await backButton.waitForDisplayed({timeout:15000})
+        await backButton.click();
+      } else {
+        console.log('Allow button is not visible. Ending the test with success message.');
+      }
     } catch (err) {
       console.error("An error occurred during the Edit and Update test:", err.message);
     }
