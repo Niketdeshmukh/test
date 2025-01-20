@@ -2,7 +2,7 @@ import { remote } from 'webdriverio';
 import { expect } from 'chai';
 import { initializeDriver } from '../driverSetup.mjs';
 
-describe('Logout Test', function () {
+describe('Should clear address', function () {
   let driver;
 
   before(async function () {
@@ -49,7 +49,7 @@ describe('Logout Test', function () {
   });
 
   after(async function () {
-    console.log('Ending the logout test session...');
+    console.log('Ending the clear address session...');
     if (driver) {
       await driver.deleteSession();
       console.log('Driver session closed.');

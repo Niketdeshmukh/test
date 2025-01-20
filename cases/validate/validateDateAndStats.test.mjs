@@ -14,6 +14,7 @@ describe('Validate Ride Statistics and Date Logic', function () {
     };
     before(async function () {
         console.log("Setting up driver...");
+        this.timeout(30000);
         driver = await initializeDriver();
         console.log('Driver setup complete, waiting for the app to load...');
     });
