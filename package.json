@@ -4,7 +4,7 @@
   "main": "test.js",
   "scripts": {
     "test": "mocha --require @babel/register --extension mjs --timeout 10000 --reporter mochawesome --reporter-options reportDir=mocha-reports,reportFilename=report,verbose --no-parallel cases/masterSuite.test.mjs",
-    "generate-report": "marge mocha-reports/mochawesome.json --reportDir mocha-reports cases/*.test.mjs",
+    "generate-report": "marge mocha-reports/report.json --reportDir mocha-reports cases/*.test.mjs",
     "wdio": "wdio run ./wdio.conf.js"
   },
   "dependencies": {

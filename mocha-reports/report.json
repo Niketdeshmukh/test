@@ -1,14 +1,14 @@
 {
   "stats": {
-    "suites": 2,
-    "tests": 2,
-    "passes": 2,
+    "suites": 3,
+    "tests": 3,
+    "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2025-01-17T09:19:45.971Z",
-    "end": "2025-01-17T09:20:10.999Z",
-    "duration": 25028,
-    "testsRegistered": 2,
+    "start": "2025-01-20T06:52:50.286Z",
+    "end": "2025-01-20T06:52:56.739Z",
+    "duration": 6453,
+    "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "4dfcc9a1-e279-4708-83bc-7f49dc60e5ee",
+      "uuid": "46344ded-e725-487e-99d1-4b07bf530f6b",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,84 +27,123 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "417895db-9dd5-4e8a-bb3f-0c7f04a0f6c0",
-          "title": "Change DP Test",
+          "uuid": "0a36a0aa-fd5a-4790-91f1-3c5e7a05f0c2",
+          "title": "Basic Test",
           "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
           "file": "/cases/masterSuite.test.mjs",
-          "beforeHooks": [
-            {
-              "title": "\"before all\" hook in \"Change DP Test\"",
-              "fullTitle": "Change DP Test \"before all\" hook in \"Change DP Test\"",
-              "timedOut": false,
-              "duration": 13085,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "this.timeout(40000);\ndriver = await initializeDriver();\nconsole.log(driver)\n\ntry {\n    const adbCommand = `adb -s emulator-5554 push ./assets/images.jpeg /storage/emulated/0/Download/`;\n    execSync(adbCommand);\n    console.log(\"Picture uploaded successfully\");\n    await driver.pause(5000);\n\n} catch (error) {\n    console.error(\"Error occurred:\", error.message);\n    throw new Error(\"Failed to change the profile picture.\");\n}",
-              "err": {},
-              "uuid": "3e4600d0-aa38-4fbc-8675-73d783929cb3",
-              "parentUUID": "417895db-9dd5-4e8a-bb3f-0c7f04a0f6c0",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [
-            {
-              "title": "\"after all\" hook in \"Change DP Test\"",
-              "fullTitle": "Change DP Test \"after all\" hook in \"Change DP Test\"",
-              "timedOut": false,
-              "duration": 163,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "console.log('Ending the Change DP test session...');\nif (driver) {\n    await driver.deleteSession();\n    console.log('Driver session closed.');\n} else {\n    console.log('Driver session not created. Skipping session cleanup.');\n}",
-              "err": {},
-              "uuid": "d87522ea-a451-42ee-bd8d-4dd5fd45b533",
-              "parentUUID": "417895db-9dd5-4e8a-bb3f-0c7f04a0f6c0",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
+          "beforeHooks": [],
+          "afterHooks": [],
           "tests": [
             {
-              "title": "should change the profile picture",
-              "fullTitle": "Change DP Test should change the profile picture",
+              "title": "should pass a simple test",
+              "fullTitle": "Basic Test should pass a simple test",
               "timedOut": false,
-              "duration": 11775,
+              "duration": 0,
               "state": "passed",
-              "speed": "slow",
+              "speed": "fast",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "this.timeout(40000);\nconst profileButton = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]');\nawait profileButton.click();\nconst editButton = await driver.$(\n    `//android.widget.TextView[@text=\"edit details\"]`\n);\nawait editButton.click();\nawait driver.waitUntil(\n    async () => {\n        const changeDPButton = await driver.$(\n            '//android.widget.ScrollView/android.view.View[3]/android.widget.Button'\n        );\n        return await changeDPButton.isExisting();\n    },\n    {\n        timeout: 15000,\n        timeoutMsg: \"Change DP button not found within 15 seconds.\",\n    }\n);\nconsole.log(\"Clicking the Change DP button...\");\nconst changeDPButton = await driver.$(\n    '//android.widget.ScrollView/android.view.View[3]/android.widget.Button'\n);\nawait changeDPButton.click();\nconst allowButton = await driver.$('//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_button\"]');\nif(await allowButton.isDisplayed()){\n    await allowButton.click();\n}\nconst filePicker = await driver.$(\"//android.widget.TextView\");\nawait filePicker.waitForExist({ timeout: 10000 });\nconst downloadsFolderXPath = '//android.widget.RelativeLayout';\nawait driver.$(downloadsFolderXPath).waitForExist({ timeout: 5000 });\nawait driver.$(downloadsFolderXPath).click();\nconst imageFileXPath = '//android.widget.ImageView[@content-desc=\"Photo taken on Dec 26, 2024 2:57 PM\"]';\nawait driver.pause(2000);\nconst imageFiles = await driver.$$(imageFileXPath);// Select all matching image elements\nconsole.log({imageFiles});\n\nif (imageFiles.length > 0) {\n    console.log(\"Selecting the first available image...\");\n    await imageFiles[0].click();\n} else {\n    throw new Error('No image files found in the Downloads folder.');\n}\nconsole.log(\"Waiting for Save Changes button...\");\nconst saveChangesButton = await driver.$(\n    \"//android.widget.ScrollView/android.view.View[3]/android.widget.Button\"\n);\nawait saveChangesButton.waitForExist({ timeout: 5000 });\nconsole.log(\"Saving the changes...\");\nawait saveChangesButton.click();",
+              "code": "expect(true).to.be.true;",
               "err": {},
-              "uuid": "d0bf204e-268e-42a2-bfe8-cd05387b11ea",
-              "parentUUID": "417895db-9dd5-4e8a-bb3f-0c7f04a0f6c0",
+              "uuid": "152f7dc8-b07f-4536-a52f-7ce79e5e4d3e",
+              "parentUUID": "0a36a0aa-fd5a-4790-91f1-3c5e7a05f0c2",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "d0bf204e-268e-42a2-bfe8-cd05387b11ea"
+            "152f7dc8-b07f-4536-a52f-7ce79e5e4d3e"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 11775,
+          "duration": 0,
           "root": false,
           "rootEmpty": false,
           "_timeout": 10000
         },
         {
-          "uuid": "099bdad6-ec48-4bf9-8d75-73e8fdb4868d",
+          "uuid": "20b0382b-66d5-4d63-a567-6deb8934163e",
+          "title": "Logo Validation",
+          "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
+          "file": "/cases/masterSuite.test.mjs",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"Logo Validation\"",
+              "fullTitle": "Logo Validation \"before all\" hook in \"Logo Validation\"",
+              "timedOut": false,
+              "duration": 5924,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await initializeDriver();",
+              "err": {},
+              "uuid": "d25cb2a0-3ebe-40b5-8673-2cdea06d2460",
+              "parentUUID": "20b0382b-66d5-4d63-a567-6deb8934163e",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"Logo Validation\"",
+              "fullTitle": "Logo Validation \"after all\" hook in \"Logo Validation\"",
+              "timedOut": false,
+              "duration": 115,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "console.log(\"Ending the edit details test session...\");\nif (driver) {\n    await driver.deleteSession();\n    console.log('Driver session closed.');\n} else {\n    console.log('Driver session not created. Skipping session cleanup.');\n}",
+              "err": {},
+              "uuid": "478afd25-7d8a-4a8c-a2d8-74729109ec1a",
+              "parentUUID": "20b0382b-66d5-4d63-a567-6deb8934163e",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "should display the dashboard logo",
+              "fullTitle": "Logo Validation should display the dashboard logo",
+              "timedOut": false,
+              "duration": 409,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "this.timeout(30000);\nconsole.log('Running logo validation test...');\n\nconst logo = await driver.$('//android.widget.ImageView[@content-desc=\"Dashboard logo\"]');\nconsole.log('Found logo element. Waiting for logo to be displayed...');\n\nawait logo.waitForDisplayed({ timeout: 15000 });\nconsole.log('Logo is displayed, verifying visibility...');\n\nconst isLogoDisplayed = await logo.isDisplayed();\nconsole.log('Logo displayed:', isLogoDisplayed);\n\nexpect(isLogoDisplayed, 'Dashboard logo should be visible').to.be.true;",
+              "err": {},
+              "uuid": "54a05147-7261-4504-938c-2ed6d11242b2",
+              "parentUUID": "20b0382b-66d5-4d63-a567-6deb8934163e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "54a05147-7261-4504-938c-2ed6d11242b2"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 409,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 10000
+        },
+        {
+          "uuid": "20d129a9-6987-4e7a-856c-61c737b7fdf4",
           "title": "Complete Test Suite",
           "fullFile": "/home/niketdeshmukh/Desktop/TEST/tests/cases/masterSuite.test.mjs",
           "file": "/cases/masterSuite.test.mjs",
@@ -124,15 +163,15 @@
               "context": null,
               "code": "console.log('All tests are imported and will run sequentially.');",
               "err": {},
-              "uuid": "a2d4d952-bd97-456d-8a67-aba5b8d0cf81",
-              "parentUUID": "099bdad6-ec48-4bf9-8d75-73e8fdb4868d",
+              "uuid": "a22138b2-a597-42ab-8f58-a4993480cf4b",
+              "parentUUID": "20d129a9-6987-4e7a-856c-61c737b7fdf4",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "a2d4d952-bd97-456d-8a67-aba5b8d0cf81"
+            "a22138b2-a597-42ab-8f58-a4993480cf4b"
           ],
           "failures": [],
           "pending": [],
