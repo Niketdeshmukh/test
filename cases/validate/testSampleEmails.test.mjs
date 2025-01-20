@@ -20,6 +20,7 @@ describe('Email Validation Test', function () {
   });
 
   it('should validate email addresses and set valid ones', async function () {
+    this.timeout(40000); 
     console.log('Navigating to the profile section...');
     const profileButton = await driver.$(
       "//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]"

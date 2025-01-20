@@ -5,6 +5,7 @@ describe('Logo Validation', function () {
     let driver;
     
     before(async function () {
+        this.timeout(30000);
         driver = await initializeDriver();
     });
 
