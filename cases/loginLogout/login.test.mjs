@@ -22,19 +22,17 @@ describe('Login Test', function () {
     try {
       this.timeout(60000);
       await driver.execute('mobile: activateApp', { appId: 'com.simpleenergy.app' });
-      await driver.pause(2000);
+      // await driver.pause(2000);
       const signinButton = await waitForElement(driver, '//android.widget.Button', 10000);
       await signinButton.click();
-      await driver.pause(1000);
-        const cancelButton = await waitForElement(driver, '//android.widget.ImageView[@content-desc="Cancel"]', 10000);
-        
-        if (await cancelButton.isDisplayed()) {
-          console.log('Cancel button is visible. Clicking the button...');
-          await cancelButton.waitForDisplayed({ timeout: 15000 });
-          await cancelButton.click();
-        } else {
-          console.log('Cancel button is not visible. Ending the test with a success message.');
-        }
+      // await driver.pause(1000);
+      const cancelButton = await driver.$('//android.widget.ImageView[@content-desc="Cancel"]');
+      if(await cancelButton.isDisplayed()) {
+        await cancelButton.waitForDisplayed({timeout:1000})
+        await cancelButton.click();
+      } else {
+        console.log('Allow button is not visible. Ending the test with success message.');
+      }
       const numberField = await waitForElement(driver, '//android.widget.EditText', 1000);
       await numberField.click();
 
