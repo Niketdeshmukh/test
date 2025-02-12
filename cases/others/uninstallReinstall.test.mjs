@@ -17,7 +17,7 @@ import { initializeDriver } from '../driverSetup.mjs';
         console.log('App uninstalled successfully!');
 
         // Reinstall the app
-        await driver.installApp("./supershare.apk");
+        await driver.installApp("/home/niketdeshmukh/Desktop/TEST/tests/supershare.apk");
         console.log('App reinstalled successfully!');
             
         })
