@@ -14,7 +14,6 @@ describe('Login Test', function () {
   before(async function () {
     this.timeout(60000);
     driver = await initializeDriver();
-    console.log('Driver setup complete, waiting for the app to load...');
     await driver.pause(2000);
   });
 
@@ -22,10 +21,8 @@ describe('Login Test', function () {
     try {
       this.timeout(60000);
       await driver.execute('mobile: activateApp', { appId: 'com.simpleenergy.app' });
-      // await driver.pause(2000);
       const signinButton = await waitForElement(driver, '//android.widget.Button', 10000);
       await signinButton.click();
-      // await driver.pause(1000);
       const cancelButton = await driver.$('//android.widget.ImageView[@content-desc="Cancel"]');
       if(await cancelButton.isDisplayed()) {
         await cancelButton.waitForDisplayed({timeout:1000})

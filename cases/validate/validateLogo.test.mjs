@@ -11,17 +11,9 @@ describe('Logo Validation', function () {
 
     it('should display the dashboard logo', async function () {
         this.timeout(30000);
-        console.log('Running logo validation test...');
-        
         const logo = await driver.$('//android.widget.ImageView[@content-desc="Dashboard logo"]');
-        console.log('Found logo element. Waiting for logo to be displayed...');
-        
         await logo.waitForDisplayed({ timeout: 15000 });
-        console.log('Logo is displayed, verifying visibility...');
-        
         const isLogoDisplayed = await logo.isDisplayed();
-        console.log('Logo displayed:', isLogoDisplayed);
-        
         expect(isLogoDisplayed, 'Dashboard logo should be visible').to.be.true;
     });
 

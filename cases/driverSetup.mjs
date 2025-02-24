@@ -32,28 +32,20 @@ function restartADB() {
     throw error;
   }
 }
-
-
-
-// Function to fetch device name using ADB
 function getDeviceName() {
   try {
     const output = execSync('adb devices', { encoding: 'utf-8' });
     const lines = output.split('\n');
     for (const line of lines) {
       if (line.includes('device') && !line.includes('List of devices attached') && !line.includes('offline')) {
-        return line.split(/\s+/)[0]; // Extract device name (first word in the line)
+        return line.split(/\s+/)[0]; 
       }
     }
-    // console.warn(`No connected devices found. Retrying in ${delay / 1000} seconds...`);
-    // execSync(`sleep ${delay / 1000}`);
   } catch (error) {
     console.error('Error fetching device name:', error.message);
     throw error;
   }
 }
-
-// Function to fetch platform version using ADB
 function getPlatformVersion() {
   let retries = 3;
   while (retries > 0) {
@@ -72,12 +64,8 @@ function getPlatformVersion() {
   throw new Error('Failed to fetch platform version after multiple attempts.');
 }
 
-
-// Initialize WebDriver with dynamic capabilities
 export async function initializeDriver() {
   console.log('Setting up driver...');
-  
-  // Restart ADB server before initializing driver
   restartADB();
 
   const deviceName = getDeviceName();

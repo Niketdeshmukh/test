@@ -1,6 +1,3 @@
-import { remote } from 'webdriverio';
-import fs from 'fs';
-import { expect } from 'chai';
 import { initializeDriver } from '../driverSetup.mjs';
 describe('Edit Details Test', function () {
     let driver;
@@ -8,12 +5,10 @@ describe('Edit Details Test', function () {
     before(async function () {
         this.timeout(30000); 
         driver = await initializeDriver();
-        console.log('Driver setup complete, waiting for the app to load...');
         await driver.pause(2000);
     });
 
     it('should edit details and save changes successfully', async function () {
-        console.log("Waiting for the 'Edit Details' button to appear...");
         await driver.waitUntil(
             async () => {
                 const editButton = await driver.$(
@@ -26,14 +21,10 @@ describe('Edit Details Test', function () {
                 timeoutMsg: "'Edit Details' button not found within 15 seconds.",
             }
         );
-
-        console.log("'Edit Details' button found. Clicking the button...");
         const editButton = await driver.$(
             "//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View[2]/android.view.View/android.widget.Button"
         );
         await editButton.click();
-
-        console.log("Waiting for the next screen with Name and Email fields...");
         await driver.waitUntil(
             async () => {
                 const nameField = await driver.$(
@@ -46,8 +37,6 @@ describe('Edit Details Test', function () {
                 timeoutMsg: "Name field not found within 20 seconds.",
             }
         );
-
-        console.log("Filling in the Name and Email fields...");
         const nameField = await driver.$(
             'android=new UiSelector().className("android.widget.EditText")'
         );
@@ -62,11 +51,6 @@ describe('Edit Details Test', function () {
             `//android.widget.TextView[@text="SAVE CHANGES"]`
         );
         await saveButton.click();
-
-        console.log("Changes saved successfully!");
-        // const backButton = await driver.$('//android.widget.ScrollView/android.view.View[1]/android.widget.Button');
-        // await backButton.click();
-        // console.log("back button clicked");
     });
 
     after(async function () {

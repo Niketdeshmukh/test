@@ -19,7 +19,6 @@ describe("Manage Address Test", function () {
             '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]'
         );
         await profileButton.click();
-        console.log("Profile button clicked.");
         await driver.pause(2000);
 
         // Step 2: Click on the Address button
@@ -27,7 +26,6 @@ describe("Manage Address Test", function () {
             '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.widget.ScrollView/android.view.View/android.view.View[1]/android.widget.Button'
         );
         await addressButton.click();
-        console.log("Address button clicked.");
         await driver.pause(2000);
 
         // Step 3: Click on the Edit button for the Home address
@@ -35,7 +33,6 @@ describe("Manage Address Test", function () {
             '//android.widget.ScrollView/android.view.View[1]/android.view.View[3]/android.widget.Button'
         );
         await editHomeButton.click();
-        console.log("Edit Home button clicked.");
         await driver.pause(2000);
 
         // Step 4: Set the fixed address into the EditText field for Home address
@@ -50,20 +47,14 @@ describe("Manage Address Test", function () {
         );
         const isEnabled = await confirmButton.isEnabled();
 
-        console.log("Checking if Confirm button is enabled...");
-        expect(isEnabled).to.be.true; // Assert that the Confirm button is enabled
+        expect(isEnabled).to.be.true;
 
-        console.log("Confirm button is enabled. Clicking it.");
         await confirmButton.click();
-        await driver.pause(2000); // Wait for 2 seconds after clicking
-        console.log("Address update confirmed!");
-
-        // Step 6: Click the Back button
+        await driver.pause(2000); 
         const backButton = await driver.$(
             '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[1]/android.widget.Button'
         );
         await backButton.click();
-        console.log("Back button clicked.");
         const backButton1 = await driver.$('//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.widget.Button');
         await backButton1.click();
     });

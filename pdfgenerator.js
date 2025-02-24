@@ -33,8 +33,6 @@ fs.readFile(jsonReportPath, "utf-8", async (err, jsonData) => {
 
   const report = JSON.parse(jsonData);
   const stats = report.stats;
-
-  // Calculate passed and failed test counts directly from the stats
   const totalTests = stats.tests;
   const passedTests = stats.passes;
   const failedTests = stats.failures;
@@ -65,12 +63,8 @@ fs.readFile(jsonReportPath, "utf-8", async (err, jsonData) => {
       )
     )
     .join("");
-
-  // Calculate the percentages of passed and failed tests
   const passedPercentage = (passedTests / totalTests) * 100;
   const failedPercentage = (failedTests / totalTests) * 100;
-
-  // Create the HTML content with dynamic passed and failed tests data
   const htmlContent = `
   <!DOCTYPE html>
   <html>
@@ -134,11 +128,8 @@ fs.readFile(jsonReportPath, "utf-8", async (err, jsonData) => {
   </html>
   `;
 
-  // Launch Puppeteer and render the PDF
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-
-  // Set content and render PDF
   await page.setContent(htmlContent);
   await page.pdf({ path: pdfOutputPath, format: "A4" });
 

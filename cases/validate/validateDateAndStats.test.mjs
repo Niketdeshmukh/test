@@ -78,20 +78,13 @@ describe('Validate Ride Statistics and Date Logic', function () {
         const co2SavedWidgets = await driver.$(`//android.widget.TextView[@text="CO2
 Saved"]`);
         widgetStatus.co2SavedWidgets = await co2SavedWidgets.isDisplayed();
-
-        // Validate battery widgets
         const moneySavedWidgets = await driver.$(`//android.widget.TextView[@text="Money Saved"]`);
         widgetStatus.moneySavedWidgets = await moneySavedWidgets.isDisplayed();
-
-        // Validate projected range widgets
         const topSpeedWidgets = await driver.$(`//android.widget.TextView[@text="Top
 Speed"]`);
         widgetStatus.topSpeedWidgets = await topSpeedWidgets.isDisplayed();
-
-        // Validate top speed widgets
         const averageSpeedWidgets = await driver.$(`//android.widget.TextView[@text="Average
 Speed"]`);
-        // await averageSpeedWidgets.waitForDisplayed({timeout:10000})
         widgetStatus.averageSpeedWidgets = await averageSpeedWidgets.isDisplayed();
 
         const distanceCoveredWidgets = await driver.$(`//android.widget.TextView[@text="Distance
@@ -105,29 +98,20 @@ Covered"]`);
         await driver.performActions([
             {
                 type: "pointer",
-                id: "finger2", // for scroll down
+                id: "finger2", 
                 parameters: { pointerType: "touch" },
                 actions: [
-                    // Start near the top of the screen
                     { type: "pointerMove", duration: 0, x: width / 2, y: height * 0.8 },
                     { type: "pointerDown", button: 0 },
-                    // Move downwards
                     { type: "pointerMove", duration: 500, x: width / 2, y: height * 0.2 },
                     { type: "pointerUp", button: 0 },
                 ],
-
             },
-
         ]);
-
-        // await driver.pause(10000); // Allow time to observe the scroll
-
-        await driver.releaseActions(); // Release the pointer actions
-
+        await driver.releaseActions(); 
         const distanceCoveredPerModeWidgets = await driver.$('//android.widget.TextView[@text="Distance covered (km) per mode "]');
 widgetStatus.distanceCoveredPerModeWidgets = await distanceCoveredPerModeWidgets.isDisplayed(); // Update the widgetStatus object
 expect(widgetStatus.distanceCoveredPerModeWidgets).to.be.true;
-
 
         await driver.performActions([
             {
@@ -143,8 +127,6 @@ expect(widgetStatus.distanceCoveredPerModeWidgets).to.be.true;
             },
         ]);
         await driver.releaseActions();
-        console.log("Scroll down gesture performed.");
-
         const backButton = await driver.$('//android.widget.ScrollView/android.view.View[1]/android.view.View/android.widget.Button');
         await backButton.click();
         await driver.performActions([

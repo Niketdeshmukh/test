@@ -5,11 +5,8 @@ describe('Walkthrough Screens Validation', function () {
     let driver;
 
     before(async function () {
-        console.log('Setting up driver...');
-        this.timeout(30000); // Allow 30 seconds for setup
+        this.timeout(30000); 
         driver = await initializeDriver();
-
-        console.log('Driver setup complete, waiting for the app to load...');
     });
 
     it('should validate and navigate through walkthrough screens', async function () {
@@ -18,8 +15,6 @@ describe('Walkthrough Screens Validation', function () {
             "//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]",
             "//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]",
         ];
-
-        console.log('Launching the app...');
         await driver.execute('mobile: activateApp', { appId: 'com.simpleenergy.app' });
         const { width, height } = await driver.getWindowRect();
         await driver.pause(4000);
@@ -31,7 +26,6 @@ describe('Walkthrough Screens Validation', function () {
             expect(isDisplayed, `Card ${i + 1} should be displayed`).to.be.true;
         
             if (i < cardXPaths.length - 1) {
-                console.log(`Swiping to card ${i + 2}...`);
                 await driver.performActions([
                     {
                         type: "pointer",

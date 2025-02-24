@@ -11,14 +11,10 @@ describe("Profile Button Functionality", function () {
     after(async function () {
         if (driver) {
             await driver.deleteSession();
-            console.log("Driver session ended.");
         }
     });
 
     it("should find and click the Profile button", async function () {
-        console.log("Waiting for the 'profile button' to appear...");
-
-        // Wait for the profile button to appear
         const profileButtonSelector =
             "//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]";
 
@@ -32,14 +28,8 @@ describe("Profile Button Functionality", function () {
                 timeoutMsg: "'Profile button' not found within 15 seconds.",
             }
         );
-
-        // Assert the button exists
         expect(isProfileButtonPresent).to.be.true;
-        console.log("'Profile button' found.");
-
-        // Click the Profile button
         const profileButton = await driver.$(profileButtonSelector);
         await profileButton.click();
-        console.log("Profile button clicked, navigating to the next screen!");
     });
 });

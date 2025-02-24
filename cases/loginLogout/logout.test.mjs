@@ -10,15 +10,12 @@ describe("User Logout Functionality", function () {
     });
 
     after(async function () {
-        // End WebDriverIO session
         if (driver) {
             await driver.deleteSession();
-            console.log("Driver session ended.");
         }
     });
 
     it("should successfully log out the user", async function () {
-        // Click on the Profile button
         this.timeout(30000);
         const profileButton = await driver.$(
             '//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]'
@@ -40,26 +37,20 @@ describe("User Logout Functionality", function () {
             },
         ]);
         await driver.pause(2000);
-        // Click on the Logout button
         const logoutButton = await driver.$(
             '//android.widget.TextView[@text="Logout"]'
         );
         await logoutButton.click();
         await driver.pause(1000);
-    
-        // Confirm the logout action
         const confirmButton = await driver.$(
             '//android.widget.TextView[@resource-id="com.simpleenergy.app:id/clear_dialog_yes_btn"]'
         );
-    
-        // Wait explicitly for the confirm button to appear
         await confirmButton.waitForDisplayed({ timeout: 5000 });
     
         const isDisplayed = await confirmButton.isDisplayed();
-        expect(isDisplayed).to.be.true; // Validate that confirm button is displayed
+        expect(isDisplayed).to.be.true;
     
         await confirmButton.click();
-        console.log("Logout successfully!");
     });
     
 });

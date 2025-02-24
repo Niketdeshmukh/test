@@ -7,16 +7,13 @@ import { execSync } from 'child_process';
     describe('Document Upload Flow', function () {
         let driver;
         before(async function () {
-            console.log("Setting up driver...");
             driver = await initializeDriver();
             try {
                 execSync('adb -s emulator-5554 push ./images.pdf /storage/emulated/0/Download/');
             } catch (error) {
-                console.error('Error pushing profile picture:', error);
                 throw new Error('Failed to push profile picture to emulator Downloads folder');
             }
-            console.log('Driver setup complete, waiting for the app to load...');
-            await driver.pause(2000);  // Adjust pause time if necessary
+            await driver.pause(2000);  
         });
 
         it('should complete the document upload process', async function () {

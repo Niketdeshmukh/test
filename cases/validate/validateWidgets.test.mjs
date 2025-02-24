@@ -22,34 +22,27 @@ import { initializeDriver } from '../driverSetup.mjs';
 
         it('should validate widgets', async function () {
             try {
-                // Validate vehicle card
                 const vehicleCard = await driver.$('//android.widget.ScrollView/android.view.View[2]/android.view.View');
                 widgetStatus.vehicleCard = await vehicleCard.isDisplayed();
 
-                // Validate presence of card within vehicle card
                 const card = await driver.$('//android.widget.ScrollView/android.view.View[2]/android.view.View/android.view.View[1]/android.widget.Button');
                 widgetStatus.card = await card.isDisplayed();
 
-                // Validate battery widgets
                 const batteryWidgets = await driver.$('//android.widget.ScrollView/android.view.View[3]/android.view.View');
                 widgetStatus.batteryWidgets = await batteryWidgets.isDisplayed();
 
-                // Validate projected range widgets
                 const projectedRangeWidgets = await driver.$('//android.widget.ScrollView/android.view.View[4]');
                 widgetStatus.projectedRangeWidgets = await projectedRangeWidgets.isDisplayed();
 
-                // Validate top speed widgets
                 const topSpeedWidgets = await driver.$(`//android.widget.TextView[@text="Top
 Speed"]`);
                 await topSpeedWidgets.waitForDisplayed({timeout:10000})
                 widgetStatus.topSpeedWidgets = await topSpeedWidgets.isDisplayed();
 
-                // Validate average speed widgets
                 const averageSpeedWidgets = await driver.$(`//android.widget.TextView[@text="Average
 Speed"]`);
                 widgetStatus.averageSpeedWidgets = await averageSpeedWidgets.isDisplayed();
 
-                // Scroll down
                 const { width, height } = await driver.getWindowRect();
 
                 await driver.performActions([
@@ -66,15 +59,12 @@ Speed"]`);
                     },
                 ]);
 
-                // Validate ride statistics widgets
                 const rideStatisticsWidgets = await driver.$('//android.view.View[@content-desc="Ride Statistic"]');
                 widgetStatus.rideStatisticsWidgets = await rideStatisticsWidgets.isDisplayed();
 
-                // Validate roadside assistance widgets
                 const roadsideAssistanceWidgets = await driver.$('//android.widget.ScrollView/android.view.View[4]');
                 widgetStatus.roadsideAssistanceWidgets = await roadsideAssistanceWidgets.isDisplayed();
 
-                // Validate book services widgets
                 const bookServicesWidgets = await driver.$('//android.widget.TextView[@text="Service"]');
                 widgetStatus.bookServicesWidgets = await bookServicesWidgets.isDisplayed();
 

@@ -4,7 +4,6 @@ import { initializeDriver } from '../driverSetup.mjs';
     describe('Ridirect on clicking T&C ', function () {
         let driver;
         before(async function () {
-            console.log("setting up driver...");
             this.timeout(30000);
             driver = await initializeDriver();
         })

@@ -4,7 +4,6 @@ import { initializeDriver } from '../driverSetup.mjs';
     describe('Ridirect on clicking roadside assistance ', function () {
         let driver;
         before(async function () {
-            console.log("setting up driver...");
             this.timeout(30000);
             driver = await initializeDriver();
         })
@@ -13,7 +12,6 @@ import { initializeDriver } from '../driverSetup.mjs';
             await homebutton.click();
             await driver.pause(2000)
             const { width, height } = await driver.getWindowRect();
-
             await driver.performActions([
                 {
                     type: "pointer",

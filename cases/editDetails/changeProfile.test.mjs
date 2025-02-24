@@ -9,16 +9,13 @@ describe('Change DP Test', function () {
     before(async function () {
         this.timeout(40000);
         driver = await initializeDriver();
-        console.log(driver)
         
         try {
     const adbCommand = `adb -s emulator-5554 push ./assets/images.jpeg /storage/emulated/0/Download/`;
     execSync(adbCommand);
-    console.log("Picture uploaded successfully");
     await driver.pause(5000);
 
 } catch (error) {
-    console.error("Error occurred:", error.message);
     throw new Error("Failed to change the profile picture.");
 }
 
@@ -45,8 +42,6 @@ describe('Change DP Test', function () {
                 timeoutMsg: "Change DP button not found within 15 seconds.",
             }
         );
-
-        console.log("Clicking the Change DP button...");
         const changeDPButton = await driver.$(
             '//android.widget.ScrollView/android.view.View[3]/android.widget.Button'
         );
@@ -64,8 +59,7 @@ describe('Change DP Test', function () {
 
         const imageFileXPath = '//android.widget.ImageView[@content-desc="Photo taken on Dec 26, 2024 2:57 PM"]';
         await driver.pause(2000);
-        const imageFiles = await driver.$$(imageFileXPath);// Select all matching image elements
-        console.log({imageFiles});
+        const imageFiles = await driver.$$(imageFileXPath);
         
         if (imageFiles.length > 0) {
             console.log("Selecting the first available image...");

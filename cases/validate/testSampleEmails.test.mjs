@@ -13,23 +13,19 @@ describe('Email Validation Test', function () {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   before(async function () {
-    this.timeout(60000); // Increase timeout for the entire setup
+    this.timeout(60000);
     driver = await initializeDriver();
-    console.log('Driver setup complete, waiting for the app to load...');
-    await driver.pause(3000); // Increased wait time for the app to load
+    await driver.pause(3000); 
   });
 
   it('should validate email addresses and set valid ones', async function () {
     this.timeout(40000); 
-    console.log('Navigating to the profile section...');
     const profileButton = await driver.$(
       "//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]"
     );
     await profileButton.waitForDisplayed({ timeout: 30000 }); // Increased timeout for element display
     await driver.pause(1000);
     await profileButton.click();
-
-    console.log('Navigating to the "Edit Details" button...');
     const editButton = await driver.$(
       "//androidx.compose.ui.platform.q1/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View[2]/android.view.View/android.widget.Button"
     );
@@ -41,8 +37,6 @@ describe('Email Validation Test', function () {
     for (const domain of emailDomains) {
       const email = `testing@${domain}`;
       const isValidEmail = emailRegex.test(email);
-
-      console.log(`Validation for email ${email}: ${isValidEmail ? 'Valid' : 'Invalid'}`);
       if (isValidEmail) {
         await emailField.clearValue();
         await emailField.setValue(email);
